@@ -1,4 +1,4 @@
-package JavaOOP.ObjectClass;
+package JavaOOP.ObjectClassOverriding;
 
 public class Test {
     public static void main(String[] args) {

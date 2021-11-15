@@ -1,4 +1,4 @@
-package JavaOOP.ObjectClass;
+package JavaOOP.ObjectClassOverriding;
 
 import java.util.Scanner;
 public class Teacher extends Employee {
