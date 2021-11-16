@@ -29,10 +29,20 @@ public class Employee extends Person {
     public String toString() {
         return (super.toString() + "\nJob title: " + jobTitle + "\nSalary: " + salary);
     }
-    public boolean equals(Employee temp) {
-        if (super.equals(temp) && this.jobTitle.equals(temp.jobTitle) && this.salary == temp.salary) {
-            return true;
+    // public boolean equals(Employee temp) {
+    //     if (super.equals(temp) && this.jobTitle.equals(temp.jobTitle) && this.salary == temp.salary) {
+    //         return true;
+    //     }
+    //     else return false;
+    // }
+    public boolean equals(Object temp) {
+        boolean check = false;
+        if (temp instanceof Employee) {
+            Employee e = ((Employee)temp);
+            if (super.equals(e) && this.jobTitle.equals(e.jobTitle) && this.salary == e.salary) {
+                check = true;
+            }
         }
-        return false;
+        return check;
     }
 }

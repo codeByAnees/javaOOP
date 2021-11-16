@@ -20,10 +20,20 @@ public class Teacher extends Employee {
     public String toString() {
         return (super.toString() + "\nNo. of courses: " + courses);
     }
-    public boolean equals(Teacher temp) {
-        if (super.equals(temp) && this.courses == temp.courses) {
-            return true;
+    // public boolean equals(Teacher temp) {
+    //     if (super.equals(temp) && this.courses == temp.courses) {
+    //         return true;
+    //     }
+    //     else return false;
+    // }
+    public boolean equals(Object temp) {
+        boolean check = false;
+        if (temp instanceof Teacher) {
+            Teacher t = ((Teacher)temp);
+            if (super.equals(t) && this.courses == t.courses) {
+                check = true;
+            }
         }
-        else return false;
+        return check;
     }
 }

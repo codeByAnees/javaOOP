@@ -30,11 +30,21 @@ public class Person {
     public String toString() {
         return ("ID: " + id + "\nName: "+ name + "\nAge: " + age);
     }
-    public boolean equals(Person temp) {
-        if (this.id == temp.id && this.name.equals(temp.name) && this.age == temp.age) {
-            return true;
+    // public boolean equals(Person temp) {
+    //     if (this.id == temp.id && this.name.equals(temp.name) && this.age == temp.age) {
+    //         return true;
+    //     }
+    //     else return false;
+    // }
+    public boolean equals(Object temp) {
+        boolean check = false;
+        if (temp instanceof Person) {
+            Person p = ((Person)temp);
+            if (this.id == p.id && this.name.equals(p.name) && this.age == p.age) {
+                check = true;
+            }
         }
-        else return false;
+        return check;
     }
 }
 
