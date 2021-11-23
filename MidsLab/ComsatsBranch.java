@@ -1,9 +1,9 @@
 package JavaOOP.MidsLab;
 
-public class CU_Branch extends IsbBranch {
+public class ComsatsBranch extends IsbBranch {
     private boolean dineIn;
 
-    public CU_Branch() {
+    public ComsatsBranch() {
         super();
         dineIn = false;
     }

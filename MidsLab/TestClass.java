@@ -3,13 +3,12 @@ import java.util.Scanner;
 public class TestClass {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.print("\n\t\t<-----E N C H A N T E D----->\n");
+        System.out.print("\n\t\t<----- E N C H A N T E D ----->\n");
         System.out.println();    
-        System.out.println("Enter 1 for ISB branch" + 
+        System.out.print("\nEnter 1 for ISB branch" + 
                          "\nEnter 2 for RWP branch" +
                          "\nEnter 3 for Comsats branch" +
-                         "\nEnter 0 to EXIT --> ");
-        System.out.println();
+                         "\nEnter 0 to EXIT ---> ");
         int choice = input.nextInt();
         switch(choice) {
             case 0:
@@ -32,9 +31,9 @@ public class TestClass {
                 }
                 break;
             case 3:
-                CU_Branch c[] = new CU_Branch[3];
+                ComsatsBranch c[] = new ComsatsBranch[3];
                 for (int i = 0; i < c.length; i++) {
-                    c[i] = new CU_Branch();
+                    c[i] = new ComsatsBranch();
                     c[i].placeOrder();
                     c[i].showData();
                 }
@@ -45,9 +44,9 @@ public class TestClass {
         }
         Enchanted e = new Enchanted();
         System.out.println("Total orders of the day are: " + e.totalOrders());
-        System.out.print("Enter 0 to exit or any other number to continue: ");
+        System.out.print("\nEnter 1 to continue or any other number to exit: ");
         int choose = input.nextInt();
-        if (choose != 0) {
+        if (choose == 1) {
             main(args);
         }
     }
