@@ -57,8 +57,10 @@ public class Person implements Comparable<Person>{
         for (int i = 0; i < p.size(); i++) {
             for (int j = i + 1; j < p.size(); j++) {
                 if (p.get(i).compareTo(p.get(j)) == 1) {
-                    p.set(i, p.get(j));
-                    p.set(j, p.get(i));
+                    Person temp = p.get(i);
+                    Person temp1 = p.get(j);
+                    p.set(i, temp1);
+                    p.set(j, temp);
                 }
             }
         }

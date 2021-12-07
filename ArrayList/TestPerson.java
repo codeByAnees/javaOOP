@@ -20,9 +20,9 @@ public class TestPerson {
         personList.add(p6);
 
         Person.sorting(personList);
-        
+
         for (int i = 0; i < personList.size(); i++) {
-            System.out.println("\n\t\tPerson SORT");
+            System.out.println("\n\t\tPERSON SORT");
             System.out.println(personList.get(i));
         }
     }
