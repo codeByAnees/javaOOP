@@ -5,28 +5,28 @@ import java.util.Date;
 public class Enchanted {
     protected static int count = 0;
     protected String[] flavors = new String[3];
-    private int order;
+    private int cups;
     Date d;
 
     public Enchanted() {
         for (int i = 0; i < flavors.length; i++) {
             flavors[i] = null;
         }
-        order = 0;
+        cups = 0;
         d = new Date();
     }
 
     public void PlaceOrder() {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter number of cups(Max 3): ");
-        order = input.nextInt();
-        if (order > 3) {
+        cups = input.nextInt();
+        if (cups > 3) {
             System.out.println("Maximum limit is 3");
             PlaceOrder();
         }
         else {
-            count += order;
-            for (int i = 0; i < order; i++) {
+            count += cups;
+            for (int i = 0; i < cups; i++) {
                 System.out.println("<-----FLAVORS----->");
                 System.out.print("\n1) Vanilla \n2) Strawberry \n3) Mango");
                 System.out.println("\nEnter your choice(1, 2 or 3): ");
@@ -50,13 +50,13 @@ public class Enchanted {
     public void showData() {
         System.out.print("\n\tDetails\n");
         System.out.println(d);
-        for (int i = 0; i < order; i++) {
+        for (int i = 0; i < cups; i++) {
             System.out.println("Flavor: " + flavors[i]);
         }
-        System.out.println("Orders: " + order);
+        System.out.println("Cups: " + cups);
     }
 
-    public int totalOrders() {
+    public int totalCups() {
         return count;
     }
 }

@@ -22,7 +22,7 @@ public class TestClass {
                 }
                 break;
             case 2:
-                System.out.print("Sorry for inconvenience! You can take away but Din-in is not available.\n");
+                System.out.print("Sorry for inconvenience! \nYou can take away but Din-in is not available.\n");
                 RwpBranch r[] = new RwpBranch[2];
                 for (int i = 0; i < r.length; i++) {
                     r[i] = new RwpBranch();
@@ -43,7 +43,7 @@ public class TestClass {
                 main(args);
         }
         Enchanted e = new Enchanted();
-        System.out.println("Total orders of the day are: " + e.totalOrders());
+        System.out.println("Total cups sold in the day: " + e.totalCups());
         System.out.print("\nEnter 1 to continue or any other number to exit: ");
         int choose = input.nextInt();
         if (choose == 1) {
