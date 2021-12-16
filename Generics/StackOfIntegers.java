@@ -1,7 +1,6 @@
 package JavaOOP.Generics;
 
 import java.util.ArrayList;
-
 public class StackOfIntegers<E> {
     private ArrayList<E> list = new ArrayList<>();
 

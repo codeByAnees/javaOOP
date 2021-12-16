@@ -1,6 +1,4 @@
 package JavaOOP.Generics;
-
-
 public class TestStackOfIntegers {
     public static void main(String[] args) {
         StackOfIntegers<Object> stack1 = new StackOfIntegers<>();
