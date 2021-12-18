@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.Math;
 public class MyCalculator extends JFrame {
     private JTextField tf1;
     private JButton btn_1;
@@ -163,11 +162,6 @@ public class MyCalculator extends JFrame {
                 operation = '%';
                 tf1.setText(tf1.getText() + operation);
             }
-            // if (e.getSource() == btnDec) {
-            //     leftOp = Double.parseDouble(tf1.getText());
-            //     operation = '.';
-            //     tf1.setText(tf1.getText() + operation);
-            // }
             // if (e.getSource() == btnSq) {
             //     leftOp = Double.parseDouble(tf1.getText());
             //     operation = '√';
@@ -198,10 +192,6 @@ public class MyCalculator extends JFrame {
                     result = leftOp % rightOp;
                     tf1.setText(result.toString());
                 }
-                // if (operation == '.') {
-                //     result = leftOp % rightOp;
-                //     tf1.setText(result.toString());
-                // }
                 // if (operation == '√') {
                 //     result = Math.sqrt(rightOp);
                 //     tf1.setText(result.toString());
