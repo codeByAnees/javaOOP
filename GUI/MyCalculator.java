@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.Math;
 public class MyCalculator extends JFrame {
     private JTextField tf1;
     private JButton btn_1;
@@ -27,10 +28,10 @@ public class MyCalculator extends JFrame {
     private JButton btnRem;
     private JButton btnSq;
 
-    private float leftOp;
-    private float rightOp;
+    private double leftOp;
+    private double rightOp;
     private char operation;
-    private Float result;
+    private Double result;
     public MyCalculator() {
         setLayout(new GridLayout(2, 1, 10, 10));
         JPanel panel1 = new JPanel(new GridLayout(1, 1, 0, 0));
@@ -138,27 +139,45 @@ public class MyCalculator extends JFrame {
                 tf1.setText(tf1.getText() + ".");
             }
             if (e.getSource() == btnPlus) {
-                leftOp = Float.parseFloat(tf1.getText());
+                leftOp = Double.parseDouble(tf1.getText());
                 operation = '+';
-                tf1.setText("");
+                tf1.setText(tf1.getText() + operation);
             }
             if (e.getSource() == btnSub) {
-                leftOp = Float.parseFloat(tf1.getText());
+                leftOp = Double.parseDouble(tf1.getText());
                 operation = '-';
-                tf1.setText("");
+                tf1.setText(tf1.getText() + operation);
             }
             if (e.getSource() == btnMul) {
-                leftOp = Float.parseFloat(tf1.getText());
+                leftOp = Double.parseDouble(tf1.getText());
                 operation = 'x';
-                tf1.setText("");
+                tf1.setText(tf1.getText() + operation);
             }
             if (e.getSource() == btnDiv) {
-                leftOp = Float.parseFloat(tf1.getText());
+                leftOp = Double.parseDouble(tf1.getText());
                 operation = '÷';
-                tf1.setText("");
+                tf1.setText(tf1.getText() + operation);
             }
+            if (e.getSource() == btnRem) {
+                leftOp = Double.parseDouble(tf1.getText());
+                operation = '%';
+                tf1.setText(tf1.getText() + operation);
+            }
+            // if (e.getSource() == btnDec) {
+            //     leftOp = Double.parseDouble(tf1.getText());
+            //     operation = '.';
+            //     tf1.setText(tf1.getText() + operation);
+            // }
+            // if (e.getSource() == btnSq) {
+            //     leftOp = Double.parseDouble(tf1.getText());
+            //     operation = '√';
+            //     tf1.setText(tf1.getText() + operation);
+            // }
             if (e.getSource() == btnEqual) {
-                rightOp = Float.parseFloat(tf1.getText());
+                String temp = tf1.getText();
+                int operatorIndex = temp.indexOf(operation);
+                String right = temp.substring(operatorIndex + 1);
+                rightOp = Double.parseDouble(right);
                 if (operation == '+') {
                     result = leftOp + rightOp;
                     tf1.setText(result.toString());
@@ -175,6 +194,22 @@ public class MyCalculator extends JFrame {
                     result = leftOp / rightOp;
                     tf1.setText(result.toString());
                 }
+                if (operation == '%') {
+                    result = leftOp % rightOp;
+                    tf1.setText(result.toString());
+                }
+                // if (operation == '.') {
+                //     result = leftOp % rightOp;
+                //     tf1.setText(result.toString());
+                // }
+                // if (operation == '√') {
+                //     result = Math.sqrt(rightOp);
+                //     tf1.setText(result.toString());
+                // }
+            }
+            if (e.getSource() == btnBacksp) {
+                String temp = tf1.getText();
+                tf1.setText(temp.substring(0, temp.length() - 1));
             }
             if (e.getSource() == btnClear) {
                 tf1.setText("");
