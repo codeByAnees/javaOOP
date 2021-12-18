@@ -1,7 +1,7 @@
 package JavaOOP.ArrayList;
 import java.util.ArrayList;
 import java.util.Scanner;
-public class Person implements Comparable<Person>{
+public class Person implements Comparable<Person> {
     private int id;
     private String name;
     protected float age;
