@@ -288,13 +288,8 @@ public class MyCalculator extends JFrame {
                 }
             }
             if (e.getSource() == btnSq) {
-                if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
-                    tf1.setText("Error");
-                }
-                else {
-                    operation = '√';
-                    tf1.setText(tf1.getText() + operation);
-                }
+                operation = '√';
+                tf1.setText(tf1.getText() + operation);
             }
             if (e.getSource() == btnEqual) {
                 if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
