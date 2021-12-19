@@ -138,67 +138,72 @@ public class MyCalculator extends JFrame {
                 tf1.setText(tf1.getText() + ".");
             }
             if (e.getSource() == btnPlus) {
+                operation = '+';
                 String temp = tf1.getText();
                 if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                     temp.contains("+") || temp.contains("%")) {
                     temp = temp.substring(0, temp.length() - 1);
-                    tf1.setText(temp + "+");
+                    leftOp = Double.parseDouble(temp);
+                    tf1.setText(temp + operation);
                 }
                 else {
                     leftOp = Double.parseDouble(tf1.getText());
-                    operation = '+';
                     tf1.setText(tf1.getText() + operation);
                 }
             }
             if (e.getSource() == btnSub) {
+                operation = '-';
                 String temp = tf1.getText();
                 if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                     temp.contains("+") || temp.contains("%")) {
                     temp = temp.substring(0, temp.length() - 1);
-                    tf1.setText(temp + "-");
+                    leftOp = Double.parseDouble(temp);
+                    tf1.setText(temp + operation);
                 }
                 else {
                     leftOp = Double.parseDouble(tf1.getText());
-                    operation = '-';
                     tf1.setText(tf1.getText() + operation);
                 }
             }
             if (e.getSource() == btnMul) {
+                operation = 'x';
                 String temp = tf1.getText();
                 if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                     temp.contains("+") || temp.contains("%")) {
                     temp = temp.substring(0, temp.length() - 1);
-                    tf1.setText(temp + "x");
+                    leftOp = Double.parseDouble(temp);
+                    tf1.setText(temp + operation);
                 }
                 else {
                     leftOp = Double.parseDouble(tf1.getText());
-                    operation = 'x';
                     tf1.setText(tf1.getText() + operation);
                 }
             }
             if (e.getSource() == btnDiv) {
+                operation = '÷';
                 String temp = tf1.getText();
                 if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                     temp.contains("+") || temp.contains("%")) {
                     temp = temp.substring(0, temp.length() - 1);
-                    tf1.setText(temp + "÷");
+                    leftOp = Double.parseDouble(temp);
+                    tf1.setText(temp + operation);
                 }
                 else {
                     leftOp = Double.parseDouble(tf1.getText());
-                    operation = '÷';
                     tf1.setText(tf1.getText() + operation);
                 }
             }
             if (e.getSource() == btnRem) {
+                operation = '%';
                 String temp = tf1.getText();
                 if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                     temp.contains("+") || temp.contains("%")) {
                     temp = temp.substring(0, temp.length() - 1);
-                    tf1.setText(temp + "%");
+                    leftOp = Double.parseDouble(temp);
+                    tf1.setText(temp + operation);
                 }
                 else {
                     leftOp = Double.parseDouble(tf1.getText());
-                    operation = '%';
                     tf1.setText(tf1.getText() + operation);
                 }
             }
