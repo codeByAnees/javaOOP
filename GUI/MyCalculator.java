@@ -37,7 +37,7 @@ public class MyCalculator extends JFrame {
         JPanel panel2 = new JPanel(new GridLayout(5, 4, 5, 5));
         tf1 = new JTextField(8);
         panel1.add(tf1);
-        btnClear = new JButton("C");
+        btnClear = new JButton("c");
         btnClear.addActionListener(new MyHandler());
         btnDiv = new JButton("÷");
         btnDiv.addActionListener(new MyHandler());
@@ -138,35 +138,74 @@ public class MyCalculator extends JFrame {
                 tf1.setText(tf1.getText() + ".");
             }
             if (e.getSource() == btnPlus) {
-                leftOp = Double.parseDouble(tf1.getText());
-                operation = '+';
-                tf1.setText(tf1.getText() + operation);
+                String temp = tf1.getText();
+                if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
+                    temp.contains("+") || temp.contains("%")) {
+                    temp = temp.substring(0, temp.length() - 1);
+                    tf1.setText(temp + "+");
+                }
+                else {
+                    leftOp = Double.parseDouble(tf1.getText());
+                    operation = '+';
+                    tf1.setText(tf1.getText() + operation);
+                }
             }
             if (e.getSource() == btnSub) {
-                leftOp = Double.parseDouble(tf1.getText());
-                operation = '-';
-                tf1.setText(tf1.getText() + operation);
+                String temp = tf1.getText();
+                if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
+                    temp.contains("+") || temp.contains("%")) {
+                        temp = temp.substring(0, temp.length() - 1);
+                        tf1.setText(temp + "-");
+                }
+                else {
+                    leftOp = Double.parseDouble(tf1.getText());
+                    operation = '-';
+                    tf1.setText(tf1.getText() + operation);
+                }
             }
             if (e.getSource() == btnMul) {
-                leftOp = Double.parseDouble(tf1.getText());
-                operation = 'x';
-                tf1.setText(tf1.getText() + operation);
+                String temp = tf1.getText();
+                if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
+                    temp.contains("+") || temp.contains("%")) {
+                        temp = temp.substring(0, temp.length() - 1);
+                        tf1.setText(temp + "x");
+                }
+                else {
+                    leftOp = Double.parseDouble(tf1.getText());
+                    operation = 'x';
+                    tf1.setText(tf1.getText() + operation);
+                }
             }
             if (e.getSource() == btnDiv) {
-                leftOp = Double.parseDouble(tf1.getText());
-                operation = '÷';
-                tf1.setText(tf1.getText() + operation);
+                String temp = tf1.getText();
+                if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
+                    temp.contains("+") || temp.contains("%")) {
+                        temp = temp.substring(0, temp.length() - 1);
+                        tf1.setText(temp + "÷");
+                }
+                else {
+                    leftOp = Double.parseDouble(tf1.getText());
+                    operation = '÷';
+                    tf1.setText(tf1.getText() + operation);
+                }
             }
             if (e.getSource() == btnRem) {
-                leftOp = Double.parseDouble(tf1.getText());
-                operation = '%';
+                String temp = tf1.getText();
+                if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
+                    temp.contains("+") || temp.contains("%")) {
+                        temp = temp.substring(0, temp.length() - 1);
+                        tf1.setText(temp + "%");
+                }
+                else {
+                    leftOp = Double.parseDouble(tf1.getText());
+                    operation = '%';
+                    tf1.setText(tf1.getText() + operation);
+                }
+            }
+            if (e.getSource() == btnSq) {
+                operation = '√';
                 tf1.setText(tf1.getText() + operation);
             }
-            // if (e.getSource() == btnSq) {
-            //     leftOp = Double.parseDouble(tf1.getText());
-            //     operation = '√';
-            //     tf1.setText(tf1.getText() + operation);
-            // }
             if (e.getSource() == btnEqual) {
                 String temp = tf1.getText();
                 int operatorIndex = temp.indexOf(operation);
@@ -192,10 +231,10 @@ public class MyCalculator extends JFrame {
                     result = leftOp % rightOp;
                     tf1.setText(result.toString());
                 }
-                // if (operation == '√') {
-                //     result = Math.sqrt(rightOp);
-                //     tf1.setText(result.toString());
-                // }
+                if (operation == '√') {
+                    result = Math.sqrt(rightOp);
+                    tf1.setText(result.toString());
+                }
             }
             if (e.getSource() == btnBacksp) {
                 String temp = tf1.getText();
