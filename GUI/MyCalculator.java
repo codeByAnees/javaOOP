@@ -105,145 +105,245 @@ public class MyCalculator extends JFrame {
     class MyHandler implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == btn_1) {
-                tf1.setText(tf1.getText() + "1");
-            }
-            if (e.getSource() == btn_2) {
-                tf1.setText(tf1.getText() + "2");
-            }
-            if (e.getSource() == btn_3) {
-                tf1.setText(tf1.getText() + "3");
-            }
-            if (e.getSource() == btn_4) {
-                tf1.setText(tf1.getText() + "4");
-            }
-            if (e.getSource() == btn_5) {
-                tf1.setText(tf1.getText() + "5");
-            }
-            if (e.getSource() == btn_6) {
-                tf1.setText(tf1.getText() + "6");
-            }
-            if (e.getSource() == btn_7) {
-                tf1.setText(tf1.getText() + "7");
-            }
-            if (e.getSource() == btn_8) {
-                tf1.setText(tf1.getText() + "8");
-            }
-            if (e.getSource() == btn_9) {
-                tf1.setText(tf1.getText() + "9");
-            }
-            if (e.getSource() == btn_0) {
-                tf1.setText(tf1.getText() + "0");
-            }
-            if (e.getSource() == btnDec) {
-                tf1.setText(tf1.getText() + ".");
-            }
-            if (e.getSource() == btnPlus) {
-                operation = '+';
-                String temp = tf1.getText();
-                if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
-                    temp.contains("+") || temp.contains("%")) {
-                    temp = temp.substring(0, temp.length() - 1);
-                    leftOp = Double.parseDouble(temp);
-                    tf1.setText(temp + operation);
+                if (tf1.getText().equals("Error")) {
+                    tf1.setText("1");
                 }
                 else {
-                    leftOp = Double.parseDouble(tf1.getText());
-                    tf1.setText(tf1.getText() + operation);
+                    tf1.setText(tf1.getText() + "1");
+                }
+            }
+            if (e.getSource() == btn_2) {
+                if (tf1.getText().equals("Error")) {
+                    tf1.setText("2");
+                }
+                else {
+                    tf1.setText(tf1.getText() + "2");
+                }
+            }
+            if (e.getSource() == btn_3) {
+                if (tf1.getText().equals("Error")) {
+                    tf1.setText("3");
+                }
+                else {
+                    tf1.setText(tf1.getText() + "3");
+                }
+            }
+            if (e.getSource() == btn_4) {
+                if (tf1.getText().equals("Error")) {
+                    tf1.setText("4");
+                }
+                else {
+                    tf1.setText(tf1.getText() + "4");
+                }
+            }
+            if (e.getSource() == btn_5) {
+                if (tf1.getText().equals("Error")) {
+                    tf1.setText("5");
+                }
+                else {
+                    tf1.setText(tf1.getText() + "5");
+                }
+            }
+            if (e.getSource() == btn_6) {
+                if (tf1.getText().equals("Error")) {
+                    tf1.setText("6");
+                }
+                else {
+                    tf1.setText(tf1.getText() + "6");
+                }
+            }
+            if (e.getSource() == btn_7) {
+                if (tf1.getText().equals("Error")) {
+                    tf1.setText("7");
+                }
+                else {
+                    tf1.setText(tf1.getText() + "7");
+                }
+            }
+            if (e.getSource() == btn_8) {
+                if (tf1.getText().equals("Error")) {
+                    tf1.setText("8");
+                }
+                else {
+                    tf1.setText(tf1.getText() + "8");
+                }
+            }
+            if (e.getSource() == btn_9) {
+                if (tf1.getText().equals("Error")) {
+                    tf1.setText("9");
+                }
+                else {
+                    tf1.setText(tf1.getText() + "9");
+                }
+            }
+            if (e.getSource() == btn_0) {
+                if (tf1.getText().equals("Error")) {
+                    tf1.setText("0");
+                }
+                else {
+                    tf1.setText(tf1.getText() + "0");
+                }
+            }
+            if (e.getSource() == btnDec) {
+                if (tf1.getText().equals("Error")) {
+                    tf1.setText(".");
+                }
+                else {
+                    tf1.setText(tf1.getText() + ".");
+                }
+            }
+            if (e.getSource() == btnPlus) {
+                if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
+                    tf1.setText("Error");
+                }
+                else {
+                    operation = '+';
+                    String temp = tf1.getText();
+                    if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
+                        temp.contains("+") || temp.contains("%")) {
+                        temp = temp.substring(0, temp.length() - 1);
+                        leftOp = Double.parseDouble(temp);
+                        tf1.setText(temp + operation);
+                    }
+                    else {
+                        leftOp = Double.parseDouble(tf1.getText());
+                        tf1.setText(tf1.getText() + operation);
+                    }
                 }
             }
             if (e.getSource() == btnSub) {
-                operation = '-';
-                String temp = tf1.getText();
-                if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
-                    temp.contains("+") || temp.contains("%")) {
-                    temp = temp.substring(0, temp.length() - 1);
-                    leftOp = Double.parseDouble(temp);
-                    tf1.setText(temp + operation);
+                if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
+                    tf1.setText("Error");
                 }
                 else {
-                    leftOp = Double.parseDouble(tf1.getText());
-                    tf1.setText(tf1.getText() + operation);
+                    operation = '-';
+                    String temp = tf1.getText();
+                    if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
+                        temp.contains("+") || temp.contains("%")) {
+                        temp = temp.substring(0, temp.length() - 1);
+                        leftOp = Double.parseDouble(temp);
+                        tf1.setText(temp + operation);
+                    }
+                    else {
+                        leftOp = Double.parseDouble(tf1.getText());
+                        tf1.setText(tf1.getText() + operation);
+                    }
                 }
             }
             if (e.getSource() == btnMul) {
-                operation = 'x';
-                String temp = tf1.getText();
-                if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
-                    temp.contains("+") || temp.contains("%")) {
-                    temp = temp.substring(0, temp.length() - 1);
-                    leftOp = Double.parseDouble(temp);
-                    tf1.setText(temp + operation);
+                if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
+                    tf1.setText("Error");
                 }
                 else {
-                    leftOp = Double.parseDouble(tf1.getText());
-                    tf1.setText(tf1.getText() + operation);
+                    operation = 'x';
+                    String temp = tf1.getText();
+                    if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
+                        temp.contains("+") || temp.contains("%")) {
+                        temp = temp.substring(0, temp.length() - 1);
+                        leftOp = Double.parseDouble(temp);
+                        tf1.setText(temp + operation);
+                    }
+                    else {
+                        leftOp = Double.parseDouble(tf1.getText());
+                        tf1.setText(tf1.getText() + operation);
+                    }
                 }
             }
             if (e.getSource() == btnDiv) {
-                operation = '÷';
-                String temp = tf1.getText();
-                if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
-                    temp.contains("+") || temp.contains("%")) {
-                    temp = temp.substring(0, temp.length() - 1);
-                    leftOp = Double.parseDouble(temp);
-                    tf1.setText(temp + operation);
+                if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
+                    tf1.setText("Error");
                 }
                 else {
-                    leftOp = Double.parseDouble(tf1.getText());
-                    tf1.setText(tf1.getText() + operation);
+                    operation = '÷';
+                    String temp = tf1.getText();
+                    if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
+                        temp.contains("+") || temp.contains("%")) {
+                        temp = temp.substring(0, temp.length() - 1);
+                        leftOp = Double.parseDouble(temp);
+                        tf1.setText(temp + operation);
+                    }
+                    else {
+                        leftOp = Double.parseDouble(tf1.getText());
+                        tf1.setText(tf1.getText() + operation);
+                    }
                 }
             }
             if (e.getSource() == btnRem) {
-                operation = '%';
-                String temp = tf1.getText();
-                if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
-                    temp.contains("+") || temp.contains("%")) {
-                    temp = temp.substring(0, temp.length() - 1);
-                    leftOp = Double.parseDouble(temp);
-                    tf1.setText(temp + operation);
+                if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
+                    tf1.setText("Error");
                 }
                 else {
-                    leftOp = Double.parseDouble(tf1.getText());
-                    tf1.setText(tf1.getText() + operation);
+                    operation = '%';
+                    String temp = tf1.getText();
+                    if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
+                        temp.contains("+") || temp.contains("%")) {
+                        temp = temp.substring(0, temp.length() - 1);
+                        leftOp = Double.parseDouble(temp);
+                        tf1.setText(temp + operation);
+                    }
+                    else {
+                        leftOp = Double.parseDouble(tf1.getText());
+                        tf1.setText(tf1.getText() + operation);
+                    }
                 }
             }
             if (e.getSource() == btnSq) {
-                operation = '√';
-                tf1.setText(tf1.getText() + operation);
+                if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
+                    tf1.setText("Error");
+                }
+                else {
+                    operation = '√';
+                    tf1.setText(tf1.getText() + operation);
+                }
             }
             if (e.getSource() == btnEqual) {
-                String temp = tf1.getText();
-                int operatorIndex = temp.indexOf(operation);
-                String right = temp.substring(operatorIndex + 1);
-                rightOp = Double.parseDouble(right);
-                if (operation == '+') {
-                    result = leftOp + rightOp;
-                    tf1.setText(result.toString());
+                if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
+                    tf1.setText("Error");
                 }
-                if (operation == '-') {
-                    result = leftOp - rightOp;
-                    tf1.setText(result.toString());
-                }
-                if (operation == 'x') {
-                    result = leftOp * rightOp;
-                    tf1.setText(result.toString());
-                }
-                if (operation == '÷') {
-                    result = leftOp / rightOp;
-                    tf1.setText(result.toString());
-                }
-                if (operation == '%') {
-                    result = leftOp % rightOp;
-                    tf1.setText(result.toString());
-                }
-                if (operation == '√') {
-                    result = Math.sqrt(rightOp);
-                    tf1.setText(result.toString());
+                else {
+                    String temp = tf1.getText();
+                    int operatorIndex = temp.indexOf(operation);
+                    if (operatorIndex == temp.length() - 1) {
+                        tf1.setText("Error");
+                    }
+                    else {
+                        String right = temp.substring(operatorIndex + 1);
+                        rightOp = Double.parseDouble(right);
+                        if (operation == '+') {
+                            result = leftOp + rightOp;
+                            tf1.setText(result.toString());
+                        }
+                        if (operation == '-') {
+                            result = leftOp - rightOp;
+                            tf1.setText(result.toString());
+                        }
+                        if (operation == 'x') {
+                            result = leftOp * rightOp;
+                            tf1.setText(result.toString());
+                        }
+                        if (operation == '÷') {
+                            result = leftOp / rightOp;
+                            tf1.setText(result.toString());
+                        }
+                        if (operation == '%') {
+                            result = leftOp % rightOp;
+                            tf1.setText(result.toString());
+                        }
+                        if (operation == '√') {
+                            result = Math.sqrt(rightOp);
+                            tf1.setText(result.toString());
+                        }
+                    }
                 }
             }
             if (e.getSource() == btnBacksp) {
-                String temp = tf1.getText();
-                tf1.setText(temp.substring(0, temp.length() - 1));
+                if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
+                    tf1.setText("Error");
+                }
+                else {
+                    String temp = tf1.getText();
+                    tf1.setText(temp.substring(0, temp.length() - 1));
+                }
             }
             if (e.getSource() == btnClear) {
                 tf1.setText("");
