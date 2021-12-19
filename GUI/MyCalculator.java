@@ -154,8 +154,8 @@ public class MyCalculator extends JFrame {
                 String temp = tf1.getText();
                 if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                     temp.contains("+") || temp.contains("%")) {
-                        temp = temp.substring(0, temp.length() - 1);
-                        tf1.setText(temp + "-");
+                    temp = temp.substring(0, temp.length() - 1);
+                    tf1.setText(temp + "-");
                 }
                 else {
                     leftOp = Double.parseDouble(tf1.getText());
@@ -167,8 +167,8 @@ public class MyCalculator extends JFrame {
                 String temp = tf1.getText();
                 if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                     temp.contains("+") || temp.contains("%")) {
-                        temp = temp.substring(0, temp.length() - 1);
-                        tf1.setText(temp + "x");
+                    temp = temp.substring(0, temp.length() - 1);
+                    tf1.setText(temp + "x");
                 }
                 else {
                     leftOp = Double.parseDouble(tf1.getText());
@@ -180,8 +180,8 @@ public class MyCalculator extends JFrame {
                 String temp = tf1.getText();
                 if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                     temp.contains("+") || temp.contains("%")) {
-                        temp = temp.substring(0, temp.length() - 1);
-                        tf1.setText(temp + "÷");
+                    temp = temp.substring(0, temp.length() - 1);
+                    tf1.setText(temp + "÷");
                 }
                 else {
                     leftOp = Double.parseDouble(tf1.getText());
@@ -193,8 +193,8 @@ public class MyCalculator extends JFrame {
                 String temp = tf1.getText();
                 if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                     temp.contains("+") || temp.contains("%")) {
-                        temp = temp.substring(0, temp.length() - 1);
-                        tf1.setText(temp + "%");
+                    temp = temp.substring(0, temp.length() - 1);
+                    tf1.setText(temp + "%");
                 }
                 else {
                     leftOp = Double.parseDouble(tf1.getText());
