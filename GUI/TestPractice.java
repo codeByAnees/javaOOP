@@ -1,10 +1,10 @@
 package JavaOOP.GUI;
 import javax.swing.*;
-public class TestCalculator {
+public class TestPractice {
     public static void main(String[] args) {
-        MyCalculator frame = new MyCalculator();
-        frame.setTitle("Calculator");
-        frame.setSize(350, 350);
+        Practice frame = new Practice();
+        frame.setTitle("GUI Program");
+        frame.setSize(200, 200);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
