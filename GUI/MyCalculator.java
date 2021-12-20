@@ -193,12 +193,19 @@ public class MyCalculator extends JFrame {
                 }
             }
             if (e.getSource() == btnPlus) {
+                String temp = tf1.getText();
                 if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
                     tf1.setText("Error");
                 }
+                else if ((temp.indexOf("-") != temp.length() - 1 && temp.indexOf("-") != -1) ||
+                    (temp.indexOf("+") != temp.length() - 1 && temp.indexOf("+") != -1) ||
+                    (temp.indexOf("x") != temp.length() - 1 && temp.indexOf("x") != -1) ||
+                    (temp.indexOf("%") != temp.length() - 1 && temp.indexOf("%") != -1) ||
+                    (temp.indexOf("÷") != temp.length() - 1 && temp.indexOf("÷") != -1)) {
+                    tf1.setText(temp);
+                }
                 else {
                     operation = '+';
-                    String temp = tf1.getText();
                     if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                         temp.contains("+") || temp.contains("%")) {
                         temp = temp.substring(0, temp.length() - 1);
@@ -212,12 +219,19 @@ public class MyCalculator extends JFrame {
                 }
             }
             if (e.getSource() == btnSub) {
+                String temp = tf1.getText();
                 if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
                     tf1.setText("Error");
                 }
+                else if ((temp.indexOf("-") != temp.length() - 1 && temp.indexOf("-") != -1) ||
+                    (temp.indexOf("+") != temp.length() - 1 && temp.indexOf("+") != -1) ||
+                    (temp.indexOf("x") != temp.length() - 1 && temp.indexOf("x") != -1) ||
+                    (temp.indexOf("%") != temp.length() - 1 && temp.indexOf("%") != -1) ||
+                    (temp.indexOf("÷") != temp.length() - 1 && temp.indexOf("÷") != -1)) {
+                    tf1.setText(temp);
+                }
                 else {
                     operation = '-';
-                    String temp = tf1.getText();
                     if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                         temp.contains("+") || temp.contains("%")) {
                         temp = temp.substring(0, temp.length() - 1);
@@ -231,12 +245,19 @@ public class MyCalculator extends JFrame {
                 }
             }
             if (e.getSource() == btnMul) {
+                String temp = tf1.getText();
                 if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
                     tf1.setText("Error");
                 }
+                else if ((temp.indexOf("-") != temp.length() - 1 && temp.indexOf("-") != -1) ||
+                    (temp.indexOf("+") != temp.length() - 1 && temp.indexOf("+") != -1) ||
+                    (temp.indexOf("x") != temp.length() - 1 && temp.indexOf("x") != -1) ||
+                    (temp.indexOf("%") != temp.length() - 1 && temp.indexOf("%") != -1) ||
+                    (temp.indexOf("÷") != temp.length() - 1 && temp.indexOf("÷") != -1)) {
+                    tf1.setText(temp);
+                }
                 else {
                     operation = 'x';
-                    String temp = tf1.getText();
                     if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                         temp.contains("+") || temp.contains("%")) {
                         temp = temp.substring(0, temp.length() - 1);
@@ -250,12 +271,19 @@ public class MyCalculator extends JFrame {
                 }
             }
             if (e.getSource() == btnDiv) {
+                String temp = tf1.getText();
                 if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
                     tf1.setText("Error");
                 }
+                else if ((temp.indexOf("-") != temp.length() - 1 && temp.indexOf("-") != -1) ||
+                    (temp.indexOf("+") != temp.length() - 1 && temp.indexOf("+") != -1) ||
+                    (temp.indexOf("x") != temp.length() - 1 && temp.indexOf("x") != -1) ||
+                    (temp.indexOf("%") != temp.length() - 1 && temp.indexOf("%") != -1) ||
+                    (temp.indexOf("÷") != temp.length() - 1 && temp.indexOf("÷") != -1)) {
+                    tf1.setText(temp);
+                }
                 else {
                     operation = '÷';
-                    String temp = tf1.getText();
                     if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                         temp.contains("+") || temp.contains("%")) {
                         temp = temp.substring(0, temp.length() - 1);
@@ -269,12 +297,19 @@ public class MyCalculator extends JFrame {
                 }
             }
             if (e.getSource() == btnRem) {
+                String temp = tf1.getText();
                 if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
                     tf1.setText("Error");
                 }
+                else if ((temp.indexOf("-") != temp.length() - 1 && temp.indexOf("-") != -1) ||
+                    (temp.indexOf("+") != temp.length() - 1 && temp.indexOf("+") != -1) ||
+                    (temp.indexOf("x") != temp.length() - 1 && temp.indexOf("x") != -1) ||
+                    (temp.indexOf("%") != temp.length() - 1 && temp.indexOf("%") != -1) ||
+                    (temp.indexOf("÷") != temp.length() - 1 && temp.indexOf("÷") != -1)) {
+                    tf1.setText(temp);
+                }
                 else {
                     operation = '%';
-                    String temp = tf1.getText();
                     if (temp.contains("-") || temp.contains("x") || temp.contains("÷") || 
                         temp.contains("+") || temp.contains("%")) {
                         temp = temp.substring(0, temp.length() - 1);
@@ -333,7 +368,7 @@ public class MyCalculator extends JFrame {
             }
             if (e.getSource() == btnBacksp) {
                 if (tf1.getText().length() == 0 || tf1.getText().equals("Error")) {
-                    tf1.setText("Error");
+                    tf1.setText("");
                 }
                 else {
                     String temp = tf1.getText();
