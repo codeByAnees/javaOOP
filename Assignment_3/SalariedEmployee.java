@@ -1,17 +1,15 @@
 package JavaOOP.Assignment_3;
 
-public class SalariedEmployee extends Employee{
-    private int no_of_working_hours;
-    private double wagePerHour;
+public class SalariedEmployee extends Employee {
+    private double weeklySalary;
     
     public SalariedEmployee() {
         super();
-        no_of_working_hours = 0;
-        wagePerHour = 0.0;
+        weeklySalary = 0.0;
     }
 
-    public double calculatePay() {
-        return (no_of_working_hours * wagePerHour);
+    public double getPaymentAmount() {
+        return (weeklySalary * 4);
     }
 }
 

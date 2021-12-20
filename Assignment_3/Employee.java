@@ -1,13 +1,13 @@
 package JavaOOP.Assignment_3;
 
 public abstract class Employee implements Payable {
-    private int id;
-    private String name;
-    private String jobTitle;
+    private String firstName;
+    private String lastName;
+    private String SSN;
 
     public Employee() {
-        id = 0;
-        name = null;
-        jobTitle = null;
+        firstName = null;
+        lastName = null;
+        SSN = null;
     }
 }
