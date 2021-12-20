@@ -10,4 +10,10 @@ public abstract class Employee implements Payable {
         lastName = null;
         SSN = null;
     }
+
+    public Employee(String first, String last, String ssn) {
+        this.firstName = first;
+        this.lastName = last;
+        this.SSN = ssn;
+    }
 }

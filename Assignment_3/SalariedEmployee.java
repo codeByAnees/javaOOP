@@ -7,6 +7,11 @@ public class SalariedEmployee extends Employee {
         super();
         weeklySalary = 0.0;
     }
+    
+    public SalariedEmployee(String first, String last, String ssn, double weeklySalary) {
+        super(first, last, ssn);
+        this.weeklySalary = weeklySalary;
+    }
 
     public double getPaymentAmount() {
         return (weeklySalary * 4);

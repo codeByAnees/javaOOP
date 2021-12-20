@@ -13,6 +13,13 @@ public class Invoice implements Payable {
         pricePerItem = 0.0;
     }
 
+    public Invoice(String partN, String des, int quantity, double price) {
+        this.partNumber = partN;
+        this.partDescription = des;
+        this.quantity = quantity;
+        this.pricePerItem = price;
+    }
+
     public double getPaymentAmount() {
         return (quantity * pricePerItem);
     }

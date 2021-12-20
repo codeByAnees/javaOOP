@@ -27,7 +27,4 @@ public class Person implements Serializable {
     public String toString() {
         return ("ID: " + id + "\nname: " + name + "\nAge: " + age);
     }
-    // public void displayPerson() {
-    //     System.out.println("ID: " + id + "\nname: " + name + "\nAge: " + age);
-    // }
 }
