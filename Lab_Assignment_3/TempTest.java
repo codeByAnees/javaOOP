@@ -5,29 +5,19 @@ import java.io.ObjectOutputStream;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
-public class TestStudent {
+public class TempTest {
     public static void main(String[] args) {
-        Student s1 = new Student();
-        s1.readData();
-        Student s2 = new Student();
-        s2.readData();
-        Student s3 = new Student();
-        s3.readData();
-        Student s4 = new Student();
-        s4.readData();
-        Student s5 = new Student();
-        s5.readData();
-
         try {
-            File file = new File("D:\\Visual Studio\\Java\\JavaOOP\\Lab_Assignment_3\\Student.dat");
+            File file = new File("Stu.dat");
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-            out.writeObject(s1);
-            out.writeObject(s2);
-            out.writeObject(s3);
-            out.writeObject(s4);
-            out.writeObject(s5);
+            Student stu[] = new Student[5];
+            for (int i = 0; i < stu.length; i++) {
+                stu[i] = new Student();
+                stu[i].readData();
+                out.writeObject(stu[i]);
+            }
             out.close();
-            Student s = new Student();
+            Student stud = new Student();
             try {
                 ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
                 float cgpA = 0.0f;
@@ -35,14 +25,14 @@ public class TestStudent {
                     Student temp = (Student)in.readObject();
                     if (temp.cgpa > cgpA) {
                         cgpA = temp.cgpa;
-                        s = temp;
+                        stud = temp;
                     }
                 } 
             }
             catch (EOFException e) {
                 System.out.println("File read!");
             }
-            System.out.println(s.toString()); 
+            System.out.println(stud.toString());
         }
         catch (Exception e) {
             System.out.println("Exception");

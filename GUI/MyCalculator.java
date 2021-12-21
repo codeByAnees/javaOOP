@@ -186,7 +186,10 @@ public class MyCalculator extends JFrame {
                 }
             }
             if (e.getSource() == btnDec) {
-                if (tf1.getText().indexOf("+") == tf1.getText().length() - 1 ||
+                if (tf1.getText().equals("Error")) {
+                    tf1.setText(".");
+                }
+                else if (tf1.getText().indexOf("+") == tf1.getText().length() - 1 ||
                     tf1.getText().indexOf("-") == tf1.getText().length() - 1 ||
                     tf1.getText().indexOf("x") == tf1.getText().length() - 1 ||
                     tf1.getText().indexOf("%") == tf1.getText().length() - 1 ||
@@ -195,9 +198,6 @@ public class MyCalculator extends JFrame {
                 }
                 else if (tf1.getText().contains(".")) {
                     tf1.setText(tf1.getText());
-                }
-                else if (tf1.getText().equals("Error")) {
-                    tf1.setText(".");
                 }
                 else {
                     tf1.setText(tf1.getText() + ".");
