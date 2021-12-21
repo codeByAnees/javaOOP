@@ -25,12 +25,13 @@ public class MyCalculator extends JFrame {
     private JButton btnBacksp;
     private JButton btnDec;
     private JButton btnRem;
-    private JButton btnSq;
+    private JButton btnUR;
 
     private double leftOp;
     private double rightOp;
     private char operation;
     private Double result;
+    
     public MyCalculator() {
         setLayout(new GridLayout(2, 1, 10, 10));
         JPanel panel1 = new JPanel(new GridLayout(1, 1, 0, 0));
@@ -67,8 +68,8 @@ public class MyCalculator extends JFrame {
         btn_2.addActionListener(new MyHandler());
         btn_3 = new JButton("3");
         btn_3.addActionListener(new MyHandler());
-        btnSq = new JButton("√");
-        btnSq.addActionListener(new MyHandler());
+        btnUR = new JButton("√");
+        btnUR.addActionListener(new MyHandler());
         btnRem = new JButton("%");
         btnRem.addActionListener(new MyHandler());
         btn_0 = new JButton("0");
@@ -94,7 +95,7 @@ public class MyCalculator extends JFrame {
         panel2.add(btn_1);
         panel2.add(btn_2);
         panel2.add(btn_3);
-        panel2.add(btnSq);
+        panel2.add(btnUR);
         panel2.add(btnRem);
         panel2.add(btn_0);
         panel2.add(btnDec);
@@ -332,7 +333,13 @@ public class MyCalculator extends JFrame {
                     }
                 }
             }
-            if (e.getSource() == btnSq) {
+            if (e.getSource() == btnUR) {
+                if (tf1.getText().length() != 0) {
+                    leftOp = Double.parseDouble(tf1.getText());
+                }
+                else {
+                    leftOp = 1;
+                }
                 operation = '√';
                 tf1.setText(tf1.getText() + operation);
             }
@@ -370,7 +377,7 @@ public class MyCalculator extends JFrame {
                             tf1.setText(result.toString());
                         }
                         if (operation == '√') {
-                            result = Math.sqrt(rightOp);
+                            result = leftOp * Math.sqrt(rightOp);
                             tf1.setText(result.toString());
                         }
                     }

@@ -14,7 +14,7 @@ public class SalariedEmployee extends Employee {
     }
 
     public double getPaymentAmount() {
-        return (weeklySalary * 4);
+        return (weeklySalary);
     }
 }
 
