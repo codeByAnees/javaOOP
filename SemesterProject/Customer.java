@@ -8,9 +8,11 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 public class Customer extends User implements Serializable {
+    protected int load;
     private String meterNo;
-    private String connectionType;
-    private int noOfUnits;
+    protected String connectionType;
+    protected int noOfUnits;
+
     public Customer() {
         super();
         meterNo = null;
@@ -59,7 +61,7 @@ public class Customer extends User implements Serializable {
                 ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
                 while (true) {
                     if (in.readUTF().equals(id)) {
-                        System.out.println("Bill Month: " + in.readUTF());
+                        System.out.println("Bill Month: " + in.readObject());
                         System.out.println("Bill amount: " + in.readDouble());
                     }
                 }
@@ -95,5 +97,10 @@ public class Customer extends User implements Serializable {
             e.toString();
         }
         return list;
+    }
+
+    public String toString() {
+        return (super.toString() + "\nLoad: " + load + "\nMeter No: " + meterNo +
+        "\nConnection type: " + connectionType + "\nUnits consumed: " + noOfUnits);
     }
 }

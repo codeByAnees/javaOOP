@@ -1,12 +1,14 @@
 package JavaOOP.SemesterProject;
 
-import java.io.Serializable;
-import java.util.Scanner;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Employee extends User implements Serializable {
     private String jobTitle;
@@ -94,5 +96,56 @@ public class Employee extends User implements Serializable {
             e.toString();
         }
         return list;
+    }
+
+    public void setNoOfUnits() {
+        Scanner input = new Scanner(System.in);
+        ArrayList<Customer> list = readCustomerFile();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print("Enter no of units: ");
+            (list.get(i).noOfUnits) = input.nextInt();
+        }
+        writeFileCustomer(list);
+    }
+
+    public static ArrayList<Customer> readCustomerFile() {
+        ArrayList<Customer> list = new ArrayList<>();
+        String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
+        try {
+            File file = new File(path);
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            while (true) {
+                list.add((Customer)in.readObject());
+            }
+        }
+        catch (EOFException e) {
+            System.out.println("File read!");
+            e.toString();
+        }
+        catch (Exception e) {
+            System.out.println("Exception caught");
+            e.toString();
+        }
+        return list;
+    }
+
+    public void writeFileCustomer(ArrayList<Customer> list) {
+        String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
+        try {
+            File file = new File(path);
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            for (int i = 0; i < list.size(); i++) {
+                out.writeObject(list.get(i));
+            }
+            out.close();
+        }
+        catch (Exception e) {
+            System.out.println("Exception caught");
+            e.toString();
+        }
+    }
+
+    public String toString() {
+        return (super.toString() + "\nJob title: " + jobTitle + "\nSalary: " + salary);
     }
 }

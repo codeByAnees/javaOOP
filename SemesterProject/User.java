@@ -36,4 +36,8 @@ public abstract class User extends LogIn implements Serializable {
     }
 
     public abstract boolean validation();
+
+    public String toString() {
+        return ("\nName: " + name + "\nAddress: " + address + "\nCNIC: " + cnic + "\nAge: " + age);
+    }
 }
