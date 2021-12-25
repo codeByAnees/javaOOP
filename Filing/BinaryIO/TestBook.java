@@ -57,7 +57,7 @@ public class TestBook {
             }
         }
         catch (EOFException e) {
-            System.out.println("Record not found, File readed.");;
+            System.out.println("Record not found, File read.");;
         }
         catch (Exception e) {
             System.out.println(e.toString());
