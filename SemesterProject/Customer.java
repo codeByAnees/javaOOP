@@ -35,18 +35,22 @@ public class Customer extends User implements Serializable {
         meterNo = input.nextLine();
         System.out.print("Enter connection type: ");
         connectionType = input.nextLine();
+        System.out.print("Enter load: ");
+        load = input.nextInt();
     }
 
     public boolean validation() {
         boolean valid = false;
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter ID: ");
-        id = input.nextLine();
+        System.out.print("\nEnter ID: ");
+        String ID = input.nextLine();
         System.out.print("Enter password: ");
-        password = input.nextLine();
+        String Password = input.nextLine();
         ArrayList<Customer> list = readCustomerFile();
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).id.equals(this.id) && list.get(i).password.equals(this.password)) {
+            String tempID = list.get(i).id;
+            String tempPass = list.get(i).password;
+            if (ID.equals(tempID) && Password.equals(tempPass)) {
                 valid = true;
             }
         }
@@ -67,15 +71,14 @@ public class Customer extends User implements Serializable {
                 }
             }
             catch (EOFException e) {
-                System.out.println("File read!");
-                e.toString();
+                System.out.println("\nFile read!\n");
             }
             catch (Exception e) {
-                System.out.println("Exception caught");
-                e.toString();
+                System.out.println("\nException caught");
+                System.out.print(e.toString());
             }
         }
-        else System.out.println("Invalid ID or password!");
+        else System.out.println("\nInvalid ID or password!\n");
     }
 
     public static ArrayList<Customer> readCustomerFile() {
@@ -89,12 +92,11 @@ public class Customer extends User implements Serializable {
             }
         }
         catch (EOFException e) {
-            System.out.println("File read!");
-            e.toString();
+            System.out.println("\nFile read!\n");
         }
         catch (Exception e) {
-            System.out.println("Exception caught");
-            e.toString();
+            System.out.println("\nException caught");
+            System.out.print(e.toString());
         }
         return list;
     }

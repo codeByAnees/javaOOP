@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 public abstract class User extends LogIn implements Serializable {
+    protected String id;
+    protected String password;
     private String name;
     private String address;
     private String cnic;
@@ -25,6 +27,10 @@ public abstract class User extends LogIn implements Serializable {
 
     public void readData() {
         Scanner input = new Scanner(System.in);
+        System.out.print("Set ID: ");
+        id = input.nextLine();
+        System.out.print("Set password: ");
+        password = input.nextLine();
         System.out.print("Enter name: ");
         name = input.nextLine();
         System.out.print("Enter address: ");

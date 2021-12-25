@@ -39,13 +39,15 @@ public class Employee extends User implements Serializable {
     public boolean validation() {
         boolean valid = false;
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter ID: ");
-        id = input.nextLine();
+        System.out.print("\nEnter ID: ");
+        String ID = input.nextLine();
         System.out.print("Enter password: ");
-        password = input.nextLine();
+        String Password = input.nextLine();
         ArrayList<Employee> list = readEmpFile();
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).id.equals(this.id) && list.get(i).password.equals(this.password)) {
+            String tempID = list.get(i).id;
+            String tempPass = list.get(i).password;
+            if (ID.equals(tempID) && Password.equals(tempPass)) {
                 valid = true;
             }
         }
@@ -66,15 +68,15 @@ public class Employee extends User implements Serializable {
                 }
             }
             catch (EOFException e) {
-                System.out.println("File read!");
-                e.toString();
+                System.out.println("\nFile read!\n");
+                System.out.print(e.toString());
             }
             catch (Exception e) {
-                System.out.println("Exception caught");
-                e.toString();
+                System.out.println("\nException caught");
+                System.out.print(e.toString());
             }
         }
-        else System.out.println("Invalid ID or password!");
+        else System.out.println("\nInvalid ID or password!\n");
     }
 
     public static ArrayList<Employee> readEmpFile() {
@@ -88,48 +90,29 @@ public class Employee extends User implements Serializable {
             }
         }
         catch (EOFException e) {
-            System.out.println("File read!");
-            e.toString();
+            System.out.println("\nFile read!");
         }
         catch (Exception e) {
-            System.out.println("Exception caught");
-            e.toString();
+            System.out.println("\nException caught");
+            System.out.print(e.toString());
         }
         return list;
     }
 
-    public void setNoOfUnits() {
-        Scanner input = new Scanner(System.in);
-        ArrayList<Customer> list = readCustomerFile();
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print("Enter no of units: ");
-            (list.get(i).noOfUnits) = input.nextInt();
-        }
-        writeFileCustomer(list);
-    }
-
-    public static ArrayList<Customer> readCustomerFile() {
-        ArrayList<Customer> list = new ArrayList<>();
-        String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
-        try {
-            File file = new File(path);
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-            while (true) {
-                list.add((Customer)in.readObject());
+    public static void setNoOfUnits(ArrayList<Customer> list) {
+        //if (validation()) {
+            Scanner input = new Scanner(System.in);
+            for (int i = 0; i < list.size(); i++) {
+                System.out.print("Enter no of units: ");
+                int unit = input.nextInt();
+                list.get(i).noOfUnits = unit;
             }
-        }
-        catch (EOFException e) {
-            System.out.println("File read!");
-            e.toString();
-        }
-        catch (Exception e) {
-            System.out.println("Exception caught");
-            e.toString();
-        }
-        return list;
+            writeFileCustomer(list);
+        // }
+        // else System.out.println("\nInvalid ID or password!\n");
     }
 
-    public void writeFileCustomer(ArrayList<Customer> list) {
+    public static void writeFileCustomer(ArrayList<Customer> list) {
         String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
         try {
             File file = new File(path);
@@ -140,8 +123,8 @@ public class Employee extends User implements Serializable {
             out.close();
         }
         catch (Exception e) {
-            System.out.println("Exception caught");
-            e.toString();
+            System.out.println("\nException caught");
+            System.out.print(e.toString());
         }
     }
 

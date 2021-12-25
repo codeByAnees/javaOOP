@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 public class Admin extends LogIn {
+    protected String id;
+    protected String password;
     public Admin() {
         id = null;
         password = null;
@@ -18,7 +20,7 @@ public class Admin extends LogIn {
 
     public void readData() {
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter ID: ");
+        System.out.print("\nEnter ID: ");
         id = input.nextLine();
         System.out.print("Enter password: ");
         password = input.nextLine();
@@ -34,27 +36,28 @@ public class Admin extends LogIn {
         else return false;
     }
 
-    public int searchCustomer(String userID, ArrayList<Customer> o) {
+    public static int searchCustomer(String userID, ArrayList<Customer> o) {
         int index = -1;
         for (int i = 0; i < o.size(); i++) {
-            if (o.get(i).id.equals(userID)) {
+            String temp = o.get(i).id;
+            if (temp.equals(userID)) {
                 index = i;
             }
         }
         return index;
     }
 
-    public void delCustomer(String ID, ArrayList<Customer> o) {
+    public static void delCustomer(String ID, ArrayList<Customer> o) {
         int index = searchCustomer(ID, o);
         if (index != -1) {
             o.remove(index);
             writeFileCustomer(o);
             System.out.println("Done");
         }
-        else System.out.println("User not found!");
+        else System.out.println("\nUser not found!\n");
     }
     
-    public void writeFileCustomer(ArrayList<Customer> list) {
+    public static void writeFileCustomer(ArrayList<Customer> list) {
         String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
         try {
             File file = new File(path);
@@ -65,32 +68,33 @@ public class Admin extends LogIn {
             out.close();
         }
         catch (Exception e) {
-            System.out.println("Exception caught");
-            e.toString();
+            System.out.println("\nException caught");
+            System.out.print(e.toString());
         }
     }
 
-    public int searchEmp(String ID, ArrayList<Employee> o) {
+    public static int searchEmp(String ID, ArrayList<Employee> o) {
         int index = -1;
         for (int i = 0; i < o.size(); i++) {
-            if (o.get(i).id.equals(ID)) {
+            String temp = o.get(i).id;
+            if (temp.equals(ID)) {
                 index = i;
             }
         }
         return index;
     }
 
-    public void delEmployee(String ID, ArrayList<Employee> o) {
+    public static void delEmployee(String ID, ArrayList<Employee> o) {
         int index = searchEmp(ID, o);
         if (index != -1) {
             o.remove(index);
             writeFileEmployee(o);
-            System.out.println("Done");
+            System.out.println("\nDone\n");
         }
-        else System.out.println("User not found!");
+        else System.out.println("\nUser not found!\n");
     }
 
-    public void writeFileEmployee(ArrayList<Employee> list) {
+    public static void writeFileEmployee(ArrayList<Employee> list) {
         String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Employee.dat";
         try {
             File file = new File(path);
@@ -101,18 +105,18 @@ public class Admin extends LogIn {
             out.close();
         }
         catch (Exception e) {
-            System.out.println("Exception caught");
-            e.toString();
+            System.out.println("\nException caught");
+            System.out.print(e.toString());
         }
     }
 
-    public void writeToFile(Object o) {
+    public static void writeToFile(Object o) {
         String path = "";
         if (o instanceof Customer) {
-            path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Employee.dat";
-        }
-        if (o instanceof Employee) {
             path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
+        }
+        else if (o instanceof Employee) {
+            path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Employee.dat";
         }
         File file = new File(path);
         try {
@@ -121,20 +125,25 @@ public class Admin extends LogIn {
             out.close();
         }
         catch (Exception e) {
-            System.out.println("Exception caught");
-            e.toString();
+            System.out.println("\nException caught");
+            System.out.print(e.toString());
         }
     }
 
-    public void calBill(ArrayList<Customer> o) {
-        double bill;
+    public static void calBill(ArrayList<Customer> o) {
         File file = new File("D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\BillRecord.dat");
         for (int i = 0; i < o.size(); i++) {
-            if (o.get(i).connectionType.equalsIgnoreCase("Residential")) {
-                bill = Residential(o.get(i).noOfUnits, o.get(i).load);
+            double bill = 0;
+            String tempCon = o.get(i).connectionType;
+            if (tempCon.equalsIgnoreCase("Residential")) {
+                int tempUnit = o.get(i).noOfUnits;
+                int tempLoad = o.get(i).load;
+                bill = Residential(tempUnit, tempLoad);
             }
             else {
-                bill = Commercial(o.get(i).noOfUnits, o.get(i).load);
+                int tempUnit = o.get(i).noOfUnits;
+                int tempLoad = o.get(i).load;
+                bill = Commercial(tempUnit, tempLoad);
             }
             try {
                 ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file, true));
@@ -144,14 +153,14 @@ public class Admin extends LogIn {
                 out.close();
             }
             catch (Exception e) {
-                System.out.println("Exception caught");
-                e.toString();
+                System.out.println("\nException caught-->");
+                System.out.print(e.toString());
             }
         }
     }
 
     // 1) Residential
-    public double Residential(int units, int load) {
+    public static double Residential(int units, int load) {
         double bill = 0; 
         if ((load < 5) && (units != 0)) {
             if (units < 50)
