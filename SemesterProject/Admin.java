@@ -2,10 +2,11 @@ package JavaOOP.SemesterProject;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-public class Admin extends LogIn {
+public class Admin extends LogIn implements Serializable {
     protected String id;
     protected String password;
     public Admin() {
@@ -145,9 +146,10 @@ public class Admin extends LogIn {
                 int tempLoad = o.get(i).load;
                 bill = Commercial(tempUnit, tempLoad);
             }
+            String tempMeterNo = o.get(i).meterNo;
             try {
                 ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file, true));
-                out.writeUTF(o.get(i).id);
+                out.writeUTF(tempMeterNo);
                 out.writeObject(new Date());
                 out.writeDouble(bill);
                 out.close();

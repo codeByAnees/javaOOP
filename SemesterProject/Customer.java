@@ -9,7 +9,7 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 public class Customer extends User implements Serializable {
     protected int load;
-    private String meterNo;
+    protected String meterNo;
     protected String connectionType;
     protected int noOfUnits;
 
@@ -64,7 +64,7 @@ public class Customer extends User implements Serializable {
                 File file = new File(path);
                 ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
                 while (true) {
-                    if (in.readUTF().equals(id)) {
+                    if (in.readUTF().equals(meterNo)) {
                         System.out.println("Bill Month: " + in.readObject());
                         System.out.println("Bill amount: " + in.readDouble());
                     }
