@@ -81,4 +81,8 @@ public class Employee {
     public double getTax() {
         return tax;
     }
+
+    public String toString() {
+        return ("\nID: " + id + "\nName: " + name + "\nGender: " + gender + "\nJob title: " + jobTitle + "\nSalary: " + salary + "\nStatus: " + status + "\nTax: " + tax);
+    }
 }
