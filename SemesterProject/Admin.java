@@ -146,10 +146,10 @@ public class Admin extends LogIn implements Serializable {
                 int tempLoad = o.get(i).load;
                 bill = Commercial(tempUnit, tempLoad);
             }
-            String tempMeterNo = o.get(i).meterNo;
+            String tempID = o.get(i).id;
             try {
                 ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file, true));
-                out.writeUTF(tempMeterNo);
+                out.writeUTF(tempID);
                 out.writeObject(new Date());
                 out.writeDouble(bill);
                 out.close();

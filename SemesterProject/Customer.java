@@ -64,7 +64,7 @@ public class Customer extends User implements Serializable {
                 File file = new File(path);
                 ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
                 while (true) {
-                    if (in.readUTF().equals(meterNo)) {
+                    if (in.readUTF().equals("0")) {
                         System.out.println("Bill Month: " + in.readObject());
                         System.out.println("Bill amount: " + in.readDouble());
                     }

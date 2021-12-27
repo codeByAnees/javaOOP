@@ -2,7 +2,7 @@ package JavaOOP.Interface.ComparableInterface;
 
 import java.util.Date;
 import java.util.Scanner;
-public class House implements ComparableHouse<House> {
+public class House implements Comparable<House> {
     private int houseNo;
     private double area;
     private Date whenBuilt;
