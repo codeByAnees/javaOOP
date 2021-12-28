@@ -10,16 +10,6 @@ public class Admin extends LogIn implements Serializable {
     protected String id;
     protected String password;
     Filing filing = new Filing();
-    
-    public Admin() {
-        id = null;
-        password = null;
-    }
-
-    public Admin(String id, String password) {
-        this.id = id;
-        this.password = password;
-    }
 
     public void readData() {
         Scanner input = new Scanner(System.in);
@@ -136,23 +126,40 @@ public class Admin extends LogIn implements Serializable {
         else System.out.println("Employee record not found");
     }
 
+    public void addNewUser() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
+        int optio = input.nextInt();
+        if (optio == 1) {
+            Customer c1 = new Customer();
+            c1.readData();
+            filing.writeToFile(c1);
+        }
+        else {
+            Employee e1 = new Employee();
+            e1.readData();
+            filing.writeToFile(e1);
+        }
+    }
 
-    public void calBill(ArrayList<Customer> o) {
+
+    public void calBill() {
+        ArrayList<Customer> list = filing.readCustomerFile();
         File file = new File("D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\BillRecord.dat");
-        for (int i = 0; i < o.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             double bill = 0;
-            String tempCon = o.get(i).connectionType;
+            String tempCon = list.get(i).connectionType;
             if (tempCon.equalsIgnoreCase("Residential")) {
-                int tempUnit = o.get(i).noOfUnits;
-                int tempLoad = o.get(i).load;
+                int tempUnit = list.get(i).noOfUnits;
+                int tempLoad = list.get(i).load;
                 bill = Residential(tempUnit, tempLoad);
             }
             else {
-                int tempUnit = o.get(i).noOfUnits;
-                int tempLoad = o.get(i).load;
+                int tempUnit = list.get(i).noOfUnits;
+                int tempLoad = list.get(i).load;
                 bill = Commercial(tempUnit, tempLoad);
             }
-            String tempID = o.get(i).id;
+            String tempID = list.get(i).id;
             try {
                 ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file, true));
                 out.writeUTF(tempID);
@@ -168,7 +175,7 @@ public class Admin extends LogIn implements Serializable {
     }
 
     // 1) Residential
-    public static double Residential(int units, int load) {
+    public double Residential(int units, int load) {
         double bill = 0; 
         if ((load < 5) && (units != 0)) {
             if (units < 50)
@@ -198,7 +205,7 @@ public class Admin extends LogIn implements Serializable {
         return bill;
     }
     // 2) Commercial
-    public static double Commercial(int units, int load) {
+    public double Commercial(int units, int load) {
         double bill = 0;
         if ((load < 5) && (units != 0)){
             bill = units * 22.95;

@@ -78,9 +78,10 @@ public class Employee extends User {
         else System.out.println("\nInvalid ID or password!\n");
     }
 
-    public void setNoOfUnits(ArrayList<Customer> list) {
+    public void setNoOfUnits() {
         if (validation()) {
             Scanner input = new Scanner(System.in);
+            ArrayList<Customer> list = filing.readCustomerFile();
             for (int i = 0; i < list.size(); i++) {
                 System.out.print("Enter no of units: ");
                 int unit = input.nextInt();

@@ -1,6 +1,5 @@
 package JavaOOP.SemesterProject;
 
-import java.io.Serializable;
 import java.util.Scanner;
 import java.io.EOFException;
 import java.io.File;

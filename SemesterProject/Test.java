@@ -1,5 +1,4 @@
 package JavaOOP.SemesterProject;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Test {
@@ -7,7 +6,6 @@ public class Test {
         int choice;
         Scanner input = new Scanner(System.in);
         Admin admin = new Admin();
-        Filing filing = new Filing();
         do {
             System.out.print("\nEnter 1 for admin menu \nEnter 2 for customer menu \nEnter 3 for employee menu \nEnter 0 to exit --> ");
             choice = input.nextInt();
@@ -27,56 +25,39 @@ public class Test {
                                 int oopt = input.nextInt();
                                 if (oopt == 1) {
                                     Customer customer = admin.searchCustomer();
-                                    if (customer != null) {
+                                    if (customer != null)
                                         System.out.print(customer.toString());
-                                    }
                                     else System.out.println("\nNot found\n");
                                 }
                                 else {
                                     Employee emp = admin.searchEmp();
-                                    if (emp != null) {
+                                    if (emp != null)
                                         System.out.print(emp.toString());
-                                    }
                                     else System.out.println("\nNot found\n");
                                 }
                                 break;
                             case 2:
                                 System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
                                 int Opt = input.nextInt();
-                                if (Opt == 1) {
+                                if (Opt == 1)
                                     admin.editCustomerRec();
-                                }
-                                else {
+                                else
                                     admin.editEmpRec();
-                                }
                                 break;
                             case 3:
                                 System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
                                 int opti = input.nextInt();
-                                if (opti == 1) {
+                                if (opti == 1)
                                     admin.delCustomer();
-                                }
-                                else {
+                                else
                                     admin.delEmployee();
-                                }
                                 break;
                             case 4:
-                                System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
-                                int optio = input.nextInt();
-                                if (optio == 1) {
-                                    Customer c1 = new Customer();
-                                    c1.readData();
-                                    filing.writeToFile(c1);
-                                }
-                                else {
-                                    Employee e1 = new Employee();
-                                    e1.readData();
-                                    filing.writeToFile(e1);
-                                }
+                                admin.addNewUser();
                                 break;
                             case 5:
-                                ArrayList<Customer> list = filing.readCustomerFile();
-                                admin.calBill(list);
+                                admin.calBill();
+                                break;
                         }
                     } while (opt != 0);
 
@@ -87,9 +68,8 @@ public class Test {
                 System.out.print("\nEnter 1 to view your profile \nEnter 2 to pay your bill: ");
                 int option = input.nextInt();
                 Customer c1 = new Customer();
-                if (option == 1) {
+                if (option == 1)
                     c1.customerProfile();
-                }
                 // else {
 
                 // }
@@ -98,13 +78,10 @@ public class Test {
                 Employee em = new Employee();
                 System.out.print("\nEnter 1 to view your profile \nEnter 2 to insert customer units: ");
                 int option = input.nextInt();
-                if (option == 1) {
+                if (option == 1)
                     em.EmpProfile();
-                }
-                else {
-                    ArrayList<Customer> list = filing.readCustomerFile();
-                    em.setNoOfUnits(list);
-                }
+                else
+                    em.setNoOfUnits();
             }
         } while (choice != 0);
     }
