@@ -79,7 +79,7 @@ public class Employee extends User {
     }
 
     public void setNoOfUnits(ArrayList<Customer> list) {
-        //if (validation()) {
+        if (validation()) {
             Scanner input = new Scanner(System.in);
             for (int i = 0; i < list.size(); i++) {
                 System.out.print("Enter no of units: ");
@@ -87,8 +87,8 @@ public class Employee extends User {
                 list.get(i).noOfUnits = unit;
             }
             filing.writeFileCustomer(list);
-        // }
-        // else System.out.println("\nInvalid ID or password!\n");
+        }
+        else System.out.println("\nInvalid ID or password!\n");
     }
 
     public String toString() {

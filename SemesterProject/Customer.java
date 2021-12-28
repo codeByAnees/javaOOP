@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Random;
 public class Customer extends User {
     protected int load;
     protected String meterNo;
@@ -33,10 +34,17 @@ public class Customer extends User {
     public void readData() {
         super.readData();
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter meter no: ");
-        meterNo = input.nextLine();
-        System.out.print("Enter connection type: ");
-        connectionType = input.nextLine();
+        meterNo = meterNo();
+        System.out.print("Choose a connection \nEnter 1 for residential \nEnter 2 for commercial: ");
+        int type = input.nextInt();
+        switch(type) {
+            case 1:
+                connectionType = "Residential";
+                break;
+            case 2:
+                connectionType = "Commercial";
+                break;
+        }
         System.out.print("Enter load: ");
         load = input.nextInt();
     }
@@ -87,4 +95,23 @@ public class Customer extends User {
         return (super.toString() + "\nLoad: " + load + "\nMeter No: " + meterNo +
         "\nConnection type: " + connectionType + "\nUnits consumed: " + noOfUnits);
     }
+
+    public String meterNo() {
+        String MeterNumber = "";
+        Random random = new Random();
+        String alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        int count = 4;
+        for (int i = 1; i < count - 1; i++) {
+            int index = random.nextInt(alphabets.length());
+            char ch = alphabets.charAt(index);
+            MeterNumber += ch;
+        }
+        MeterNumber = MeterNumber + "-";
+        for (int j = 0; j <= count; j++) {
+            int num = (int)(Math.random() * 10);
+            MeterNumber += num;
+        }
+        return MeterNumber;
+    }
 }
+

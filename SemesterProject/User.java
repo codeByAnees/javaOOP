@@ -46,4 +46,29 @@ public abstract class User extends LogIn implements Serializable {
     public String toString() {
         return ("\nName: " + name + "\nAddress: " + address + "\nCNIC: " + cnic + "\nAge: " + age);
     }
+
+    // public boolean cnicValid(String s) {
+    //     boolean validation = cnicLength(s) && cnicDigits(s);
+    //     if ((s.charAt(5) == '-') && (s.charAt(13) == '-') && (validation))
+    //         return true;
+    //     else if (validation)
+    //         return true;
+    //     else 
+    //         return false;
+    // }
+    // public boolean cnicLength(String S) {
+    //     if ((S.length() == 15) || (S.length() == 13))
+    //         return true;
+    //     return false;			
+    // }
+    // public boolean cnicDigits(String S) {
+    //     int totalDigits = 0;
+    //     for (int i = 0; i < S.length(); i++){
+    //         if (Character.isDigit(S.charAt(i)))
+    //             totalDigits++;
+    //     }
+    //     if (totalDigits == 13)
+    //         return true;
+    //     return false;
+    // }
 }
