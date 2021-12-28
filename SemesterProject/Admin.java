@@ -4,7 +4,6 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 public class Admin extends LogIn implements Serializable {
     protected String id;
@@ -144,33 +143,26 @@ public class Admin extends LogIn implements Serializable {
 
 
     public void calBill() {
+        Scanner input = new Scanner(System.in);
         ArrayList<Customer> list = filing.readCustomerFile();
-        File file = new File("D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\BillRecord.dat");
         for (int i = 0; i < list.size(); i++) {
-            double bill = 0;
+            double Bill = 0;
+            int tempUnit = 0;
+            int tempLoad = 0;
             String tempCon = list.get(i).connectionType;
             if (tempCon.equalsIgnoreCase("Residential")) {
-                int tempUnit = list.get(i).noOfUnits;
-                int tempLoad = list.get(i).load;
-                bill = Residential(tempUnit, tempLoad);
+                tempUnit = list.get(i).noOfUnits;
+                tempLoad = list.get(i).load;
+                Bill = Residential(tempUnit, tempLoad);
             }
             else {
-                int tempUnit = list.get(i).noOfUnits;
-                int tempLoad = list.get(i).load;
-                bill = Commercial(tempUnit, tempLoad);
+                tempUnit = list.get(i).noOfUnits;
+                tempLoad = list.get(i).load;
+                Bill = Commercial(tempUnit, tempLoad);
             }
-            String tempID = list.get(i).id;
-            try {
-                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file, true));
-                out.writeUTF(tempID);
-                out.writeObject(new Date());
-                out.writeDouble(bill);
-                out.close();
-            }
-            catch (Exception e) {
-                System.out.println("\nException caught-->");
-                System.out.print(e.toString());
-            }
+            System.out.print("Enter bill month: ");
+            String month = input.next();
+            filing.writeBillRecord(list.get(i).id, month, tempUnit, Bill);
         }
     }
 

@@ -101,4 +101,41 @@ public class Filing implements Serializable {
         }
         return list;
     }
+
+    public void writeBillRecord(String id, String month, int units, double bill) {
+        try {
+            File file = new File("D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\BillRecord.dat");
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            out.writeUTF(id);
+            out.writeUTF(month);
+            out.writeInt(units);
+            out.writeDouble(bill);
+        }
+        catch (Exception e) {
+            System.out.println("Exception occured");
+            e.printStackTrace();
+        }
+    }
+
+    public void readBillRecord(String id) {
+        try {
+            File file = new File("D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\BillRecord.dat");
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            while (true) {
+                String cID = in.readUTF();
+                if (cID.equals(id)) {
+                    System.out.println("\n\t\tBill record");
+                    System.out.println("Bill month: " + in.readUTF());
+                    System.out.println("Units consumed: " + in.readInt());
+                    System.out.println("Bill amount: " + in.readDouble());
+                }
+            }
+        }
+        catch (EOFException e) {
+            System.out.println("Done");
+        }
+        catch (Exception e) {
+            System.out.println("Exception caught");
+        }
+    }
 }

@@ -13,6 +13,9 @@ public class Customer extends User {
     protected String connectionType;
     protected int noOfUnits;
 
+    String ID;
+    String Password;
+
     Filing filing = new Filing();
 
     public Customer() {
@@ -52,9 +55,9 @@ public class Customer extends User {
         boolean valid = false;
         Scanner input = new Scanner(System.in);
         System.out.print("\nEnter ID: ");
-        String ID = input.nextLine();
+        ID = input.nextLine();
         System.out.print("Enter password: ");
-        String Password = input.nextLine();
+        Password = input.nextLine();
         ArrayList<Customer> list = filing.readCustomerFile();
         for (int i = 0; i < list.size(); i++) {
             String tempID = list.get(i).id;
@@ -68,14 +71,14 @@ public class Customer extends User {
 
     public void customerProfile() {
         if (validation()) {
-            String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\BillRecord.dat";
+            String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
             try {
                 File file = new File(path);
                 ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
                 while (true) {
-                    if (in.readUTF().equals("0")) {
-                        System.out.println("Bill Month: " + in.readObject());
-                        System.out.println("Bill amount: " + in.readDouble());
+                    Customer c = (Customer)in.readObject();
+                    if (c.id.equals(ID)) {
+                        System.out.println(c.toString());
                     }
                 }
             }
@@ -86,6 +89,7 @@ public class Customer extends User {
                 System.out.println("\nException caught");
                 System.out.print(e.toString());
             }
+            filing.readBillRecord(ID);
         }
         else System.out.println("\nInvalid ID or password!\n");
     }
