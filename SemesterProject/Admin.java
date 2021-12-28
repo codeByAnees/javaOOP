@@ -10,6 +10,7 @@ public class Admin extends LogIn implements Serializable {
     protected String id;
     protected String password;
     Filing filing = new Filing();
+    
     public Admin() {
         id = null;
         password = null;
@@ -38,47 +39,101 @@ public class Admin extends LogIn implements Serializable {
         else return false;
     }
 
-    public int searchCustomer(String userID, ArrayList<Customer> o) {
+    public Customer searchCustomer() {
+        Scanner input = new Scanner(System.in);
+        ArrayList<Customer> list = filing.readCustomerFile();
+        System.out.print("Enter customer-ID to search: ");
+        String uID = input.next();
         int index = -1;
-        for (int i = 0; i < o.size(); i++) {
-            String temp = o.get(i).id;
-            if (temp.equals(userID)) {
+        for (int i = 0; i < list.size(); i++) {
+            String temp = list.get(i).id;
+            if (temp.equals(uID)) {
                 index = i;
             }
         }
-        return index;
+        if (index == -1) return null;
+        else return list.get(index);
     }
 
-    public void delCustomer(String ID, ArrayList<Customer> o) {
-        int index = searchCustomer(ID, o);
-        if (index != -1) {
-            o.remove(index);
-            filing.writeFileCustomer(o);
+    public void delCustomer() {
+        Customer customer = searchCustomer();
+        ArrayList<Customer> list = filing.readCustomerFile();
+        if (customer != null) {
+            list.remove(customer);
+            filing.writeFileCustomer(list);
             System.out.println("Done");
         }
         else System.out.println("\nUser not found!\n");
     }
-    
 
-    public int searchEmp(String ID, ArrayList<Employee> o) {
+    public void editCustomerRec() {
+        Scanner input = new Scanner(System.in);
+        ArrayList<Customer> list = filing.readCustomerFile();
+        System.out.print("Enter customer-ID to edit: ");
+        String uID = input.next();
         int index = -1;
-        for (int i = 0; i < o.size(); i++) {
-            String temp = o.get(i).id;
-            if (temp.equals(ID)) {
+        for (int i = 0; i < list.size(); i++) {
+            String temp = list.get(i).id;
+            if (temp.equals(uID)) {
                 index = i;
             }
         }
-        return index;
+        if (index != -1) {
+            Customer c = new Customer();
+            c.readData();
+            list.set(index, c);
+            filing.writeFileCustomer(list);
+        }
+        else System.out.println("Person record not found");
+    }
+    
+
+    public Employee searchEmp() {
+        Scanner input = new Scanner(System.in);
+        ArrayList<Employee> list = filing.readEmpFile();
+        System.out.print("Enter employee ID to search: ");
+        String uID = input.next();
+        int index = -1;
+        for (int i = 0; i < list.size(); i++) {
+            String temp = list.get(i).id;
+            if (temp.equals(uID)) {
+                index = i;
+            }
+        }
+        if (index == -1) return null;
+        else return list.get(index);
     }
 
-    public void delEmployee(String ID, ArrayList<Employee> o) {
-        int index = searchEmp(ID, o);
-        if (index != -1) {
-            o.remove(index);
-            filing.writeFileEmployee(o);
+    public void delEmployee() {
+        Employee emp = searchEmp();
+        ArrayList<Employee> list = filing.readEmpFile();
+        if (emp != null) {
+            list.remove(emp);
+            filing.writeFileEmployee(list);
             System.out.println("\nDone\n");
         }
         else System.out.println("\nUser not found!\n");
+    }
+
+    public void editEmpRec() {
+        Scanner input = new Scanner(System.in);
+        ArrayList<Employee> list = filing.readEmpFile();
+        System.out.print("Enter employee-ID to edit: ");
+        String uID = input.next();
+        int index = -1;
+        for (int i = 0; i < list.size(); i++) {
+            String temp = list.get(i).id;
+            if (temp.equals(uID)) {
+                index = i;
+            }
+        }
+        if (index != -1) {
+            Employee e = new Employee();
+            e.readData();
+            list.set(index, e);
+            filing.writeFileEmployee(list);
+        }
+        else System.out.println("Employee record not found");
     }
 
 

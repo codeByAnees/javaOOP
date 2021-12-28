@@ -26,22 +26,16 @@ public class Test {
                                 System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
                                 int oopt = input.nextInt();
                                 if (oopt == 1) {
-                                    ArrayList<Customer> list = filing.readCustomerFile();
-                                    System.out.print("Enter customer ID to search: ");
-                                    String uID = input.next();
-                                    int index = admin.searchCustomer(uID, list);
-                                    if (index != -1) {
-                                        System.out.print(list.get(index));
+                                    Customer customer = admin.searchCustomer();
+                                    if (customer != null) {
+                                        System.out.print(customer.toString());
                                     }
                                     else System.out.println("\nNot found\n");
                                 }
                                 else {
-                                    ArrayList<Employee> list = filing.readEmpFile();
-                                    System.out.print("Enter employee ID to search: ");
-                                    String uID = input.next();
-                                    int index = admin.searchEmp(uID, list);
-                                    if (index != -1) {
-                                        System.out.print(list.get(index));
+                                    Employee emp = admin.searchEmp();
+                                    if (emp != null) {
+                                        System.out.print(emp.toString());
                                     }
                                     else System.out.println("\nNot found\n");
                                 }
@@ -50,40 +44,20 @@ public class Test {
                                 System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
                                 int Opt = input.nextInt();
                                 if (Opt == 1) {
-                                    ArrayList<Customer> list = filing.readCustomerFile();
-                                    System.out.print("Enter customer ID to edit: ");
-                                    String uID = input.next();
-                                    int index = admin.searchCustomer(uID, list);
-                                    Customer c = new Customer();
-                                    c.readData();
-                                    list.set(index, c);
-                                    filing.writeFileCustomer(list);
+                                    admin.editCustomerRec();
                                 }
                                 else {
-                                    ArrayList<Employee> list = filing.readEmpFile();
-                                    System.out.print("Enter employee ID to edit: ");
-                                    String uID = input.next();
-                                    int index = admin.searchEmp(uID, list);
-                                    Employee e = new Employee();
-                                    e.readData();
-                                    list.set(index, e);
-                                    filing.writeFileEmployee(list);
+                                    admin.editEmpRec();
                                 }
                                 break;
                             case 3:
                                 System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
                                 int opti = input.nextInt();
                                 if (opti == 1) {
-                                    ArrayList<Customer> list = filing.readCustomerFile();
-                                    System.out.print("Enter customer ID to del: ");
-                                    String uID = input.next();
-                                    admin.delCustomer(uID, list);
+                                    admin.delCustomer();
                                 }
                                 else {
-                                    ArrayList<Employee> list = filing.readEmpFile();
-                                    System.out.print("Enter employee ID to del: ");
-                                    String uID = input.next();
-                                    admin.delEmployee(uID, list);
+                                    admin.delEmployee();
                                 }
                                 break;
                             case 4:
