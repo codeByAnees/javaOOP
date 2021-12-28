@@ -1,9 +1,4 @@
 package JavaOOP.SemesterProject;
-
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,6 +7,7 @@ public class Test {
         int choice;
         Scanner input = new Scanner(System.in);
         Admin admin = new Admin();
+        Filing filing = new Filing();
         do {
             System.out.print("\nEnter 1 for admin menu \nEnter 2 for customer menu \nEnter 3 for employee menu \nEnter 0 to exit --> ");
             choice = input.nextInt();
@@ -30,20 +26,20 @@ public class Test {
                                 System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
                                 int oopt = input.nextInt();
                                 if (oopt == 1) {
-                                    ArrayList<Customer> list = readCustomerFile();
+                                    ArrayList<Customer> list = filing.readCustomerFile();
                                     System.out.print("Enter customer ID to search: ");
                                     String uID = input.next();
-                                    int index = Admin.searchCustomer(uID, list);
+                                    int index = admin.searchCustomer(uID, list);
                                     if (index != -1) {
                                         System.out.print(list.get(index));
                                     }
                                     else System.out.println("\nNot found\n");
                                 }
                                 else {
-                                    ArrayList<Employee> list = readEmpFile();
+                                    ArrayList<Employee> list = filing.readEmpFile();
                                     System.out.print("Enter employee ID to search: ");
                                     String uID = input.next();
-                                    int index = Admin.searchEmp(uID, list);
+                                    int index = admin.searchEmp(uID, list);
                                     if (index != -1) {
                                         System.out.print(list.get(index));
                                     }
@@ -54,40 +50,40 @@ public class Test {
                                 System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
                                 int Opt = input.nextInt();
                                 if (Opt == 1) {
-                                    ArrayList<Customer> list = readCustomerFile();
+                                    ArrayList<Customer> list = filing.readCustomerFile();
                                     System.out.print("Enter customer ID to edit: ");
                                     String uID = input.next();
-                                    int index = Admin.searchCustomer(uID, list);
+                                    int index = admin.searchCustomer(uID, list);
                                     Customer c = new Customer();
                                     c.readData();
                                     list.set(index, c);
-                                    Admin.writeFileCustomer(list);
+                                    filing.writeFileCustomer(list);
                                 }
                                 else {
-                                    ArrayList<Employee> list = readEmpFile();
+                                    ArrayList<Employee> list = filing.readEmpFile();
                                     System.out.print("Enter employee ID to edit: ");
                                     String uID = input.next();
-                                    int index = Admin.searchEmp(uID, list);
+                                    int index = admin.searchEmp(uID, list);
                                     Employee e = new Employee();
                                     e.readData();
                                     list.set(index, e);
-                                    Admin.writeFileEmployee(list);
+                                    filing.writeFileEmployee(list);
                                 }
                                 break;
                             case 3:
                                 System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
                                 int opti = input.nextInt();
                                 if (opti == 1) {
-                                    ArrayList<Customer> list = readCustomerFile();
+                                    ArrayList<Customer> list = filing.readCustomerFile();
                                     System.out.print("Enter customer ID to del: ");
                                     String uID = input.next();
-                                    Admin.delCustomer(uID, list);
+                                    admin.delCustomer(uID, list);
                                 }
                                 else {
-                                    ArrayList<Employee> list = readEmpFile();
+                                    ArrayList<Employee> list = filing.readEmpFile();
                                     System.out.print("Enter employee ID to del: ");
                                     String uID = input.next();
-                                    Admin.delEmployee(uID, list);
+                                    admin.delEmployee(uID, list);
                                 }
                                 break;
                             case 4:
@@ -96,17 +92,17 @@ public class Test {
                                 if (optio == 1) {
                                     Customer c1 = new Customer();
                                     c1.readData();
-                                    Admin.writeToFile(c1);
+                                    filing.writeToFile(c1);
                                 }
                                 else {
                                     Employee e1 = new Employee();
                                     e1.readData();
-                                    Admin.writeToFile(e1);
+                                    filing.writeToFile(e1);
                                 }
                                 break;
                             case 5:
-                                ArrayList<Customer> list = readCustomerFile();
-                                Admin.calBill(list);
+                                ArrayList<Customer> list = filing.readCustomerFile();
+                                admin.calBill(list);
                         }
                     } while (opt != 0);
 
@@ -132,50 +128,10 @@ public class Test {
                     em.EmpProfile();
                 }
                 else {
-                    ArrayList<Customer> list = readCustomerFile();
-                    Employee.setNoOfUnits(list);
+                    ArrayList<Customer> list = filing.readCustomerFile();
+                    em.setNoOfUnits(list);
                 }
             }
         } while (choice != 0);
-    }
-    //storing objects in arraylist from file
-    public static ArrayList<Customer> readCustomerFile() {
-        ArrayList<Customer> list = new ArrayList<>();
-        String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
-        try {
-            File file = new File(path);
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-            while (true) {
-                list.add((Customer)in.readObject());
-            }
-        }
-        catch (EOFException e) {
-            System.out.println("File read!");
-        }
-        catch (Exception e) {
-            System.out.println("\nException caught\n");
-            System.out.print(e.toString());
-        }
-        return list;
-    }
-
-    public static ArrayList<Employee> readEmpFile() {
-        ArrayList<Employee> list = new ArrayList<>();
-        String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Employee.dat";
-        try {
-            File file = new File(path);
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-            while (true) {
-                list.add((Employee)in.readObject());
-            }
-        }
-        catch (EOFException e) {
-            System.out.println("\nFile read!\n");
-        }
-        catch (Exception e) {
-            System.out.println("\nException caught\n");
-            System.out.print(e.toString());
-        }
-        return list;
     }
 }

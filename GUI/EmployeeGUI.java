@@ -1,10 +1,6 @@
 package JavaOOP.GUI;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 public class EmployeeGUI extends JFrame {
@@ -23,6 +19,7 @@ public class EmployeeGUI extends JFrame {
     private JButton calTax;
     private JButton clear;
     private ArrayList<Employee> empList = new ArrayList<>();
+
     public EmployeeGUI() {
         Employee emp = new Employee();
         setLayout(new GridLayout(7, 0, 0, 0));

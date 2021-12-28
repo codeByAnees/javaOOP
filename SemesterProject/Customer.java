@@ -7,11 +7,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-public class Customer extends User implements Serializable {
+public class Customer extends User {
     protected int load;
     protected String meterNo;
     protected String connectionType;
     protected int noOfUnits;
+
+    Filing filing = new Filing();
 
     public Customer() {
         super();
@@ -46,7 +48,7 @@ public class Customer extends User implements Serializable {
         String ID = input.nextLine();
         System.out.print("Enter password: ");
         String Password = input.nextLine();
-        ArrayList<Customer> list = readCustomerFile();
+        ArrayList<Customer> list = filing.readCustomerFile();
         for (int i = 0; i < list.size(); i++) {
             String tempID = list.get(i).id;
             String tempPass = list.get(i).password;
@@ -79,26 +81,6 @@ public class Customer extends User implements Serializable {
             }
         }
         else System.out.println("\nInvalid ID or password!\n");
-    }
-
-    public static ArrayList<Customer> readCustomerFile() {
-        ArrayList<Customer> list = new ArrayList<>();
-        String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
-        try {
-            File file = new File(path);
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-            while (true) {
-                list.add((Customer)in.readObject());
-            }
-        }
-        catch (EOFException e) {
-            System.out.println("\nFile read!\n");
-        }
-        catch (Exception e) {
-            System.out.println("\nException caught");
-            System.out.print(e.toString());
-        }
-        return list;
     }
 
     public String toString() {

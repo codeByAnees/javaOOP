@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Admin extends LogIn implements Serializable {
     protected String id;
     protected String password;
+    Filing filing = new Filing();
     public Admin() {
         id = null;
         password = null;
@@ -37,7 +38,7 @@ public class Admin extends LogIn implements Serializable {
         else return false;
     }
 
-    public static int searchCustomer(String userID, ArrayList<Customer> o) {
+    public int searchCustomer(String userID, ArrayList<Customer> o) {
         int index = -1;
         for (int i = 0; i < o.size(); i++) {
             String temp = o.get(i).id;
@@ -48,33 +49,18 @@ public class Admin extends LogIn implements Serializable {
         return index;
     }
 
-    public static void delCustomer(String ID, ArrayList<Customer> o) {
+    public void delCustomer(String ID, ArrayList<Customer> o) {
         int index = searchCustomer(ID, o);
         if (index != -1) {
             o.remove(index);
-            writeFileCustomer(o);
+            filing.writeFileCustomer(o);
             System.out.println("Done");
         }
         else System.out.println("\nUser not found!\n");
     }
     
-    public static void writeFileCustomer(ArrayList<Customer> list) {
-        String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
-        try {
-            File file = new File(path);
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-            for (int i = 0; i < list.size(); i++) {
-                out.writeObject(list.get(i));
-            }
-            out.close();
-        }
-        catch (Exception e) {
-            System.out.println("\nException caught");
-            System.out.print(e.toString());
-        }
-    }
 
-    public static int searchEmp(String ID, ArrayList<Employee> o) {
+    public int searchEmp(String ID, ArrayList<Employee> o) {
         int index = -1;
         for (int i = 0; i < o.size(); i++) {
             String temp = o.get(i).id;
@@ -85,53 +71,18 @@ public class Admin extends LogIn implements Serializable {
         return index;
     }
 
-    public static void delEmployee(String ID, ArrayList<Employee> o) {
+    public void delEmployee(String ID, ArrayList<Employee> o) {
         int index = searchEmp(ID, o);
         if (index != -1) {
             o.remove(index);
-            writeFileEmployee(o);
+            filing.writeFileEmployee(o);
             System.out.println("\nDone\n");
         }
         else System.out.println("\nUser not found!\n");
     }
 
-    public static void writeFileEmployee(ArrayList<Employee> list) {
-        String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Employee.dat";
-        try {
-            File file = new File(path);
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-            for (int i = 0; i < list.size(); i++) {
-                out.writeObject(list.get(i));
-            }
-            out.close();
-        }
-        catch (Exception e) {
-            System.out.println("\nException caught");
-            System.out.print(e.toString());
-        }
-    }
 
-    public static void writeToFile(Object o) {
-        String path = "";
-        if (o instanceof Customer) {
-            path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
-        }
-        else if (o instanceof Employee) {
-            path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Employee.dat";
-        }
-        File file = new File(path);
-        try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file, true));
-            out.writeObject(o);
-            out.close();
-        }
-        catch (Exception e) {
-            System.out.println("\nException caught");
-            System.out.print(e.toString());
-        }
-    }
-
-    public static void calBill(ArrayList<Customer> o) {
+    public void calBill(ArrayList<Customer> o) {
         File file = new File("D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\BillRecord.dat");
         for (int i = 0; i < o.size(); i++) {
             double bill = 0;
