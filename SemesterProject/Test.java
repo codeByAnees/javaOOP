@@ -70,9 +70,8 @@ public class Test {
                 Customer c1 = new Customer();
                 if (option == 1)
                     c1.customerProfile();
-                // else {
-
-                // }
+                else
+                    c1.payBill(); 
             }
             else if (choice == 3) {
                 Employee em = new Employee();

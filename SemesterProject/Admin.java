@@ -45,14 +45,22 @@ public class Admin extends LogIn implements Serializable {
     }
 
     public void delCustomer() {
-        Customer customer = searchCustomer();
+        Scanner input = new Scanner(System.in);
         ArrayList<Customer> list = filing.readCustomerFile();
-        if (customer != null) {
-            list.remove(customer);
-            filing.writeFileCustomer(list);
-            System.out.println("Done");
+        System.out.print("Enter customer-ID to delete: ");
+        String uID = input.next();
+        int index = -1;
+        for (int i = 0; i < list.size(); i++) {
+            String temp = list.get(i).id;
+            if (temp.equals(uID)) {
+                index = i;
+            }
         }
-        else System.out.println("\nUser not found!\n");
+        if (index != -1) {
+            list.remove(index);
+            filing.writeFileCustomer(list);
+        }
+        else System.out.println("Person record not found");
     }
 
     public void editCustomerRec() {
@@ -161,8 +169,11 @@ public class Admin extends LogIn implements Serializable {
                 Bill = Commercial(tempUnit, tempLoad);
             }
             System.out.print("Enter bill month: ");
-            String month = input.next();
-            filing.writeBillRecord(list.get(i).id, month, tempUnit, Bill);
+            String month = input.nextLine();
+            Record r = new Record(list.get(i).id, month, tempUnit, Bill);
+            ArrayList<Record> rlist = new ArrayList<>();
+            rlist.add(r);
+            filing.writeBillRecord(rlist, true);
         }
     }
 

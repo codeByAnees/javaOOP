@@ -2,11 +2,22 @@ package JavaOOP.SemesterProject;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.io.ObjectInputStream;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+
+class MyObjectOutputStream extends ObjectOutputStream {
+    public MyObjectOutputStream(OutputStream out) throws IOException {
+        super(out);
+    }
+    public void writeStreamHeader() throws IOException {
+        return;
+    }
+}
 public class Filing implements Serializable {
     
     public void writeToFile(Object o) {
@@ -19,9 +30,16 @@ public class Filing implements Serializable {
         }
         File file = new File(path);
         try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file, true));
-            out.writeObject(o);
-            out.close();
+            if (file.length() < 1) {
+                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file, true));
+                out.writeObject(o);
+                out.close();
+            }
+            else {
+                MyObjectOutputStream out = new MyObjectOutputStream(new FileOutputStream(file, true));
+                out.writeObject(o);
+                out.close();
+            }
         }
         catch (Exception e) {
             System.out.println("\nException caught");
@@ -102,33 +120,43 @@ public class Filing implements Serializable {
         return list;
     }
 
-    public void writeBillRecord(String id, String month, int units, double bill) {
+    public void writeBillRecord(ArrayList<Record> r, boolean Append) {
         try {
             File file = new File("D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\BillRecord.dat");
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-            out.writeUTF(id);
-            out.writeUTF(month);
-            out.writeInt(units);
-            out.writeDouble(bill);
+            FileOutputStream fileOutput;
+            if (Append) {
+                fileOutput = new FileOutputStream(file, true);
+            }
+            else {
+                fileOutput = new FileOutputStream(file);
+            }
+            if (file.length() < 1) {
+                ObjectOutputStream out = new ObjectOutputStream(fileOutput);
+                for (int i = 0; i < r.size(); i++) {
+                    out.writeObject(r.get(i));
+                }
+                out.close();
+            }
+            else {
+                MyObjectOutputStream out = new MyObjectOutputStream(fileOutput);
+                for (int i = 0; i < r.size(); i++) {
+                    out.writeObject(r.get(i));
+                }
+                out.close();
+            }
         }
         catch (Exception e) {
             System.out.println("Exception occured");
-            e.printStackTrace();
         }
     }
 
-    public void readBillRecord(String id) {
+    public ArrayList<Record> readBillRecord() {
+        ArrayList<Record> list = new ArrayList<>();
         try {
             File file = new File("D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\BillRecord.dat");
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
             while (true) {
-                String cID = in.readUTF();
-                if (cID.equals(id)) {
-                    System.out.println("\n\t\tBill record");
-                    System.out.println("Bill month: " + in.readUTF());
-                    System.out.println("Units consumed: " + in.readInt());
-                    System.out.println("Bill amount: " + in.readDouble());
-                }
+                list.add((Record)in.readObject());
             }
         }
         catch (EOFException e) {
@@ -136,6 +164,8 @@ public class Filing implements Serializable {
         }
         catch (Exception e) {
             System.out.println("Exception caught");
+            System.out.print(e.toString());
         }
+        return list;
     }
 }

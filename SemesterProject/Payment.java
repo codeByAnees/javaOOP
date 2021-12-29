@@ -1,7 +1,7 @@
 package JavaOOP.SemesterProject;
 
 import java.util.Scanner;
-public class PaymentMethod {
+public class Payment {
 
     public void PayMethod() {
         Scanner input = new Scanner(System.in);
@@ -23,7 +23,6 @@ public class PaymentMethod {
         else if (choice == 2) {
             System.out.print("Thank you for visiting!");
         }
-        input.close();
     }
 	public boolean isCCValid(String number) {
 		boolean valid = false;
@@ -44,12 +43,10 @@ public class PaymentMethod {
 		    }
 		return sum;
 	}
-	//method for getting single digit number
 	public int getDigit(int number) {
 		int digit = (number / 10) + (number % 10);
 		return digit;
 	}
-	//method to get sum of odd places in CC
 	public int sumOfOddPlace(String number) {
 		int sum = 0;
 	    for (int i = number.length() - 1; i >= 0; i -= 2) {
@@ -58,7 +55,6 @@ public class PaymentMethod {
 	    }
 	    return sum;
 	}
-	//method to check if the prefix of CC match the prefix of CC worldwide
 	public boolean prefixMatched(String number) {
         if (number.startsWith("4") || number.startsWith("5") ||
             number.startsWith("37") || number.startsWith("6")) {
@@ -66,7 +62,6 @@ public class PaymentMethod {
         }
         return false;
 	}
-	//method to check the length of CC
 	public boolean getSize(String number) {
 		int length = number.length();
 		if (length >= 13 && length <= 16)

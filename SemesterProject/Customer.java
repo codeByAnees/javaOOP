@@ -89,7 +89,39 @@ public class Customer extends User {
                 System.out.println("\nException caught");
                 System.out.print(e.toString());
             }
-            filing.readBillRecord(ID);
+            showBillRecord();
+        }
+        else System.out.println("\nInvalid ID or password!\n");
+    }
+
+    public void showBillRecord() {
+        ArrayList<Record> list = filing.readBillRecord();
+        for (int i = 0; i < list.size(); i++) {
+            String listID = list.get(i).id;
+            if (listID.equals(ID)) {
+                System.out.println(list.get(i).toString());
+            }
+        }
+    }
+
+    public void payBill() {
+        if (validation()) {
+            Scanner input = new Scanner(System.in);
+            Payment p = new Payment();
+            ArrayList<Record> list = filing.readBillRecord();
+            showBillRecord();
+            System.out.print("Enter bill month to pay bill: ");
+            String billMonth = input.nextLine();
+            for (int i = 0; i < list.size(); i++) {
+                String rID = list.get(i).id;
+                String rMonth = list.get(i).month;
+                boolean rPaid = list.get(i).paid;
+                if (rID.equals(ID) && rMonth.equals(billMonth) && (!rPaid)) {
+                    p.PayMethod();
+                    list.get(i).paid = true;
+                }
+            }
+            filing.writeBillRecord(list, false); 
         }
         else System.out.println("\nInvalid ID or password!\n");
     }
@@ -117,4 +149,3 @@ public class Customer extends User {
         return MeterNumber;
     }
 }
-
