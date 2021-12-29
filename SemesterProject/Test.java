@@ -15,7 +15,8 @@ public class Test {
                     do {
                         System.out.println("\nEnter 1 to search user record \nEnter 2 to edit user record");
                         System.out.println("Enter 3 to delete user record \nEnter 4 to add new user");
-                        System.out.print("Enter 5 to calculate customer bill \nEnter 0 to exit --> ");
+                        System.out.println("Enter 5 to view user record \nEnter 6 to set user units");
+                        System.out.print("Enter 7 to calculate customer bill \nEnter 0 to exit --> ");
                         opt = input.nextInt();
                         switch(opt) {
                             case 0:
@@ -56,6 +57,12 @@ public class Test {
                                 admin.addNewUser();
                                 break;
                             case 5:
+                                admin.displayCustomers();
+                                break;
+                            case 6:
+                                admin.setNoOfUnits();
+                                break;
+                            case 7:
                                 admin.calBill();
                                 break;
                         }

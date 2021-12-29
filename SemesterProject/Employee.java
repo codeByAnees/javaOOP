@@ -31,8 +31,6 @@ public class Employee extends User {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter job title: ");
         jobTitle = input.nextLine();
-        System.out.print("Enter salary: ");
-        salary = input.nextDouble();
     }
 
     public boolean validation() {

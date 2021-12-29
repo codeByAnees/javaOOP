@@ -6,7 +6,7 @@ import java.util.Scanner;
 public abstract class User extends LogIn implements Serializable {
     protected String id;
     protected String password;
-    private String name;
+    protected String name;
     private String address;
     private String cnic;
     private double age;

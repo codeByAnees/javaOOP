@@ -1,7 +1,4 @@
 package JavaOOP.SemesterProject;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -149,32 +146,94 @@ public class Admin extends LogIn implements Serializable {
         }
     }
 
-
-    public void calBill() {
-        Scanner input = new Scanner(System.in);
+    public void displayCustomers() {
         ArrayList<Customer> list = filing.readCustomerFile();
         for (int i = 0; i < list.size(); i++) {
-            double Bill = 0;
-            int tempUnit = 0;
-            int tempLoad = 0;
-            String tempCon = list.get(i).connectionType;
-            if (tempCon.equalsIgnoreCase("Residential")) {
-                tempUnit = list.get(i).noOfUnits;
-                tempLoad = list.get(i).load;
-                Bill = Residential(tempUnit, tempLoad);
-            }
-            else {
-                tempUnit = list.get(i).noOfUnits;
-                tempLoad = list.get(i).load;
-                Bill = Commercial(tempUnit, tempLoad);
-            }
-            System.out.print("Enter bill month: ");
-            String month = input.nextLine();
-            Record r = new Record(list.get(i).id, month, tempUnit, Bill);
-            ArrayList<Record> rlist = new ArrayList<>();
-            rlist.add(r);
-            filing.writeBillRecord(rlist, true);
+            Customer c = list.get(i);
+            System.out.println(c.toString());
         }
+    }
+
+    public void setNoOfUnits() {
+        int opt;
+        do {
+            Scanner input = new Scanner(System.in);
+            System.out.print("Enter 1 to set units \nEnter 0 to exit: ");
+            opt = input.nextInt();
+            switch(opt) {
+                case 0:
+                    break;
+                case 1:
+                    displayCustomers();
+                    int t = -1;
+                    ArrayList<Customer> list = filing.readCustomerFile();
+                    System.out.print("\nEnter Customer-name: ");
+                    String cname = input.next();
+                    for (int i = 0; i < list.size(); i++) {
+                        String tempName = list.get(i).name;
+                        if (cname.equalsIgnoreCase(tempName)) {
+                            t = 0;
+                            System.out.print("Enter no of units: ");
+                            int unit = input.nextInt();
+                            list.get(i).noOfUnits = unit;
+                        }
+                    }
+                    if (t != 0) {
+                        System.out.println("User not found");
+                    }
+                    filing.writeFileCustomer(list);
+                    break;
+            }
+        } while (opt != 0);
+    }
+
+    public void calBill() {
+        int opt;
+        do {
+            Scanner input = new Scanner(System.in);
+            System.out.print("Enter 1 to calculate bill \nEnter 0 to exit: ");
+            opt = input.nextInt();
+            switch(opt) {
+                case 0:
+                    break;
+                case 1:
+                ArrayList<Customer> list = filing.readCustomerFile();
+                displayCustomers();
+                System.out.print("\nEnter Customer name: ");
+                String cName = input.next();
+                int t = -1;
+                for (int i = 0; i < list.size(); i++) {
+                    String tempName = list.get(i).name;
+                    if (cName.equalsIgnoreCase(tempName)) {
+                        t = 0;
+                        double Bill = 0;
+                        int tempUnit = 0;
+                        int tempLoad = 0;
+                        String tempCon = list.get(i).connectionType;
+                        if (tempCon.equalsIgnoreCase("Residential")) {
+                            tempUnit = list.get(i).noOfUnits;
+                            tempLoad = list.get(i).load;
+                            Bill = Residential(tempUnit, tempLoad);
+                        }
+                        else {
+                            tempUnit = list.get(i).noOfUnits;
+                            tempLoad = list.get(i).load;
+                            Bill = Commercial(tempUnit, tempLoad);
+                        }
+                        System.out.print("\nEnter bill month: ");
+                        String month = input.next();
+                        Record r = new Record(list.get(i).id, month, tempUnit, Bill);
+                        ArrayList<Record> rlist = new ArrayList<>();
+                        rlist.add(r);
+                        filing.writeBillRecord(rlist, true);
+                    }
+                }
+                if (t != 0) {
+                    System.out.println("User not found");
+                }
+                break;
+            }
+        } while (opt != 0);
     }
 
     // 1) Residential
