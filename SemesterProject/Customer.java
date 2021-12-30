@@ -5,9 +5,16 @@ import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
-public class Customer extends User {
+public class Customer extends LogIn implements Serializable {
+    protected String id;
+    protected String password;
+    protected String name;
+    protected String address;
+    protected String cnic;
+    protected double age;
     protected int load;
     protected String meterNo;
     protected String connectionType;
@@ -19,7 +26,10 @@ public class Customer extends User {
     Filing filing = new Filing();
 
     public Customer() {
-        super();
+        name = null;
+        address = null;
+        cnic = null;
+        age = 0.0;
         meterNo = null;
         connectionType = null;
         noOfUnits = 0;
@@ -27,15 +37,29 @@ public class Customer extends User {
 
     public Customer(String name, String add, String cnic, 
     double age, String meterNo, String connection, int noOfUnits) {
-        super(name, add, cnic, age);
+        this.name = name;
+        this.address = add;
+        this.cnic = cnic;
+        this.age = age;
         this.meterNo = meterNo;
         this.connectionType = connection;
         this.noOfUnits = noOfUnits;
     }
 
     public void readData() {
-        super.readData();
         Scanner input = new Scanner(System.in);
+        System.out.print("Set ID: ");
+        id = input.nextLine();
+        System.out.print("Set password: ");
+        password = input.nextLine();
+        System.out.print("Enter name: ");
+        name = input.nextLine();
+        System.out.print("Enter address: ");
+        address = input.nextLine();
+        System.out.print("Enter cnic: ");
+        cnic = input.nextLine();
+        System.out.print("Enter age: ");
+        age = input.nextDouble();
         meterNo = meterNo();
         System.out.print("Choose a connection \nEnter 1 for residential \nEnter 2 for commercial: ");
         int type = input.nextInt();
@@ -127,7 +151,8 @@ public class Customer extends User {
     }
 
     public String toString() {
-        return (super.toString() + "\nLoad: " + load + "\nMeter No: " + meterNo +
+        return ("\nID" + id + "\nName: " + name + "\nAddress: " + address + "\nCNIC: "  + cnic + "\nAge: " 
+        + age + "\nLoad: " + load + "\nMeter No: " + meterNo +
         "\nConnection type: " + connectionType + "\nUnits consumed: " + noOfUnits);
     }
 

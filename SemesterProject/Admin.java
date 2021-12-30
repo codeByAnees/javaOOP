@@ -82,68 +82,11 @@ public class Admin extends LogIn implements Serializable {
     }
     
 
-    public Employee searchEmp() {
-        Scanner input = new Scanner(System.in);
-        ArrayList<Employee> list = filing.readEmpFile();
-        System.out.print("Enter employee ID to search: ");
-        String uID = input.next();
-        int index = -1;
-        for (int i = 0; i < list.size(); i++) {
-            String temp = list.get(i).id;
-            if (temp.equals(uID)) {
-                index = i;
-            }
-        }
-        if (index == -1) return null;
-        else return list.get(index);
-    }
-
-    public void delEmployee() {
-        Employee emp = searchEmp();
-        ArrayList<Employee> list = filing.readEmpFile();
-        if (emp != null) {
-            list.remove(emp);
-            filing.writeFileEmployee(list);
-            System.out.println("\nDone\n");
-        }
-        else System.out.println("\nUser not found!\n");
-    }
-
-    public void editEmpRec() {
-        Scanner input = new Scanner(System.in);
-        ArrayList<Employee> list = filing.readEmpFile();
-        System.out.print("Enter employee-ID to edit: ");
-        String uID = input.next();
-        int index = -1;
-        for (int i = 0; i < list.size(); i++) {
-            String temp = list.get(i).id;
-            if (temp.equals(uID)) {
-                index = i;
-            }
-        }
-        if (index != -1) {
-            Employee e = new Employee();
-            e.readData();
-            list.set(index, e);
-            filing.writeFileEmployee(list);
-        }
-        else System.out.println("Employee record not found");
-    }
 
     public void addNewUser() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
-        int optio = input.nextInt();
-        if (optio == 1) {
-            Customer c1 = new Customer();
-            c1.readData();
-            filing.writeToFile(c1);
-        }
-        else {
-            Employee e1 = new Employee();
-            e1.readData();
-            filing.writeToFile(e1);
-        }
+        Customer c1 = new Customer();
+        c1.readData();
+        filing.writeToFile(c1);
     }
 
     public void displayCustomers() {
@@ -167,11 +110,11 @@ public class Admin extends LogIn implements Serializable {
                     displayCustomers();
                     int t = -1;
                     ArrayList<Customer> list = filing.readCustomerFile();
-                    System.out.print("\nEnter Customer-name: ");
-                    String cname = input.next();
+                    System.out.print("\nEnter Customer-ID: ");
+                    String cID = input.next();
                     for (int i = 0; i < list.size(); i++) {
-                        String tempName = list.get(i).name;
-                        if (cname.equalsIgnoreCase(tempName)) {
+                        String tempID = list.get(i).id;
+                        if (cID.equalsIgnoreCase(tempID)) {
                             t = 0;
                             System.out.print("Enter no of units: ");
                             int unit = input.nextInt();
@@ -199,12 +142,12 @@ public class Admin extends LogIn implements Serializable {
                 case 1:
                 ArrayList<Customer> list = filing.readCustomerFile();
                 displayCustomers();
-                System.out.print("\nEnter Customer name: ");
-                String cName = input.next();
+                System.out.print("\nEnter Customer-ID: ");
+                String cID = input.next();
                 int t = -1;
                 for (int i = 0; i < list.size(); i++) {
-                    String tempName = list.get(i).name;
-                    if (cName.equalsIgnoreCase(tempName)) {
+                    String tempID = list.get(i).id;
+                    if (cID.equalsIgnoreCase(tempID)) {
                         t = 0;
                         double Bill = 0;
                         int tempUnit = 0;

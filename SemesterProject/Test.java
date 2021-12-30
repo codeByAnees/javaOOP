@@ -7,7 +7,7 @@ public class Test {
         Scanner input = new Scanner(System.in);
         Admin admin = new Admin();
         do {
-            System.out.print("\nEnter 1 for admin menu \nEnter 2 for customer menu \nEnter 3 for employee menu \nEnter 0 to exit --> ");
+            System.out.print("\nEnter 1 for admin menu \nEnter 2 for customer menu \nEnter 0 to exit --> ");
             choice = input.nextInt();
             if (choice == 1) {
                 if (admin.validation()) {
@@ -22,36 +22,16 @@ public class Test {
                             case 0:
                                 break;
                             case 1:
-                                System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
-                                int oopt = input.nextInt();
-                                if (oopt == 1) {
-                                    Customer customer = admin.searchCustomer();
-                                    if (customer != null)
-                                        System.out.print(customer.toString());
-                                    else System.out.println("\nNot found\n");
-                                }
-                                else {
-                                    Employee emp = admin.searchEmp();
-                                    if (emp != null)
-                                        System.out.print(emp.toString());
-                                    else System.out.println("\nNot found\n");
-                                }
+                                Customer customer = admin.searchCustomer();
+                                if (customer != null)
+                                    System.out.print(customer.toString());
+                                else System.out.println("\nNot found\n");
                                 break;
                             case 2:
-                                System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
-                                int Opt = input.nextInt();
-                                if (Opt == 1)
-                                    admin.editCustomerRec();
-                                else
-                                    admin.editEmpRec();
+                                admin.editCustomerRec();
                                 break;
                             case 3:
-                                System.out.print("\nEnter 1 for customer \nEnter 2 for employee: ");
-                                int opti = input.nextInt();
-                                if (opti == 1)
-                                    admin.delCustomer();
-                                else
-                                    admin.delEmployee();
+                                admin.delCustomer();
                                 break;
                             case 4:
                                 admin.addNewUser();
@@ -79,15 +59,6 @@ public class Test {
                     c1.customerProfile();
                 else
                     c1.payBill(); 
-            }
-            else if (choice == 3) {
-                Employee em = new Employee();
-                System.out.print("\nEnter 1 to view your profile \nEnter 2 to insert customer units: ");
-                int option = input.nextInt();
-                if (option == 1)
-                    em.EmpProfile();
-                else
-                    em.setNoOfUnits();
             }
         } while (choice != 0);
     }
