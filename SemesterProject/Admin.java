@@ -2,6 +2,8 @@ package JavaOOP.SemesterProject;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 public class Admin extends LogIn implements Serializable {
     protected String id;
     protected String password;
@@ -25,11 +27,8 @@ public class Admin extends LogIn implements Serializable {
         else return false;
     }
 
-    public Customer searchCustomer() {
-        Scanner input = new Scanner(System.in);
+    public Customer searchCustomer(String uID) {
         ArrayList<Customer> list = filing.readCustomerFile();
-        System.out.print("Enter customer-ID to search: ");
-        String uID = input.next();
         int index = -1;
         for (int i = 0; i < list.size(); i++) {
             String temp = list.get(i).id;
@@ -41,11 +40,11 @@ public class Admin extends LogIn implements Serializable {
         else return list.get(index);
     }
 
-    public void delCustomer() {
-        Scanner input = new Scanner(System.in);
+    public void delCustomer(String uID) {
+        //Scanner input = new Scanner(System.in);
         ArrayList<Customer> list = filing.readCustomerFile();
-        System.out.print("Enter customer-ID to delete: ");
-        String uID = input.next();
+        // System.out.print("Enter customer-ID to delete: ");
+        // String uID = input.next();
         int index = -1;
         for (int i = 0; i < list.size(); i++) {
             String temp = list.get(i).id;
@@ -57,14 +56,15 @@ public class Admin extends LogIn implements Serializable {
             list.remove(index);
             filing.writeFileCustomer(list);
         }
-        else System.out.println("Person record not found");
+        else JOptionPane.showMessageDialog(null, "Record not found");
+        //System.out.println("Person record not found");
     }
 
-    public void editCustomerRec() {
-        Scanner input = new Scanner(System.in);
+    public void editCustomerRec(Customer c, String uID) {
+        //Scanner input = new Scanner(System.in);
         ArrayList<Customer> list = filing.readCustomerFile();
-        System.out.print("Enter customer-ID to edit: ");
-        String uID = input.next();
+        // System.out.print("Enter customer-ID to edit: ");
+        // String uID = input.next();
         int index = -1;
         for (int i = 0; i < list.size(); i++) {
             String temp = list.get(i).id;
@@ -72,20 +72,20 @@ public class Admin extends LogIn implements Serializable {
                 index = i;
             }
         }
-        if (index != -1) {
-            Customer c = new Customer();
-            c.readData();
+        //if (index != -1) {
+            // Customer c = new Customer();
+            // c.readData();
             list.set(index, c);
             filing.writeFileCustomer(list);
-        }
-        else System.out.println("Person record not found");
+        // }
+        // else System.out.println("Person record not found");
     }
     
 
 
-    public void addNewUser() {
-        Customer c1 = new Customer();
-        c1.readData();
+    public void addNewUser(Customer c1) {
+        // Customer c1 = new Customer();
+        // c1.readData();
         filing.writeToFile(c1);
     }
 
@@ -97,38 +97,38 @@ public class Admin extends LogIn implements Serializable {
         }
     }
 
-    public void setNoOfUnits() {
-        int opt;
-        do {
-            Scanner input = new Scanner(System.in);
-            System.out.print("Enter 1 to set units \nEnter 0 to exit: ");
-            opt = input.nextInt();
-            switch(opt) {
-                case 0:
-                    break;
-                case 1:
-                    displayCustomers();
-                    int t = -1;
+    public void setNoOfUnits(int units, String cID) {
+        // int opt;
+        // do {
+        //     Scanner input = new Scanner(System.in);
+        //     System.out.print("Enter 1 to set units \nEnter 0 to exit: ");
+        //     opt = input.nextInt();
+        //     switch(opt) {
+        //         case 0:
+        //             break;
+        //         case 1:
+        //             displayCustomers();
+        //             int t = -1;
                     ArrayList<Customer> list = filing.readCustomerFile();
-                    System.out.print("\nEnter Customer-ID: ");
-                    String cID = input.next();
+                    // System.out.print("\nEnter Customer-ID: ");
+                    // String cID = input.next();
                     for (int i = 0; i < list.size(); i++) {
                         String tempID = list.get(i).id;
                         if (cID.equalsIgnoreCase(tempID)) {
-                            t = 0;
-                            System.out.print("Enter no of units: ");
-                            int unit = input.nextInt();
-                            list.get(i).noOfUnits = unit;
+                            // t = 0;
+                            // System.out.print("Enter no of units: ");
+                            // int unit = input.nextInt();
+                            list.get(i).noOfUnits = units;
                         }
                     }
-                    if (t != 0) {
-                        System.out.println("User not found");
-                    }
+                    // if (t != 0) {
+                    //     System.out.println("User not found");
+                    // }
                     filing.writeFileCustomer(list);
-                    break;
+                    //break;
             }
-        } while (opt != 0);
-    }
+        //} while (opt != 0);
+    //}
 
     public void calBill() {
         int opt;

@@ -1,22 +1,25 @@
 package JavaOOP.SemesterProject;
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class SearchGUI {
-	public static void main(String[] args) {
-			
+	//public static void main(String[] args) {
+		protected JTextField idText;
+		protected JButton b;
+		Admin admin = new Admin();
+		public SearchGUI() {
 		// FRAME
 		JFrame frame=new JFrame();
 		frame.setSize(300, 250);
 		frame.setLocation(530, 150);
 		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		// PANEL
 		JPanel panel=new JPanel();
@@ -39,13 +42,13 @@ public class SearchGUI {
 		panel.add(l1);
 		
 		// TEXT FIELD
-		JTextField idText=new JTextField();
+		idText=new JTextField();
 		panel.add(idText);
 		idText.setBounds(103,90,60,25);
 		idText.setVisible(true);
 			
 		// Search Button
-		JButton b=new JButton("Search");
+		b=new JButton("Search");
 		panel.add(b);
 		b.setBounds(90, 140, 90, 25);
 		
@@ -53,6 +56,13 @@ public class SearchGUI {
 		b.setBackground(Color.GREEN);
 		b.setFont(new Font("Tahoma",Font.BOLD,15));
 		b.setBorderPainted(false);
-		b.addActionListener(e-> System.exit(0));
+		b.addActionListener(e -> {
+			String id = idText.getText();
+			Customer cust = admin.searchCustomer(id);
+			if (cust != null) {
+				JOptionPane.showMessageDialog(null, cust.toString());
+			}
+			else JOptionPane.showMessageDialog(null, "User not found");
+		});
 	}
 }

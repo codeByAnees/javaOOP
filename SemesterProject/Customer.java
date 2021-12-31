@@ -8,13 +8,13 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
-public class Customer extends LogIn implements Serializable {
+public class Customer implements Serializable {
     protected String id;
     protected String password;
     protected String name;
     protected String address;
     protected String cnic;
-    protected double age;
+    protected String age;
     protected int load;
     protected String meterNo;
     protected String connectionType;
@@ -29,14 +29,14 @@ public class Customer extends LogIn implements Serializable {
         name = null;
         address = null;
         cnic = null;
-        age = 0.0;
+        age = null;
         meterNo = null;
         connectionType = null;
         noOfUnits = 0;
     }
 
     public Customer(String name, String add, String cnic, 
-    double age, String meterNo, String connection, int noOfUnits) {
+    String age, String meterNo, String connection, int noOfUnits) {
         this.name = name;
         this.address = add;
         this.cnic = cnic;
@@ -46,6 +46,64 @@ public class Customer extends LogIn implements Serializable {
         this.noOfUnits = noOfUnits;
     }
 
+    public void setID(String id) {
+        this.id = id;
+    }
+    public void setPassword(String p) {
+        this.password = p;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public void setCNIC(String cnic) {
+        this.cnic = cnic;
+    }
+    public void setAge(String age) {
+        this.age = age;
+    }
+    public void setMeterNo() {
+        this.meterNo = meterNo();
+    }
+    public void setConnectionType(String connection) {
+        this.connectionType = connection;
+    }
+    public void setLaod(int load) {
+        this.load = load;
+    }
+    public void setUnits(int units) {
+        this.noOfUnits = units;
+    }
+
+
+    public String getID() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public String getCNIC() {
+        return cnic;
+    }
+    public String getAge() {
+        return age;
+    }
+    public String getMeterNO() {
+        return meterNo;
+    }
+    public String getConnection() {
+        return connectionType;
+    }
+    public int getUnits() {
+        return noOfUnits;
+    }
+
+    
     public void readData() {
         Scanner input = new Scanner(System.in);
         System.out.print("Set ID: ");
@@ -59,7 +117,7 @@ public class Customer extends LogIn implements Serializable {
         System.out.print("Enter cnic: ");
         cnic = input.nextLine();
         System.out.print("Enter age: ");
-        age = input.nextDouble();
+        age = input.nextLine();
         meterNo = meterNo();
         System.out.print("Choose a connection \nEnter 1 for residential \nEnter 2 for commercial: ");
         int type = input.nextInt();
@@ -75,13 +133,13 @@ public class Customer extends LogIn implements Serializable {
         load = input.nextInt();
     }
 
-    public boolean validation() {
+    public boolean validation(String ID, String Password) {
         boolean valid = false;
-        Scanner input = new Scanner(System.in);
-        System.out.print("\nEnter ID: ");
-        ID = input.nextLine();
-        System.out.print("Enter password: ");
-        Password = input.nextLine();
+        // Scanner input = new Scanner(System.in);
+        // System.out.print("\nEnter ID: ");
+        // ID = input.nextLine();
+        // System.out.print("Enter password: ");
+        // Password = input.nextLine();
         ArrayList<Customer> list = filing.readCustomerFile();
         for (int i = 0; i < list.size(); i++) {
             String tempID = list.get(i).id;
@@ -94,7 +152,7 @@ public class Customer extends LogIn implements Serializable {
     }
 
     public void customerProfile() {
-        if (validation()) {
+        //if (validation()) {
             String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
             try {
                 File file = new File(path);
@@ -114,8 +172,8 @@ public class Customer extends LogIn implements Serializable {
                 System.out.print(e.toString());
             }
             showBillRecord();
-        }
-        else System.out.println("\nInvalid ID or password!\n");
+        //}
+        //else System.out.println("\nInvalid ID or password!\n");
     }
 
     public void showBillRecord() {
@@ -129,7 +187,7 @@ public class Customer extends LogIn implements Serializable {
     }
 
     public void payBill() {
-        if (validation()) {
+        //if (validation()) {
             Scanner input = new Scanner(System.in);
             Payment p = new Payment();
             ArrayList<Record> list = filing.readBillRecord();
@@ -146,12 +204,12 @@ public class Customer extends LogIn implements Serializable {
                 }
             }
             filing.writeBillRecord(list, false); 
-        }
-        else System.out.println("\nInvalid ID or password!\n");
+        //}
+        //else System.out.println("\nInvalid ID or password!\n");
     }
 
     public String toString() {
-        return ("\nID" + id + "\nName: " + name + "\nAddress: " + address + "\nCNIC: "  + cnic + "\nAge: " 
+        return ("\nID: " + id + "\nName: " + name + "\nAddress: " + address + "\nCNIC: "  + cnic + "\nAge: " 
         + age + "\nLoad: " + load + "\nMeter No: " + meterNo +
         "\nConnection type: " + connectionType + "\nUnits consumed: " + noOfUnits);
     }

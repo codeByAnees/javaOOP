@@ -22,25 +22,25 @@ public class Test {
                             case 0:
                                 break;
                             case 1:
-                                Customer customer = admin.searchCustomer();
-                                if (customer != null)
-                                    System.out.print(customer.toString());
-                                else System.out.println("\nNot found\n");
+                                // Customer customer = admin.searchCustomer();
+                                // if (customer != null)
+                                //     System.out.print(customer.toString());
+                                // else System.out.println("\nNot found\n");
                                 break;
                             case 2:
-                                admin.editCustomerRec();
+                                //admin.editCustomerRec();
                                 break;
                             case 3:
-                                admin.delCustomer();
+                                //admin.delCustomer();
                                 break;
                             case 4:
-                                admin.addNewUser();
+                                //admin.addNewUser();
                                 break;
                             case 5:
                                 admin.displayCustomers();
                                 break;
                             case 6:
-                                admin.setNoOfUnits();
+                                //admin.setNoOfUnits();
                                 break;
                             case 7:
                                 admin.calBill();
