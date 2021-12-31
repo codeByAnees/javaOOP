@@ -15,22 +15,34 @@ import javax.swing.JTextField;
 
 public class EditGUI {
     Admin admin = new Admin();
+    private JButton searchBtn;
+    private JButton cancelBtn;
+    private JButton addBtn;
+    private JTextField idField;
+    private JTextField passField;
+    private JTextField nameField;
+    private JTextField cnicField;
+    private JTextField ageField;
+    private JTextField adrField;
+    private JComboBox connectionType;
+    private JRadioButton load1;
+    private JRadioButton load2;
     // public static void main(String[] args) {
     public EditGUI() {
-        // Frame
+// Frame
         JFrame frame = new JFrame();
         frame.setSize(500, 600);
         frame.setLocation(450, 150);
-
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
-        // Panel
+
+// Panel
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(Color.black);
         frame.add(panel);
 
-        // Label Front:(ADD Customer)
+// Label Front:(ADD Customer)
         JLabel front = new JLabel("EDIT RECORD");
         front.setBounds(180, 20, 200, 25);
         front.setFont(new Font("Serif", Font.BOLD, 20));
@@ -38,105 +50,100 @@ public class EditGUI {
         panel.add(front);
 
         // Label Id:
-        JLabel id = new JLabel("ID");
-        id.setBounds(10, 90, 80, 25);
-        id.setFont(new Font("Serif", Font.BOLD, 15));
-        id.setForeground(Color.white);
-        panel.add(id);
+        JLabel idLabel = new JLabel("ID");
+        idLabel.setBounds(10, 90, 80, 25);
+        idLabel.setFont(new Font("Serif", Font.BOLD, 15));
+        idLabel.setForeground(Color.white);
+        panel.add(idLabel);
 
         // Label Password
-        JLabel pass = new JLabel("Password");
-        pass.setBounds(10, 130, 80, 25);
-        pass.setFont(new Font("Serif", Font.BOLD, 15));
-        pass.setForeground(Color.white);
-        panel.add(pass);
+        JLabel passLabel = new JLabel("Password");
+        passLabel.setBounds(10, 130, 80, 25);
+        passLabel.setFont(new Font("Serif", Font.BOLD, 15));
+        passLabel.setForeground(Color.white);
+        panel.add(passLabel);
 
         // Label 1: (Name)
-        JLabel name = new JLabel("Name");
-        name.setBounds(10, 170, 80, 25);
-        name.setFont(new Font("Serif", Font.BOLD, 15));
-        name.setForeground(Color.white);
-        panel.add(name);
+        JLabel nameLabel = new JLabel("Name");
+        nameLabel.setBounds(10, 170, 80, 25);
+        nameLabel.setFont(new Font("Serif", Font.BOLD, 15));
+        nameLabel.setForeground(Color.white);
+        panel.add(nameLabel);
 
         // Label 2: (ADDRESS)
-        JLabel adr = new JLabel("Address");
-        adr.setBounds(10, 210, 80, 25);
-        adr.setFont(new Font("Serif", Font.BOLD, 15));
-        adr.setForeground(Color.white);
-        panel.add(adr);
+        JLabel adrLabel = new JLabel("Address");
+        adrLabel.setBounds(10, 210, 80, 25);
+        adrLabel.setFont(new Font("Serif", Font.BOLD, 15));
+        adrLabel.setForeground(Color.white);
+        panel.add(adrLabel);
 
         // Label 3: (CNIC)
-        JLabel enr = new JLabel("CNIC");
-        enr.setBounds(10, 250, 80, 25);
-        enr.setFont(new Font("Serif", Font.BOLD, 15));
-        enr.setForeground(Color.white);
-
-        panel.add(enr);
+        JLabel cnicLabel = new JLabel("CNIC");
+        cnicLabel.setBounds(10, 250, 80, 25);
+        cnicLabel.setFont(new Font("Serif", Font.BOLD, 15));
+        cnicLabel.setForeground(Color.white);
+        panel.add(cnicLabel);
 
         // Label 4: (AGE)
-        JLabel age = new JLabel("Age");
-        panel.add(age);
-        age.setBounds(10, 290, 80, 25);
-        age.setFont(new Font("Serif", Font.BOLD, 15));
-        age.setForeground(Color.white);
+        JLabel ageLabel = new JLabel("Age");
+        panel.add(ageLabel);
+        ageLabel.setBounds(10, 290, 80, 25);
+        ageLabel.setFont(new Font("Serif", Font.BOLD, 15));
+        ageLabel.setForeground(Color.white);
 
         // Label 5: (Conn Type)
-        JLabel conT = new JLabel("Connec. Type");
-        panel.add(conT);
-        conT.setBounds(10, 330, 100, 25);
-        conT.setForeground(Color.white);
-        conT.setFont(new Font("Serif", Font.BOLD, 15));
+        JLabel conTLabel = new JLabel("Connec. Type");
+        panel.add(conTLabel);
+        conTLabel.setBounds(10, 330, 100, 25);
+        conTLabel.setForeground(Color.white);
+        conTLabel.setFont(new Font("Serif", Font.BOLD, 15));
 
         // Label 6: (Load)
-        JLabel load = new JLabel("Load");
-        panel.add(load);
-        load.setBounds(10, 370, 100, 25);
-        load.setForeground(Color.white);
-        load.setFont(new Font("Serif", Font.BOLD, 15));
+        JLabel loadLabel = new JLabel("Load");
+        panel.add(loadLabel);
+        loadLabel.setBounds(10, 370, 100, 25);
+        loadLabel.setForeground(Color.white);
+        loadLabel.setFont(new Font("Serif", Font.BOLD, 15));
 
-        // Creating TEXT FIELDS
-
+// Creating TEXT FIELDS
         // For Id:
-        JTextField custidText = new JTextField();
-        panel.add(custidText);
-        custidText.setBounds(105, 90, 60, 25);
+        idField = new JTextField();
+        panel.add(idField);
+        idField.setBounds(105, 90, 60, 25);
 
         // For Password
-        JTextField passText = new JTextField();
-        panel.add(passText);
-        passText.setBounds(105, 130, 80, 25);
-        passText.setEditable(false);
+        passField = new JTextField();
+        panel.add(passField);
+        passField.setBounds(105, 130, 80, 25);
+        passField.setEditable(false);
 
         // For Label 1:
-        JTextField custnameText = new JTextField();
-        panel.add(custnameText);
-        custnameText.setBounds(105, 170, 150, 25);
-        custnameText.setEditable(false);
+        nameField = new JTextField();
+        panel.add(nameField);
+        nameField.setBounds(105, 170, 150, 25);
+        nameField.setEditable(false);
 
         // For Label 2:
-
-        JTextField custadrText = new JTextField();
-        panel.add(custadrText);
-        custadrText.setBounds(105, 210, 150, 25);
-        custadrText.setEditable(false);
+        adrField = new JTextField();
+        panel.add(adrField);
+        adrField.setBounds(105, 210, 150, 25);
+        adrField.setEditable(false);
 
         // For Label 3:
-        JTextField custcnText = new JTextField();
-        panel.add(custcnText);
-        custcnText.setBounds(105, 250, 110, 25);
-        custcnText.setEditable(false);
+        cnicField = new JTextField();
+        panel.add(cnicField);
+        cnicField.setBounds(105, 250, 110, 25);
+        cnicField.setEditable(false);
 
         // For Label 4:
-        JTextField custageText = new JTextField();
-        panel.add(custageText);
-        custageText.setBounds(105, 290, 30, 25);
-        custageText.setEditable(false);
+        ageField = new JTextField();
+        panel.add(ageField);
+        ageField.setBounds(105, 290, 30, 25);
+        ageField.setEditable(false);
 
         // For Label 5:
-
         String[] conn = { "Select", "Residential", "Commercial" };
-
-        JComboBox connectionType = new JComboBox(conn);
+        connectionType = new JComboBox(conn);
         panel.add(connectionType);
         connectionType.setEnabled(false);
         connectionType.setForeground(Color.black);
@@ -144,14 +151,15 @@ public class EditGUI {
 
         // For Label 6:
         ButtonGroup bg = new ButtonGroup();
-        JRadioButton load1 = new JRadioButton(" < 5 ");
+        load1 = new JRadioButton(" < 5 ");
         panel.add(load1);
         bg.add(load1);
         load1.setBounds(105, 372, 60, 25);
         load1.setForeground(Color.white);
         load1.setBackground(Color.black);
         load1.setEnabled(false);
-        JRadioButton load2 = new JRadioButton(" > 5 ");
+
+        load2 = new JRadioButton(" > 5 ");
         panel.add(load2);
         bg.add(load2);
         load2.setBounds(160, 372, 60, 25);
@@ -159,23 +167,24 @@ public class EditGUI {
         load2.setBackground(Color.black);
         load2.setEnabled(false);
 
-        // Creating Buttons
-        JButton bsearch = new JButton("Search");
-        panel.add(bsearch);
-        bsearch.setBounds(270, 90, 90, 25);
-        bsearch.setFont(new Font("Serif", Font.BOLD, 18));
-        bsearch.setBackground(Color.orange);
-        bsearch.setForeground(Color.black);
-        bsearch.setBorderPainted(false);
-        bsearch.addActionListener(e -> {
-            String tempid = custidText.getText();
+// Creating Buttons
+        searchBtn = new JButton("Search");
+        panel.add(searchBtn);
+        searchBtn.setBounds(270, 90, 90, 25);
+        searchBtn.setFont(new Font("Serif", Font.BOLD, 18));
+        searchBtn.setBackground(Color.orange);
+        searchBtn.setForeground(Color.black);
+        searchBtn.setBorderPainted(false);
+
+        searchBtn.addActionListener(e -> {
+            String tempid = idField.getText();
             Customer cust = admin.searchCustomer(tempid);
 			if (cust != null) {
-				passText.setEditable(true);
-                custnameText.setEditable(true);
-                custadrText.setEditable(true);
-                custageText.setEditable(true);
-                custcnText.setEditable(true);
+				passField.setEditable(true);
+                nameField.setEditable(true);
+                adrField.setEditable(true);
+                ageField.setEditable(true);
+                cnicField.setEditable(true);
                 connectionType.setEnabled(true);
                 load1.setEnabled(true);
                 load2.setEnabled(true);
@@ -200,34 +209,33 @@ public class EditGUI {
 			else c.setLaod(4);
 		});
 
-        JButton b2 = new JButton("Add");
-        panel.add(b2);
-        b2.setBounds(120, 430, 90, 25);
-        b2.setFont(new Font("Serif", Font.BOLD, 18));
-        b2.setBackground(Color.green);
-        b2.setForeground(Color.black);
-        b2.setBorderPainted(false);
-        b2.addActionListener(e -> {
-            c.setID(custidText.getText());
-			c.setPassword(passText.getText());
-			c.setName(custnameText.getText());
-			c.setAddress(custadrText.getText());
-			c.setCNIC(custcnText.getText());
-			c.setAge(custageText.getText());
-            String tempID = custidText.getText();
+        addBtn = new JButton("Add");
+        panel.add(addBtn);
+        addBtn.setBounds(120, 430, 90, 25);
+        addBtn.setFont(new Font("Serif", Font.BOLD, 18));
+        addBtn.setBackground(Color.green);
+        addBtn.setForeground(Color.black);
+        addBtn.setBorderPainted(false);
+        addBtn.addActionListener(e -> {
+            c.setID(idField.getText());
+			c.setPassword(passField.getText());
+			c.setName(nameField.getText());
+			c.setAddress(adrField.getText());
+			c.setCNIC(cnicField.getText());
+			c.setAge(ageField.getText());
+            String tempID = idField.getText();
 			admin.editCustomerRec(c, tempID);
 		});
 
-        JButton b3 = new JButton("Cancel");
-        panel.add(b3);
-        b3.setBounds(270, 430, 90, 25);
-        b3.setFont(new Font("Serif", Font.BOLD, 18));
-        b3.setBackground(Color.RED);
-        b3.setForeground(Color.black);
-        b3.setBorderPainted(false);
-        b3.addActionListener(e -> {
+        cancelBtn = new JButton("Cancel");
+        panel.add(cancelBtn);
+        cancelBtn.setBounds(270, 430, 90, 25);
+        cancelBtn.setFont(new Font("Serif", Font.BOLD, 18));
+        cancelBtn.setBackground(Color.RED);
+        cancelBtn.setForeground(Color.black);
+        cancelBtn.setBorderPainted(false);
+        cancelBtn.addActionListener(e -> {
             frame.dispose();
         });
-
     }
 }

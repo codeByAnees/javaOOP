@@ -56,8 +56,8 @@ public class Test {
                 int option = input.nextInt();
                 Customer c1 = new Customer();
                 if (option == 1)
-                    c1.customerProfile();
-                else
+                    //c1.customerProfile();
+                //else
                     c1.payBill(); 
             }
         } while (choice != 0);

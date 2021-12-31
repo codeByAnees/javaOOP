@@ -1,6 +1,7 @@
 package JavaOOP.SemesterProject;
 
 import java.util.Scanner;
+
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -151,16 +152,20 @@ public class Customer implements Serializable {
         return valid;
     }
 
-    public void customerProfile() {
+    public Customer customerProfile(String ID) {
         //if (validation()) {
             String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
+            Customer c = new Customer();
+            boolean check = false;
             try {
                 File file = new File(path);
                 ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
                 while (true) {
-                    Customer c = (Customer)in.readObject();
+                    c = (Customer)in.readObject();
                     if (c.id.equals(ID)) {
-                        System.out.println(c.toString());
+                        check = true;
+                        //JOptionPane.showMessageDialog(null, c.toString());
+                        //System.out.println(c.toString());
                     }
                 }
             }
@@ -171,19 +176,22 @@ public class Customer implements Serializable {
                 System.out.println("\nException caught");
                 System.out.print(e.toString());
             }
-            showBillRecord();
+            if (check == true) return c;
+            else return null;
+            //showBillRecord();
         //}
         //else System.out.println("\nInvalid ID or password!\n");
     }
 
-    public void showBillRecord() {
-        ArrayList<Record> list = filing.readBillRecord();
-        for (int i = 0; i < list.size(); i++) {
-            String listID = list.get(i).id;
-            if (listID.equals(ID)) {
-                System.out.println(list.get(i).toString());
-            }
-        }
+    public ArrayList<Record> showBillRecord() {
+        //ArrayList<Record> list = filing.readBillRecord();
+        // for (int i = 0; i < list.size(); i++) {
+        //     String listID = list.get(i).id;
+        //     if (listID.equals(ID)) {
+        //         //System.out.println(list.get(i).toString());
+        //     }
+        // }
+        return filing.readBillRecord();
     }
 
     public void payBill() {

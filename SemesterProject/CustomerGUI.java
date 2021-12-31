@@ -2,70 +2,89 @@ package JavaOOP.SemesterProject;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class CustomerGUI {
 	//public static void main(String[] args) {
-		// FRAME
+		private JButton viewBtn;
+		private JButton payBtn;
+		private JButton cancelBtn;
 		public CustomerGUI() {
-		JFrame frame=new JFrame();
+// FRAME
+		JFrame frame = new JFrame();
 		frame.setSize(300, 450);
 		frame.setLocation(530, 150);
 		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		// PANEL
-		JPanel panel=new JPanel();
+// PANEL
+		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(Color.black);
 		frame.add(panel);
 		
-		// LABEL
-		JLabel l=new JLabel("CUSTOMER");
-		l.setBounds(69,20,200,25);
-		l.setForeground(Color.white);
-		l.setFont(new Font("Serif",Font.BOLD,25));
-		panel.add(l);
+// LABEL
+		JLabel custLabel = new JLabel("CUSTOMER");
+		custLabel.setBounds(69,20,200,25);
+		custLabel.setForeground(Color.white);
+		custLabel.setFont(new Font("Serif", Font.BOLD, 25));
+		panel.add(custLabel);
 		
+// BUTTONS
+		//1- View Profile	
+		viewBtn = new JButton("VIEW PROFILE");
+		viewBtn.setBounds(42, 100, 200, 40);
+		viewBtn.setFont(new Font("Arial Black", Font.BOLD, 15));
+		viewBtn.setForeground(Color.white);
+		viewBtn.setBackground(Color.BLUE);
+		viewBtn.setBorderPainted(false);
+		panel.add(viewBtn);
 		
-		// BUTTONS
+		//2- Bill Payment
+		payBtn = new JButton("BILL PAYMENT");
+		payBtn.setBounds(42, 180, 200, 40);
+		payBtn.setFont(new Font("Arial Black", Font.BOLD, 15));
+		payBtn.setForeground(Color.white);
+		payBtn.setBackground(Color.green);
+		payBtn.setBorderPainted(false);
+		panel.add(payBtn);
 		
-		//1- Bill Payment		
-		JButton b1=new JButton("VIEW PROFILE");
-		b1.setBounds(42,100,200,40);
-		b1.setFont(new Font("Arial Black",Font.BOLD,15));
-		b1.setForeground(Color.white);
-		b1.setBackground(Color.BLUE);
-		b1.setBorderPainted(false);
-		panel.add(b1);
-		
-		
-		//1- View Profile
-		JButton b=new JButton("BILL PAYMENT");
-		b.setBounds(42,180,200,40);
-		b.setFont(new Font("Arial Black",Font.BOLD,15));
-		b.setForeground(Color.white);
-		b.setBackground(Color.green);
-		b.setBorderPainted(false);
-		panel.add(b);
-		
-		//1- View Profile
-		JButton b2=new JButton("CANCEL");
-		b2.setBounds(42,260,200,40);
-		b2.setFont(new Font("Arial Black",Font.BOLD,15));
-		b2.setForeground(Color.white);
-		b2.setBackground(Color.RED);
-		b2.setBorderPainted(false);
-		panel.add(b2);
-		b2.addActionListener(e->System.exit(0));
+		//3- Cancel
+		cancelBtn = new JButton("CANCEL");
+		cancelBtn.setBounds(42, 260, 200, 40);
+		cancelBtn.setFont(new Font("Arial Black", Font.BOLD, 15));
+		cancelBtn.setForeground(Color.white);
+		cancelBtn.setBackground(Color.RED);
+		cancelBtn.setBorderPainted(false);
+		panel.add(cancelBtn);
 
-		b1.addActionListener(e -> {
+// Event handling
+		cancelBtn.addActionListener(e -> {
+			frame.dispose();
+		});
 
+		viewBtn.addActionListener(e -> {
+			CustomerLogInGUI clog = new CustomerLogInGUI();
+			String id = clog.idField.getText();
+			Customer c = new Customer();
+			Customer temp = c.customerProfile(id);
+			ViewRecordGUI view = new ViewRecordGUI();
+			if (temp != null) {
+				view.textArea.append(temp.toString());
+			}
+			else JOptionPane.showMessageDialog(null, "User not found");
+			ArrayList<Record> list = c.showBillRecord();
+			for (int i = 0; i < list.size(); i++) {
+				String listID = list.get(i).id;
+				if (listID.equals(id)) {
+					view.textArea.append(list.get(i).toString());
+				}
+			}
 		});
 	}
 }
-

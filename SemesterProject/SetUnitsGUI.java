@@ -12,101 +12,96 @@ import javax.swing.JTextField;
 public class SetUnitsGUI {
 
 	Admin admin = new Admin();
-	
+	private JTextField idField;
+	private JTextField unitsField;
+	private JButton searchB;
+	private JButton addUnits;
 	//public static void main(String[] args) {
 	public SetUnitsGUI() {
-
 		
-		// FRAME
-		
-		JFrame frame=new JFrame();
+	// FRAME
+		JFrame frame = new JFrame();
 		frame.setSize(300, 300);
 		frame.setLocation(530, 150);
 		frame.setVisible(true);
-		
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
-		
-		
-		// PANEL
-		JPanel panel=new JPanel();
+	// PANEL
+		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(Color.white);
 		frame.add(panel);
 		
-		
-		
-		// LABEL
-		///SEARCHCustomer
-		JLabel l=new JLabel("Customer Units");
-		l.setBounds(50,20,170,25);
-		l.setForeground(Color.black);
-		l.setFont(new Font("Serif",Font.BOLD,25));
-		panel.add(l);
+	// LABEL
+		///SEARCH Customer
+		JLabel mainLabel = new JLabel("Customer Units");
+		mainLabel.setBounds(50, 20, 170, 25);
+		mainLabel.setForeground(Color.black);
+		mainLabel.setFont(new Font("Serif", Font.BOLD, 25));
+		panel.add(mainLabel);
+
 		//Enter ID
-		JLabel l1=new JLabel("Enter ID");
-		l1.setBounds(20,80,60,25);
-		l1.setFont(new Font("Serif",Font.BOLD,15));
-		l1.setForeground(Color.BLACK);
-		panel.add(l1);
-		//Enter Units
-				
-		JLabel l2=new JLabel("Enter Units");				
-		l2.setBounds(20,130,78,25);			
-		l2.setFont(new Font("Serif",Font.BOLD,15));
-		l2.setForeground(Color.BLACK);
-		panel.add(l2);
+		JLabel idLabel = new JLabel("Enter ID");
+		idLabel.setBounds(20, 80, 60, 25);
+		idLabel.setFont(new Font("Serif", Font.BOLD, 15));
+		idLabel.setForeground(Color.BLACK);
+		panel.add(idLabel);
+
+		//Enter Units		
+		JLabel addUnitsLabel = new JLabel("Enter Units");				
+		addUnitsLabel.setBounds(20, 130, 78, 25);			
+		addUnitsLabel.setFont(new Font("Serif", Font.BOLD, 15));
+		addUnitsLabel.setForeground(Color.BLACK);
+		panel.add(addUnitsLabel);
 		
 		
-		// TEXT FIELD
+	// TEXT FIELD
 		// ID
-		JTextField idText=new JTextField();
-		panel.add(idText);
-		idText.setBounds(103,80,60,25);
-		idText.setVisible(true);
+		idField = new JTextField();
+		panel.add(idField);
+		idField.setBounds(103, 80, 60, 25);
+		idField.setVisible(true);
 		
 		// UNITS
-		JTextField unitsText=new JTextField();
-		panel.add(unitsText);
-		unitsText.setBounds(103,130,60,25);
-		unitsText.setVisible(true);
-		unitsText.setEditable(false);
+		unitsField = new JTextField();
+		panel.add(unitsField);
+		unitsField.setBounds(103, 130, 60, 25);
+		unitsField.setVisible(true);
+		unitsField.setEditable(false);
 			
+	// Search Button
+		searchB = new JButton("SEARCH");
+		panel.add(searchB);
+		searchB.setBounds(175, 80, 80, 23);
+		searchB.setForeground(Color.black);
+		searchB.setBackground(Color.blue);
+		searchB.setFont(new Font("Tahoma",Font.BOLD,11));
+		searchB.setBorderPainted(false);
 		
-		// Search Button
-		
-		JButton searchb=new JButton("SEARCH");
-		panel.add(searchb);
-		searchb.setBounds(175, 80, 80, 23);
-		
-		searchb.setForeground(Color.black);
-		searchb.setBackground(Color.blue);
-		searchb.setFont(new Font("Tahoma",Font.BOLD,11));
-		searchb.setBorderPainted(false);
-		
-		JButton addUnits=new JButton("ADD");
+		addUnits = new JButton("ADD");
 		panel.add(addUnits);
 		addUnits.setBounds(175, 130, 80, 23);	
 		addUnits.setForeground(Color.black);
 		addUnits.setBackground(Color.orange);
-		addUnits.setFont(new Font("Tahoma",Font.BOLD,11));
+		addUnits.setFont(new Font("Tahoma", Font.BOLD, 11));
 		addUnits.setBorderPainted(false);
 		addUnits.setEnabled(false);
 
-		searchb.addActionListener(e -> {
-            String tempid = idText.getText();
+		searchB.addActionListener(e -> {
+            String tempid = idField.getText();
             Customer cust = admin.searchCustomer(tempid);
             if (cust != null) {
-                unitsText.setEditable(true);
+                unitsField.setEditable(true);
 				addUnits.setEnabled(true);
                 
             } 
         });
+
 		addUnits.addActionListener(e -> {
 			try {
-				String temp = unitsText.getText();
+				String temp = unitsField.getText();
 				int units = Integer.parseInt(temp);
-				admin.setNoOfUnits(units, idText.getText());
+				admin.setNoOfUnits(units, idField.getText());
 			}
 			catch (Exception e3) {
 				e3.toString();
