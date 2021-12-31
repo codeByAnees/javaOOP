@@ -9,11 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class DeleteGUI {
-	//public static void main(String[] args) {
-        protected JTextField idText;
-        private JButton delBtn;
-        Admin admin = new Admin();
-        public DeleteGUI() {
+    protected JTextField idText;
+    private JButton delBtn;
+    Admin admin = new Admin();
+    
+    public DeleteGUI() {
 // FRAME
         JFrame frame = new JFrame();
         frame.setSize(300, 250);

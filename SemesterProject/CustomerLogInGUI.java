@@ -11,17 +11,16 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class CustomerLogInGUI {
-	private static JFrame frame;
-	private static JPanel panel;
-	private static JLabel userlabel;
-	protected static JTextField idField;
-	private static JLabel passLabel;
-	private static JPasswordField passField;
-	private static JButton logInBtn;
-		public static void main(String[] args) {
-		//public CustomerLogInGUI() {
-		Customer cust = new Customer();
+	private JFrame frame;
+	private JPanel panel;
+	private JLabel userlabel;
+	protected JTextField idField;
+	private JLabel passLabel;
+	private JPasswordField passField;
+	private JButton logInBtn;
 
+	public CustomerLogInGUI() {
+		Customer cust = new Customer();
 // Creating window:
 		frame = new JFrame();
 		frame.setSize(300, 200);

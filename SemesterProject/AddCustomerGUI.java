@@ -25,7 +25,6 @@ public class AddCustomerGUI {
 
 	public AddCustomerGUI() {	
 		Admin admin = new Admin();
-
 // Frame
 		JFrame frame = new JFrame();
 		frame.setSize(500, 500);
@@ -102,7 +101,6 @@ public class AddCustomerGUI {
 		load.setBounds(10, 330, 100, 25);
 		load.setForeground(Color.white);
 		load.setFont(new Font("Serif",Font.BOLD,15));
-		
 		
 // Creating TEXT FIELDS
 		Customer c = new Customer();

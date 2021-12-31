@@ -9,11 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class SearchGUI {
-	//public static void main(String[] args) {
-		protected JTextField idField;
-		protected JButton searchBtn;
-		Admin admin = new Admin();
-		public SearchGUI() {
+	protected JTextField idField;
+	protected JButton searchBtn;
+	Admin admin = new Admin();
+	public SearchGUI() {
 	// FRAME
 		JFrame frame = new JFrame();
 		frame.setSize(300, 250);

@@ -10,11 +10,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class CustomerGUI {
-	//public static void main(String[] args) {
-		private JButton viewBtn;
-		private JButton payBtn;
-		private JButton cancelBtn;
-		public CustomerGUI() {
+	private JButton viewBtn;
+	private JButton payBtn;
+	private JButton cancelBtn;
+	public CustomerGUI() {
 // FRAME
 		JFrame frame = new JFrame();
 		frame.setSize(300, 450);

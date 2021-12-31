@@ -27,7 +27,7 @@ public class EditGUI {
     private JComboBox connectionType;
     private JRadioButton load1;
     private JRadioButton load2;
-    // public static void main(String[] args) {
+
     public EditGUI() {
 // Frame
         JFrame frame = new JFrame();

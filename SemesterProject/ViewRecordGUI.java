@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class ViewRecordGUI {
-//public static void main(String[] args) {
+
     protected JTextArea textArea;
     public ViewRecordGUI() {
 	// Frame

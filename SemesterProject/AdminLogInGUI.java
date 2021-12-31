@@ -11,15 +11,14 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class AdminLogInGUI {
-	private static JFrame frame;
-	private static JPanel panel;
-	private static JTextField idField;
-	private static JPasswordField passField;
-	private static JButton logInBtn;
-		public static void main(String[] args) {
-		//public AdminLogInGUI() {
-		Customer cust = new Customer();
+	private JFrame frame;
+	private JPanel panel;
+	private JTextField idField;
+	private JPasswordField passField;
+	private JButton logInBtn;
 
+	public AdminLogInGUI() {
+		Customer cust = new Customer();
 // Creating window:
 		frame = new JFrame();
 		frame.setSize(300, 200);

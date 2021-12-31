@@ -16,7 +16,7 @@ public class SetUnitsGUI {
 	private JTextField unitsField;
 	private JButton searchB;
 	private JButton addUnits;
-	//public static void main(String[] args) {
+
 	public SetUnitsGUI() {
 		
 	// FRAME

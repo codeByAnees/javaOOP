@@ -1,19 +1,15 @@
 package JavaOOP.SemesterProject;
-import javax.swing.JFrame;
 
+import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MainGUI {
-
-public static void main(String[] args) {
-	
+	public static void main(String[] args) {
 // Frame
 		JFrame frame = new JFrame();
 		frame.setSize(1000,710);
@@ -89,6 +85,14 @@ public static void main(String[] args) {
 		background.add(exitBtn);
 		exitBtn.addActionListener(e -> {
 			frame.dispose();
-		});		
+		});
+
+		adminBtn.addActionListener(e -> {
+			AdminLogInGUI admin = new AdminLogInGUI();
+		});
+
+		customerBtn.addActionListener(e -> {
+			CustomerLogInGUI custLogin = new CustomerLogInGUI();
+		}); 
 	}
 }
