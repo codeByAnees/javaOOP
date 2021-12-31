@@ -143,7 +143,6 @@ public class AdminGUI {
         });
 
         b7.addActionListener(e -> {
-
             SetUnitsGUI units = new SetUnitsGUI();
         });
 	}

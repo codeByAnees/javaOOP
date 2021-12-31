@@ -37,22 +37,22 @@ public class SetUnitsGUI {
 		
 		
 		// LABEL
-		//SEARCHCustomer
+		///SEARCHCustomer
 		JLabel l=new JLabel("Customer Units");
 		l.setBounds(50,20,170,25);
-		l.setForeground(Color.DARK_GRAY);
+		l.setForeground(Color.black);
 		l.setFont(new Font("Serif",Font.BOLD,25));
 		panel.add(l);
 		//Enter ID
 		JLabel l1=new JLabel("Enter ID");
-		l1.setBounds(103,60,60,25);
+		l1.setBounds(20,80,60,25);
 		l1.setFont(new Font("Serif",Font.BOLD,15));
 		l1.setForeground(Color.BLACK);
 		panel.add(l1);
 		//Enter Units
 				
 		JLabel l2=new JLabel("Enter Units");				
-		l2.setBounds(95,130,78,25);			
+		l2.setBounds(20,130,78,25);			
 		l2.setFont(new Font("Serif",Font.BOLD,15));
 		l2.setForeground(Color.BLACK);
 		panel.add(l2);
@@ -62,41 +62,55 @@ public class SetUnitsGUI {
 		// ID
 		JTextField idText=new JTextField();
 		panel.add(idText);
-		idText.setBounds(103,90,60,25);
+		idText.setBounds(103,80,60,25);
 		idText.setVisible(true);
 		
 		// UNITS
 		JTextField unitsText=new JTextField();
 		panel.add(unitsText);
-		unitsText.setBounds(103,160,60,25);
+		unitsText.setBounds(103,130,60,25);
 		unitsText.setVisible(true);
 		unitsText.setEditable(false);
 			
 		
 		// Search Button
 		
-		JButton b=new JButton("Search");
-		panel.add(b);
-		b.setBounds(90, 200, 90, 25);
+		JButton searchb=new JButton("SEARCH");
+		panel.add(searchb);
+		searchb.setBounds(175, 80, 80, 23);
 		
-		b.setForeground(Color.WHITE);
-		b.setBackground(Color.DARK_GRAY);
-		b.setFont(new Font("Tahoma",Font.BOLD,15));
-		b.setBorderPainted(false);
-		b.addActionListener(e -> {
+		searchb.setForeground(Color.black);
+		searchb.setBackground(Color.blue);
+		searchb.setFont(new Font("Tahoma",Font.BOLD,11));
+		searchb.setBorderPainted(false);
+		
+		JButton addUnits=new JButton("ADD");
+		panel.add(addUnits);
+		addUnits.setBounds(175, 130, 80, 23);	
+		addUnits.setForeground(Color.black);
+		addUnits.setBackground(Color.orange);
+		addUnits.setFont(new Font("Tahoma",Font.BOLD,11));
+		addUnits.setBorderPainted(false);
+		addUnits.setEnabled(false);
+
+		searchb.addActionListener(e -> {
             String tempid = idText.getText();
             Customer cust = admin.searchCustomer(tempid);
             if (cust != null) {
                 unitsText.setEditable(true);
-                String temp = unitsText.getText();
-                try {
-                int units = Integer.parseInt(temp);
-                admin.setNoOfUnits(units, tempid);
-                }
-                catch (Exception e3) {
-                    e3.toString();
-                }
+				addUnits.setEnabled(true);
+                
             } 
         });
+		addUnits.addActionListener(e -> {
+			try {
+				String temp = unitsText.getText();
+				int units = Integer.parseInt(temp);
+				admin.setNoOfUnits(units, idText.getText());
+			}
+			catch (Exception e3) {
+				e3.toString();
+			}
+		});
 	}
 }
