@@ -68,8 +68,7 @@ public class CustomerGUI {
 		});
 
 		viewBtn.addActionListener(e -> {
-			CustomerLogInGUI clog = new CustomerLogInGUI();
-			String id = clog.idField.getText();
+			String id = CustomerLogInGUI.logID;
 			Customer c = new Customer();
 			Customer temp = c.customerProfile(id);
 			ViewRecordGUI view = new ViewRecordGUI();

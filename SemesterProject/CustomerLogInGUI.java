@@ -14,18 +14,18 @@ public class CustomerLogInGUI {
 	private JFrame frame;
 	private JPanel panel;
 	private JLabel userlabel;
-	protected JTextField idField;
+	private JTextField idField;
 	private JLabel passLabel;
 	private JPasswordField passField;
 	private JButton logInBtn;
 
+	public static String logID;
 	public CustomerLogInGUI() {
-		Customer cust = new Customer();
 // Creating window:
 		frame = new JFrame();
 		frame.setSize(300, 200);
 		frame.setLocation(500, 200);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		// Creating layout (Invisible Borders):
 		panel = new JPanel();
@@ -66,11 +66,14 @@ public class CustomerLogInGUI {
 		logInBtn.setBorderPainted(false);
 		panel.add(logInBtn);
 
+		Customer cust = new Customer();
 		logInBtn.addActionListener(e -> {
 			String ID = idField.getText();
 			String pass = new String(passField.getPassword());
 			if (cust.validation(ID, pass)) {
 				CustomerGUI c = new CustomerGUI();
+				logID = idField.getText();
+				frame.dispose();
 			}
 			else JOptionPane.showMessageDialog(null, "Invalid password or id");
 		});

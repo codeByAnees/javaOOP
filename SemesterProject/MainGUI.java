@@ -12,7 +12,7 @@ public class MainGUI {
 	public static void main(String[] args) {
 // Frame
 		JFrame frame = new JFrame();
-		frame.setSize(1000,710);
+		frame.setSize(1000, 710);
 		frame.setLocation(170, 15);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 // PANEL

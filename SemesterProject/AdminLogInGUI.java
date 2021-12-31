@@ -23,7 +23,7 @@ public class AdminLogInGUI {
 		frame = new JFrame();
 		frame.setSize(300, 200);
 		frame.setLocation(500, 200);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 // Creating layout (Invisible Borders):
 		panel = new JPanel();
@@ -68,6 +68,7 @@ public class AdminLogInGUI {
 			String pass = new String(passField.getPassword());
 			if (ID.equals("admin") && pass.equals("12345")) {
 				AdminGUI admin = new AdminGUI();
+				frame.dispose();
 			}
 			else JOptionPane.showMessageDialog(null, "Invalid password or id");
 		});
