@@ -13,8 +13,8 @@ public class ViewRecordGUI {
     public ViewRecordGUI() {
 	// Frame
 		JFrame frame = new JFrame();
-		frame.setSize(1000, 710);
-		frame.setLocation(170, 15);
+		frame.setSize(1000, 650);
+		frame.setLocation(160, 15);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
 
@@ -54,8 +54,8 @@ public class ViewRecordGUI {
 	// LABEL
 		JLabel viewlabel = new JLabel("CUSTOMER  RECORD");
 		panel2.add(viewlabel);
-		viewlabel.setBounds(350, 17, 262, 50);
-		viewlabel.setFont(new Font("Serif",Font.CENTER_BASELINE,25));
+		viewlabel.setBounds(350, 17, 280, 50);
+		viewlabel.setFont(new Font("Serif",Font.CENTER_BASELINE,23));
 		viewlabel.setForeground(Color.white);
 		
 		

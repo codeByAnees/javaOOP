@@ -109,18 +109,22 @@ public class AdminGUI {
 // Event handling
         addBtn.addActionListener(e -> {
             AddCustomerGUI add = new AddCustomerGUI();
+            frame.dispose();
         });
 
         delBtn.addActionListener(e -> {
             DeleteGUI del = new DeleteGUI();
+            frame.dispose();
         });
 
         editBtn.addActionListener(e -> {
             EditGUI edit = new EditGUI();
+            frame.dispose();
         });
 
         searchBtn.addActionListener(e -> {
             SearchGUI s = new SearchGUI();
+            frame.dispose();
         });
 
         viewBtn.addActionListener(e -> {
@@ -131,10 +135,17 @@ public class AdminGUI {
                 view.textArea.append("\n***************************\n");
                 view.textArea.append(custt.toString());
             }
+            
         });
 
         addUnitsBtn.addActionListener(e -> {
             SetUnitsGUI units = new SetUnitsGUI();
+            frame.dispose();
+        });
+
+        calBillBtn.addActionListener(e -> {
+            CalBillGUI calBill = new CalBillGUI(); 
+            frame.dispose();
         });
 	}
 }

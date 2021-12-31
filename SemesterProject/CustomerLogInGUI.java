@@ -19,7 +19,7 @@ public class CustomerLogInGUI {
 	private JPasswordField passField;
 	private JButton logInBtn;
 
-	public static String logID;
+	public static String logID = "";
 	public CustomerLogInGUI() {
 // Creating window:
 		frame = new JFrame();
@@ -72,7 +72,7 @@ public class CustomerLogInGUI {
 			String pass = new String(passField.getPassword());
 			if (cust.validation(ID, pass)) {
 				CustomerGUI c = new CustomerGUI();
-				logID = idField.getText();
+				logID = ID;
 				frame.dispose();
 			}
 			else JOptionPane.showMessageDialog(null, "Invalid password or id");

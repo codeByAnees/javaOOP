@@ -16,6 +16,7 @@ public class SetUnitsGUI {
 	private JTextField unitsField;
 	private JButton searchB;
 	private JButton addUnits;
+	private JButton backBtn;
 
 	public SetUnitsGUI() {
 		
@@ -35,9 +36,9 @@ public class SetUnitsGUI {
 	// LABEL
 		///SEARCH Customer
 		JLabel mainLabel = new JLabel("Customer Units");
-		mainLabel.setBounds(50, 20, 170, 25);
+		mainLabel.setBounds(70, 20, 180, 25);
 		mainLabel.setForeground(Color.black);
-		mainLabel.setFont(new Font("Serif", Font.BOLD, 25));
+		mainLabel.setFont(new Font("Serif", Font.BOLD, 21));
 		panel.add(mainLabel);
 
 		//Enter ID
@@ -74,10 +75,12 @@ public class SetUnitsGUI {
 		panel.add(searchB);
 		searchB.setBounds(175, 80, 80, 23);
 		searchB.setForeground(Color.black);
-		searchB.setBackground(Color.blue);
+		searchB.setBackground(Color.orange);
 		searchB.setFont(new Font("Tahoma",Font.BOLD,11));
 		searchB.setBorderPainted(false);
-		
+	
+	// ADD Button
+
 		addUnits = new JButton("ADD");
 		panel.add(addUnits);
 		addUnits.setBounds(175, 130, 80, 23);	
@@ -86,6 +89,14 @@ public class SetUnitsGUI {
 		addUnits.setFont(new Font("Tahoma", Font.BOLD, 11));
 		addUnits.setBorderPainted(false);
 		addUnits.setEnabled(false);
+// BACK Button
+		backBtn = new JButton("Back");
+		panel.add(backBtn);
+		backBtn.setBounds(103, 190, 74, 30);	
+		backBtn.setForeground(Color.white);
+		backBtn.setBackground(Color.red);
+		backBtn.setFont(new Font("Tahoma", Font.BOLD, 12));
+		backBtn.setBorderPainted(false);
 
 		searchB.addActionListener(e -> {
             String tempid = idField.getText();
@@ -106,6 +117,11 @@ public class SetUnitsGUI {
 			catch (Exception e3) {
 				e3.toString();
 			}
+		});
+
+		backBtn.addActionListener(e->{
+			frame.dispose();
+			AdminGUI ad=new AdminGUI();
 		});
 	}
 }

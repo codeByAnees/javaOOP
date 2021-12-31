@@ -236,6 +236,7 @@ public class EditGUI {
         cancelBtn.setBorderPainted(false);
         cancelBtn.addActionListener(e -> {
             frame.dispose();
+            AdminGUI ad = new AdminGUI();
         });
     }
 }

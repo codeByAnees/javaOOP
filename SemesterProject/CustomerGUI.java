@@ -29,7 +29,7 @@ public class CustomerGUI {
 		
 // LABEL
 		JLabel custLabel = new JLabel("CUSTOMER");
-		custLabel.setBounds(69,20,200,25);
+		custLabel.setBounds(69,40,200,25);
 		custLabel.setForeground(Color.white);
 		custLabel.setFont(new Font("Serif", Font.BOLD, 25));
 		panel.add(custLabel);
@@ -40,7 +40,7 @@ public class CustomerGUI {
 		viewBtn.setBounds(42, 100, 200, 40);
 		viewBtn.setFont(new Font("Arial Black", Font.BOLD, 15));
 		viewBtn.setForeground(Color.white);
-		viewBtn.setBackground(Color.BLUE);
+		viewBtn.setBackground(Color.gray);
 		viewBtn.setBorderPainted(false);
 		panel.add(viewBtn);
 		
@@ -49,7 +49,7 @@ public class CustomerGUI {
 		payBtn.setBounds(42, 180, 200, 40);
 		payBtn.setFont(new Font("Arial Black", Font.BOLD, 15));
 		payBtn.setForeground(Color.white);
-		payBtn.setBackground(Color.green);
+		payBtn.setBackground(Color.orange);
 		payBtn.setBorderPainted(false);
 		panel.add(payBtn);
 		
@@ -61,6 +61,9 @@ public class CustomerGUI {
 		cancelBtn.setBackground(Color.RED);
 		cancelBtn.setBorderPainted(false);
 		panel.add(cancelBtn);
+		cancelBtn.addActionListener(e -> {
+			frame.dispose();
+		});
 
 // Event handling
 		cancelBtn.addActionListener(e -> {
@@ -76,6 +79,7 @@ public class CustomerGUI {
 				view.textArea.append(temp.toString());
 			}
 			else JOptionPane.showMessageDialog(null, "User not found");
+			view.textArea.append("\n*********************\n");
 			ArrayList<Record> list = c.showBillRecord();
 			for (int i = 0; i < list.size(); i++) {
 				String listID = list.get(i).id;
@@ -83,6 +87,10 @@ public class CustomerGUI {
 					view.textArea.append(list.get(i).toString());
 				}
 			}
+		});
+
+		payBtn.addActionListener(e -> {
+			BillPaymentGUI billpay = new BillPaymentGUI();
 		});
 	}
 }

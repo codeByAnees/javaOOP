@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 public class SearchGUI {
 	protected JTextField idField;
 	protected JButton searchBtn;
+	protected JButton backBtn;
 	Admin admin = new Admin();
 	public SearchGUI() {
 	// FRAME
@@ -63,5 +64,19 @@ public class SearchGUI {
 			}
 			else JOptionPane.showMessageDialog(null, "User not found");
 		});
+	
+		// BACK BUTTON
+		backBtn = new JButton("Back");
+		panel.add(backBtn);
+		backBtn.setBounds(90, 170, 90, 25);
+		backBtn.setForeground(Color.WHITE);
+		backBtn.setBackground(Color.RED);
+		backBtn.setFont(new Font("Tahoma",Font.BOLD,15));
+		backBtn.setBorderPainted(false);
+		backBtn.addActionListener(e->{
+			frame.dispose();
+		AdminGUI ad=new AdminGUI();
+	});
+	
 	}
 }

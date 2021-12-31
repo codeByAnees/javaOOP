@@ -2,6 +2,8 @@ package JavaOOP.SemesterProject;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -194,27 +196,34 @@ public class Customer implements Serializable {
         return filing.readBillRecord();
     }
 
-    public void payBill() {
-        //if (validation()) {
-            Scanner input = new Scanner(System.in);
-            Payment p = new Payment();
-            ArrayList<Record> list = filing.readBillRecord();
-            showBillRecord();
-            System.out.print("Enter bill month to pay bill: ");
-            String billMonth = input.nextLine();
-            for (int i = 0; i < list.size(); i++) {
-                String rID = list.get(i).id;
-                String rMonth = list.get(i).month;
-                boolean rPaid = list.get(i).paid;
-                if (rID.equals(ID) && rMonth.equals(billMonth) && (!rPaid)) {
-                    p.PayMethod();
-                    list.get(i).paid = true;
-                }
-            }
-            filing.writeBillRecord(list, false); 
-        //}
-        //else System.out.println("\nInvalid ID or password!\n");
+    public ArrayList<Record> payBill() {
+        return filing.readBillRecord();
     }
+
+    // public void payBill() {
+    //     //if (validation()) {
+    //         Scanner input = new Scanner(System.in);
+    //         Payment p = new Payment();
+    //         ArrayList<Record> list = filing.readBillRecord();
+    //         showBillRecord();
+    //         System.out.print("Enter bill month to pay bill: ");
+    //         String billMonth = input.nextLine();
+    //         for (int i = 0; i < list.size(); i++) {
+    //             String rID = list.get(i).id;
+    //             String rMonth = list.get(i).month;
+    //             boolean rPaid = list.get(i).paid;
+    //             if (rID.equals(ID) && rMonth.equals(billMonth) && (!rPaid)) {
+    //                 p.PayMethod();
+    //                 list.get(i).paid = true;
+    //             }
+    //             if (rID.equals(ID) && rMonth.equals(billMonth) && (rPaid)) {
+    //                 JOptionPane.showMessageDialog(null, "Bill already paid");
+    //             }
+    //         }
+    //         filing.writeBillRecord(list, false); 
+    //     //}
+    //     //else System.out.println("\nInvalid ID or password!\n");
+    // }
 
     public String toString() {
         return ("\nID: " + id + "\nName: " + name + "\nAddress: " + address + "\nCNIC: "  + cnic + "\nAge: " 

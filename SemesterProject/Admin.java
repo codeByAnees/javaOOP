@@ -114,7 +114,7 @@ public class Admin extends LogIn implements Serializable {
                     // String cID = input.next();
                     for (int i = 0; i < list.size(); i++) {
                         String tempID = list.get(i).id;
-                        if (cID.equalsIgnoreCase(tempID)) {
+                        if (cID.equals(tempID)) {
                             // t = 0;
                             // System.out.print("Enter no of units: ");
                             // int unit = input.nextInt();
@@ -130,30 +130,30 @@ public class Admin extends LogIn implements Serializable {
         //} while (opt != 0);
     //}
 
-    public void calBill() {
-        int opt;
-        do {
-            Scanner input = new Scanner(System.in);
-            System.out.print("Enter 1 to calculate bill \nEnter 0 to exit: ");
-            opt = input.nextInt();
-            switch(opt) {
-                case 0:
-                    break;
-                case 1:
+    public void calBill(String cID, String month) {
+        // int opt;
+        // do {
+        //     Scanner input = new Scanner(System.in);
+        //     System.out.print("Enter 1 to calculate bill \nEnter 0 to exit: ");
+        //     opt = input.nextInt();
+        //     switch(opt) {
+        //         case 0:
+        //             break;
+        //         case 1:
                 ArrayList<Customer> list = filing.readCustomerFile();
-                displayCustomers();
-                System.out.print("\nEnter Customer-ID: ");
-                String cID = input.next();
-                int t = -1;
+                // displayCustomers();
+                // System.out.print("\nEnter Customer-ID: ");
+                // String cID = input.next();
+                //int t = -1;
                 for (int i = 0; i < list.size(); i++) {
                     String tempID = list.get(i).id;
-                    if (cID.equalsIgnoreCase(tempID)) {
-                        t = 0;
+                    if (cID.equals(tempID)) {
+                        //t = 0;
                         double Bill = 0;
                         int tempUnit = 0;
                         int tempLoad = 0;
                         String tempCon = list.get(i).connectionType;
-                        if (tempCon.equalsIgnoreCase("Residential")) {
+                        if (tempCon.equals("Residential")) {
                             tempUnit = list.get(i).noOfUnits;
                             tempLoad = list.get(i).load;
                             Bill = Residential(tempUnit, tempLoad);
@@ -163,20 +163,21 @@ public class Admin extends LogIn implements Serializable {
                             tempLoad = list.get(i).load;
                             Bill = Commercial(tempUnit, tempLoad);
                         }
-                        System.out.print("\nEnter bill month: ");
-                        String month = input.next();
-                        Record r = new Record(list.get(i).id, month, tempUnit, Bill);
+                        // System.out.print("\nEnter bill month: ");
+                        // String month = input.next();
+                        Record r = new Record(cID, month, tempUnit, Bill);
                         ArrayList<Record> rlist = new ArrayList<>();
                         rlist.add(r);
                         filing.writeBillRecord(rlist, true);
                     }
+                    else JOptionPane.showMessageDialog(null, "Error occured");
                 }
-                if (t != 0) {
-                    System.out.println("User not found");
-                }
-                break;
-            }
-        } while (opt != 0);
+        //         if (t != 0) {
+        //             System.out.println("User not found");
+        //         }
+        //         break;
+        //     }
+        // } while (opt != 0);
     }
 
     // 1) Residential

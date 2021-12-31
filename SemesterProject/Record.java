@@ -6,14 +6,12 @@ public class Record implements Serializable {
     protected String month;
     protected int units;
     protected double bill;
-    protected boolean paid;
 
     public Record() {
         id = null;
         month = null;
         units = 0;
         bill = 0.0;
-        paid = false;
     }
 
     public Record(String id, String month, int units, double bill) {
@@ -21,7 +19,6 @@ public class Record implements Serializable {
         this.month = month;
         this.units = units;
         this.bill = bill;
-        this.paid = false;
     }
 
     public String toString() {

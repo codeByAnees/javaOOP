@@ -11,12 +11,13 @@ import javax.swing.JTextField;
 public class DeleteGUI {
     protected JTextField idText;
     private JButton delBtn;
+    private JButton backBtn;
     Admin admin = new Admin();
     
     public DeleteGUI() {
 // FRAME
         JFrame frame = new JFrame();
-        frame.setSize(300, 250);
+        frame.setSize(300, 280);
         frame.setLocation(530, 150);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -60,5 +61,20 @@ public class DeleteGUI {
             String id = idText.getText();
             admin.delCustomer(id);
         });
+
+// BACK Button
+        backBtn = new JButton("Back");
+        panel.add(backBtn);
+        backBtn.setBounds(90, 180, 90, 25);
+        backBtn.setForeground(Color.WHITE);
+        backBtn.setBackground(Color.black);
+        backBtn.setFont(new Font("Tahoma",Font.BOLD,15));
+        backBtn.setBorderPainted(false);
+
+        backBtn.addActionListener(e->{
+                frame.dispose();
+                AdminGUI a =new AdminGUI();
+        });
+
     }
 }

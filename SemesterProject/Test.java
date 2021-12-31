@@ -43,7 +43,7 @@ public class Test {
                                 //admin.setNoOfUnits();
                                 break;
                             case 7:
-                                admin.calBill();
+                                //admin.calBill();
                                 break;
                         }
                     } while (opt != 0);

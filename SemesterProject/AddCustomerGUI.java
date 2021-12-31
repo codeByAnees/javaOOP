@@ -188,11 +188,12 @@ public class AddCustomerGUI {
 			c.setAddress(adrField.getText());
 			c.setCNIC(cnicField.getText());
 			c.setAge(ageField.getText());
+			c.setMeterNo();
 			admin.addNewUser(c);
 		});
 		
 		// Cancel button
-		cancelBtn = new JButton("Cancel");
+		cancelBtn = new JButton("Back");
 		panel.add(cancelBtn);
 		cancelBtn.setBounds(270, 400, 90, 25);
 		cancelBtn.setFont(new Font("Serif", Font.BOLD,18));
@@ -201,6 +202,7 @@ public class AddCustomerGUI {
 		cancelBtn.setBorderPainted(false);
 		cancelBtn.addActionListener(e -> {
 			frame.dispose();
+			AdminGUI adm = new AdminGUI();
 		});	
 	}
 }

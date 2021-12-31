@@ -10,6 +10,8 @@ import java.io.ObjectInputStream;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 class MyObjectOutputStream extends ObjectOutputStream {
     public MyObjectOutputStream(OutputStream out) throws IOException {
         super(out);
@@ -124,8 +126,9 @@ public class Filing implements Serializable {
             System.out.println("Done");
         }
         catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No record found");
             System.out.println("Exception caught");
-            System.out.print(e.toString());
+            //System.out.print(e.toString());
         }
         return list;
     }

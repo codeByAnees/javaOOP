@@ -32,7 +32,7 @@ public class AdminLogInGUI {
 		panel.setBackground(Color.WHITE);
 		
 // Creating User Label 1: 
-		JLabel userlabel = new JLabel("ID");
+		JLabel userlabel = new JLabel("Username");
 		userlabel.setBounds(10,20,80,25);
 		userlabel.setFont(new Font("Serif", Font.BOLD, 15));
 		panel.add(userlabel);
