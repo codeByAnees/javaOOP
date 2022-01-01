@@ -225,6 +225,7 @@ public class EditGUI {
 			c.setAge(ageField.getText());
             String tempID = idField.getText();
 			admin.editCustomerRec(c, tempID);
+            JOptionPane.showMessageDialog(null, "Done");
 		});
 
         cancelBtn = new JButton("Cancel");

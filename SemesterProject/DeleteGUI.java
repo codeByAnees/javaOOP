@@ -5,6 +5,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -60,6 +61,7 @@ public class DeleteGUI {
         delBtn.addActionListener(e-> {
             String id = idText.getText();
             admin.delCustomer(id);
+            JOptionPane.showMessageDialog(null, "Done");
         });
 
 // BACK Button

@@ -66,13 +66,13 @@ public class CustomerLogInGUI {
 		logInBtn.setBorderPainted(false);
 		panel.add(logInBtn);
 
-		Customer cust = new Customer();
 		logInBtn.addActionListener(e -> {
+			Customer cust = new Customer();
 			String ID = idField.getText();
 			String pass = new String(passField.getPassword());
 			if (cust.validation(ID, pass)) {
+				logID = idField.getText();
 				CustomerGUI c = new CustomerGUI();
-				logID = ID;
 				frame.dispose();
 			}
 			else JOptionPane.showMessageDialog(null, "Invalid password or id");

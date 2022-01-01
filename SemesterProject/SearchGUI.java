@@ -75,7 +75,7 @@ public class SearchGUI {
 		backBtn.setBorderPainted(false);
 		backBtn.addActionListener(e->{
 			frame.dispose();
-		AdminGUI ad=new AdminGUI();
+			AdminGUI ad=new AdminGUI();
 	});
 	
 	}

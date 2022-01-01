@@ -144,11 +144,9 @@ public class Admin extends LogIn implements Serializable {
                 // displayCustomers();
                 // System.out.print("\nEnter Customer-ID: ");
                 // String cID = input.next();
-                //int t = -1;
                 for (int i = 0; i < list.size(); i++) {
                     String tempID = list.get(i).id;
                     if (cID.equals(tempID)) {
-                        //t = 0;
                         double Bill = 0;
                         int tempUnit = 0;
                         int tempLoad = 0;
@@ -170,11 +168,7 @@ public class Admin extends LogIn implements Serializable {
                         rlist.add(r);
                         filing.writeBillRecord(rlist, true);
                     }
-                    else JOptionPane.showMessageDialog(null, "Error occured");
                 }
-        //         if (t != 0) {
-        //             System.out.println("User not found");
-        //         }
         //         break;
         //     }
         // } while (opt != 0);

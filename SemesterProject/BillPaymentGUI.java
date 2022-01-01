@@ -151,13 +151,13 @@ public class BillPaymentGUI {
 					r2.setEnabled(true);
 					paybutton.setEnabled(true);
 					index = 0;
+					filing.writeBillRecord(list, false);
 					break;
 				}
 			}
 			if (index == -1) {
 				JOptionPane.showMessageDialog(null, "Bill not found");
 			}
-			filing.writeBillRecord(list, false);
 		});
 	
 		r1.addActionListener(e -> {
@@ -170,9 +170,11 @@ public class BillPaymentGUI {
 
 		paybutton.addActionListener(e -> {
 			if (r1.isSelected()) {
+				r2.setSelected(false);;
 				JOptionPane.showMessageDialog(null, "Thank you!");
 			}
 			if (r2.isSelected()) {
+				r1.setSelected(false);
 				CreditCardGUI cc = new CreditCardGUI();
 			}
 		});

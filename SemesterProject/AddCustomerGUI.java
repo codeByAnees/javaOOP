@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -190,6 +191,7 @@ public class AddCustomerGUI {
 			c.setAge(ageField.getText());
 			c.setMeterNo();
 			admin.addNewUser(c);
+			JOptionPane.showMessageDialog(null, "Done");
 		});
 		
 		// Cancel button

@@ -114,6 +114,7 @@ public class CalBillGUI {
 		backbutton.setBorderPainted(false);
 		backbutton.addActionListener(e -> {
 			frame.dispose();
+			AdminGUI ad = new AdminGUI();
 		});
 		
 		
@@ -135,6 +136,7 @@ public class CalBillGUI {
                 selectMonth.setEnabled(true);
                 l2.setEnabled(true);
 				calbutton.setEnabled(true);
+				JOptionPane.showMessageDialog(null, "User found");
             }
             else JOptionPane.showMessageDialog(null, "User not found");
         });
@@ -143,7 +145,6 @@ public class CalBillGUI {
 			String month = (String)selectMonth.getSelectedItem();
 			String id = idText.getText();
 			admin.calBill(id, month);
-			selectMonth.getSelectedItem();
 		});
 
 		calbutton.addActionListener(e -> {

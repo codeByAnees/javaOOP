@@ -6,6 +6,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -104,7 +105,7 @@ public class SetUnitsGUI {
             if (cust != null) {
                 unitsField.setEditable(true);
 				addUnits.setEnabled(true);
-                
+				JOptionPane.showMessageDialog(null, "User found");
             } 
         });
 
@@ -113,6 +114,7 @@ public class SetUnitsGUI {
 				String temp = unitsField.getText();
 				int units = Integer.parseInt(temp);
 				admin.setNoOfUnits(units, idField.getText());
+				JOptionPane.showMessageDialog(null, "Added successfully");
 			}
 			catch (Exception e3) {
 				e3.toString();
@@ -121,7 +123,7 @@ public class SetUnitsGUI {
 
 		backBtn.addActionListener(e->{
 			frame.dispose();
-			AdminGUI ad=new AdminGUI();
+			AdminGUI ad = new AdminGUI();
 		});
 	}
 }

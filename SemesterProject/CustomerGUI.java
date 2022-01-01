@@ -71,16 +71,18 @@ public class CustomerGUI {
 		});
 
 		viewBtn.addActionListener(e -> {
-			String id = CustomerLogInGUI.logID;
 			Customer c = new Customer();
+			String id = CustomerLogInGUI.logID;
 			Customer temp = c.customerProfile(id);
 			ViewRecordGUI view = new ViewRecordGUI();
-			if (temp != null) {
-				view.textArea.append(temp.toString());
+			if (temp == null) {
+				JOptionPane.showMessageDialog(null, "User not found");
 			}
-			else JOptionPane.showMessageDialog(null, "User not found");
+			else {
+				view.textArea.setText(temp.toString());
+			}
 			view.textArea.append("\n*********************\n");
-			ArrayList<Record> list = c.showBillRecord();
+			ArrayList<Record> list = c.showBillRecord(); 
 			for (int i = 0; i < list.size(); i++) {
 				String listID = list.get(i).id;
 				if (listID.equals(id)) {

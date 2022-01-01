@@ -85,7 +85,6 @@ public class MainGUI {
 		background.add(exitBtn);
 		exitBtn.addActionListener(e -> {
 			frame.dispose();
-			
 		});
 
 		adminBtn.addActionListener(e -> {

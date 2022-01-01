@@ -23,8 +23,7 @@ public class Customer implements Serializable {
     protected String connectionType;
     protected int noOfUnits;
 
-    String ID;
-    String Password;
+    
 
     Filing filing = new Filing();
 
@@ -107,35 +106,36 @@ public class Customer implements Serializable {
     }
 
     
-    public void readData() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Set ID: ");
-        id = input.nextLine();
-        System.out.print("Set password: ");
-        password = input.nextLine();
-        System.out.print("Enter name: ");
-        name = input.nextLine();
-        System.out.print("Enter address: ");
-        address = input.nextLine();
-        System.out.print("Enter cnic: ");
-        cnic = input.nextLine();
-        System.out.print("Enter age: ");
-        age = input.nextLine();
-        meterNo = meterNo();
-        System.out.print("Choose a connection \nEnter 1 for residential \nEnter 2 for commercial: ");
-        int type = input.nextInt();
-        switch(type) {
-            case 1:
-                connectionType = "Residential";
-                break;
-            case 2:
-                connectionType = "Commercial";
-                break;
-        }
-        System.out.print("Enter load: ");
-        load = input.nextInt();
-    }
+    // public void readData() {
+    //     Scanner input = new Scanner(System.in);
+    //     System.out.print("Set ID: ");
+    //     id = input.nextLine();
+    //     System.out.print("Set password: ");
+    //     password = input.nextLine();
+    //     System.out.print("Enter name: ");
+    //     name = input.nextLine();
+    //     System.out.print("Enter address: ");
+    //     address = input.nextLine();
+    //     System.out.print("Enter cnic: ");
+    //     cnic = input.nextLine();
+    //     System.out.print("Enter age: ");
+    //     age = input.nextLine();
+    //     meterNo = meterNo();
+    //     System.out.print("Choose a connection \nEnter 1 for residential \nEnter 2 for commercial: ");
+    //     int type = input.nextInt();
+    //     switch(type) {
+    //         case 1:
+    //             connectionType = "Residential";
+    //             break;
+    //         case 2:
+    //             connectionType = "Commercial";
+    //             break;
+    //     }
+    //     System.out.print("Enter load: ");
+    //     load = input.nextInt();
+    // }
 
+    public String UserID = "";
     public boolean validation(String ID, String Password) {
         boolean valid = false;
         // Scanner input = new Scanner(System.in);
@@ -148,6 +148,7 @@ public class Customer implements Serializable {
             String tempID = list.get(i).id;
             String tempPass = list.get(i).password;
             if (ID.equals(tempID) && Password.equals(tempPass)) {
+                UserID = tempID;
                 valid = true;
             }
         }
@@ -166,6 +167,7 @@ public class Customer implements Serializable {
                     c = (Customer)in.readObject();
                     if (c.id.equals(ID)) {
                         check = true;
+                        break;
                         //JOptionPane.showMessageDialog(null, c.toString());
                         //System.out.println(c.toString());
                     }
@@ -178,7 +180,7 @@ public class Customer implements Serializable {
                 System.out.println("\nException caught");
                 System.out.print(e.toString());
             }
-            if (check == true) return c;
+            if (check) return c;
             else return null;
             //showBillRecord();
         //}
