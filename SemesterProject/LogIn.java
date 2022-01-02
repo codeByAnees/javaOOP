@@ -1,5 +1,7 @@
 package JavaOOP.SemesterProject;
 
 public abstract class LogIn {
-    public abstract boolean validation();
+    static String id;
+    static String password;
+    public abstract boolean validation(String id, String password);
 }

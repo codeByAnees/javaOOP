@@ -143,6 +143,7 @@ public class BillPaymentGUI {
 			ArrayList<Record> list = c.payBill();
 			String ID = CustomerLogInGUI.logID;
 			int index = -1;
+			String temp = "";
 			for (int i = 0; i < list.size(); i++) {
 				String rID = list.get(i).id;
 				String rMonth = list.get(i).month;
@@ -150,8 +151,8 @@ public class BillPaymentGUI {
 					r1.setEnabled(true);
 					r2.setEnabled(true);
 					paybutton.setEnabled(true);
+					temp = list.get(i).toString();
 					index = 0;
-					filing.writeBillRecord(list, false);
 					break;
 				}
 			}
@@ -170,11 +171,11 @@ public class BillPaymentGUI {
 
 		paybutton.addActionListener(e -> {
 			if (r1.isSelected()) {
-				r2.setSelected(false);;
+				r2.setEnabled(false);
 				JOptionPane.showMessageDialog(null, "Thank you!");
 			}
 			if (r2.isSelected()) {
-				r1.setSelected(false);
+				r1.setEnabled(false);
 				CreditCardGUI cc = new CreditCardGUI();
 			}
 		});

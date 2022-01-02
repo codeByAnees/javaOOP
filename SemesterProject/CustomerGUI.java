@@ -75,20 +75,24 @@ public class CustomerGUI {
 			String id = CustomerLogInGUI.logID;
 			Customer temp = c.customerProfile(id);
 			ViewRecordGUI view = new ViewRecordGUI();
+			String userRecord = "";
 			if (temp == null) {
 				JOptionPane.showMessageDialog(null, "User not found");
 			}
 			else {
-				view.textArea.setText(temp.toString());
+				userRecord = temp.toString();
 			}
 			view.textArea.append("\n*********************\n");
+			userRecord += "\n\tBill Record";
 			ArrayList<Record> list = c.showBillRecord(); 
 			for (int i = 0; i < list.size(); i++) {
 				String listID = list.get(i).id;
-				if (listID.equals(id)) {
-					view.textArea.append(list.get(i).toString());
+				if (listID.equals(id) && i % 2 == 0) {
+					userRecord += list.get(i).toString();
 				}
 			}
+			view.textArea.append(userRecord);
+			JOptionPane.showMessageDialog(null, userRecord);
 		});
 
 		payBtn.addActionListener(e -> {

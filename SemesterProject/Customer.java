@@ -1,9 +1,6 @@
 package JavaOOP.SemesterProject;
 
 import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,19 +8,15 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
-public class Customer implements Serializable {
-    protected String id;
-    protected String password;
-    protected String name;
-    protected String address;
-    protected String cnic;
-    protected String age;
+public class Customer extends LogIn implements Serializable {
+    private String name;
+    private String address;
+    private String cnic;
+    private String age;
     protected int load;
-    protected String meterNo;
+    private String meterNo;
     protected String connectionType;
     protected int noOfUnits;
-
-    
 
     Filing filing = new Filing();
 
@@ -32,17 +25,19 @@ public class Customer implements Serializable {
         address = null;
         cnic = null;
         age = null;
+        load = 0;
         meterNo = null;
         connectionType = null;
         noOfUnits = 0;
     }
 
     public Customer(String name, String add, String cnic, 
-    String age, String meterNo, String connection, int noOfUnits) {
+    String age, int load, String meterNo, String connection, int noOfUnits) {
         this.name = name;
         this.address = add;
         this.cnic = cnic;
         this.age = age;
+        this.load = load;
         this.meterNo = meterNo;
         this.connectionType = connection;
         this.noOfUnits = noOfUnits;
@@ -135,7 +130,6 @@ public class Customer implements Serializable {
     //     load = input.nextInt();
     // }
 
-    public String UserID = "";
     public boolean validation(String ID, String Password) {
         boolean valid = false;
         // Scanner input = new Scanner(System.in);
@@ -148,7 +142,6 @@ public class Customer implements Serializable {
             String tempID = list.get(i).id;
             String tempPass = list.get(i).password;
             if (ID.equals(tempID) && Password.equals(tempPass)) {
-                UserID = tempID;
                 valid = true;
             }
         }
@@ -228,9 +221,9 @@ public class Customer implements Serializable {
     // }
 
     public String toString() {
-        return ("\nID: " + id + "\nName: " + name + "\nAddress: " + address + "\nCNIC: "  + cnic + "\nAge: " 
-        + age + "\nLoad: " + load + "\nMeter No: " + meterNo +
-        "\nConnection type: " + connectionType + "\nUnits consumed: " + noOfUnits);
+        return ("\nUser ID: " + id + "\nUser name: " + name + "\nUser age: " + age + "\nUser address: " + address + "\nUser CNIC: " + cnic
+        + "\nElectricity load: " + load + "\nMeter Num: " + meterNo +
+        "\nConnection type: " + connectionType + "\nConsumed units: " + noOfUnits);
     }
 
     public String meterNo() {

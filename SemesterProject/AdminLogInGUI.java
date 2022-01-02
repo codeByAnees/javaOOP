@@ -18,7 +18,7 @@ public class AdminLogInGUI {
 	private JButton logInBtn;
 
 	public AdminLogInGUI() {
-		Customer cust = new Customer();
+		Admin adm = new Admin();
 // Creating window:
 		frame = new JFrame();
 		frame.setSize(300, 200);
@@ -66,11 +66,10 @@ public class AdminLogInGUI {
 		logInBtn.addActionListener(e -> {
 			String ID = idField.getText();
 			String pass = new String(passField.getPassword());
-			if (ID.equals("admin") && pass.equals("12345")) {
+			if (adm.validation(ID, pass)) {
 				AdminGUI admin = new AdminGUI();
 				frame.dispose();
 			}
-			else JOptionPane.showMessageDialog(null, "Invalid password or id");
 		});
 	}
 }

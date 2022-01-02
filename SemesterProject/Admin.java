@@ -5,22 +5,19 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 public class Admin extends LogIn implements Serializable {
-    protected String id;
-    protected String password;
     Filing filing = new Filing();
 
-    public void readData() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("\nEnter ID: ");
-        id = input.nextLine();
-        System.out.print("Enter password: ");
-        password = input.nextLine();
-    }
+    // public void readData() {
+    //     Scanner input = new Scanner(System.in);
+    //     System.out.print("\nEnter ID: ");
+    //     id = input.nextLine();
+    //     System.out.print("Enter password: ");
+    //     password = input.nextLine();
+    // }
 
-    public boolean validation() {
-        String adminID = "0";
-        String adminPass = "1234";
-        readData();
+    public boolean validation(String id, String password) {
+        String adminID = "admin";
+        String adminPass = "12345";
         if (adminID.equals(id) && adminPass.equals(password)) {
             return true;
         }
