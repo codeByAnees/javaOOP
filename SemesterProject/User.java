@@ -2,8 +2,6 @@ package JavaOOP.SemesterProject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
-
 public class User extends LogIn implements Serializable {
     String id;
     String password;
@@ -27,29 +25,8 @@ public class User extends LogIn implements Serializable {
         this.age = age;
     }
 
-    // public void readData() {
-    //     Scanner input = new Scanner(System.in);
-    //     System.out.print("Set ID: ");
-    //     id = input.nextLine();
-    //     System.out.print("Set password: ");
-    //     password = input.nextLine();
-    //     System.out.print("Enter name: ");
-    //     name = input.nextLine();
-    //     System.out.print("Enter address: ");
-    //     address = input.nextLine();
-    //     System.out.print("Enter cnic: ");
-    //     cnic = input.nextLine();
-    //     System.out.print("Enter age: ");
-    //     age = input.nextDouble();
-    // }
-
     public boolean validation(String ID, String Password, String type) {
         boolean valid = false;
-        // Scanner input = new Scanner(System.in);
-        // System.out.print("\nEnter ID: ");
-        // ID = input.nextLine();
-        // System.out.print("Enter password: ");
-        // Password = input.nextLine();
         if (type.equals("c")) {
             ArrayList<Customer> list = filing.readCustomerFile();
             for (int i = 0; i < list.size(); i++) {

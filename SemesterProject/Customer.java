@@ -1,11 +1,9 @@
 package JavaOOP.SemesterProject;
 
-import java.util.Scanner;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 public class Customer extends User {
@@ -55,125 +53,39 @@ public class Customer extends User {
         return noOfUnits;
     }
 
-    
-    // public void readData() {
-    //     Scanner input = new Scanner(System.in);
-    //     System.out.print("Set ID: ");
-    //     id = input.nextLine();
-    //     System.out.print("Set password: ");
-    //     password = input.nextLine();
-    //     System.out.print("Enter name: ");
-    //     name = input.nextLine();
-    //     System.out.print("Enter address: ");
-    //     address = input.nextLine();
-    //     System.out.print("Enter cnic: ");
-    //     cnic = input.nextLine();
-    //     System.out.print("Enter age: ");
-    //     age = input.nextLine();
-    //     meterNo = meterNo();
-    //     System.out.print("Choose a connection \nEnter 1 for residential \nEnter 2 for commercial: ");
-    //     int type = input.nextInt();
-    //     switch(type) {
-    //         case 1:
-    //             connectionType = "Residential";
-    //             break;
-    //         case 2:
-    //             connectionType = "Commercial";
-    //             break;
-    //     }
-    //     System.out.print("Enter load: ");
-    //     load = input.nextInt();
-    // }
-
-    // public boolean validation(String ID, String Password) {
-    //     boolean valid = false;
-    //     // Scanner input = new Scanner(System.in);
-    //     // System.out.print("\nEnter ID: ");
-    //     // ID = input.nextLine();
-    //     // System.out.print("Enter password: ");
-    //     // Password = input.nextLine();
-    //     ArrayList<Customer> list = filing.readCustomerFile();
-    //     for (int i = 0; i < list.size(); i++) {
-    //         String tempID = list.get(i).id;
-    //         String tempPass = list.get(i).password;
-    //         if (ID.equals(tempID) && Password.equals(tempPass)) {
-    //             valid = true;
-    //         }
-    //     }
-    //     return valid;
-    // }
-
     public Customer customerProfile(String ID) {
-        //if (validation()) {
-            String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
-            Customer c = new Customer();
-            boolean check = false;
-            try {
-                File file = new File(path);
-                ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-                while (true) {
-                    c = (Customer)in.readObject();
-                    if (c.id.equals(ID)) {
-                        check = true;
-                        break;
-                        //JOptionPane.showMessageDialog(null, c.toString());
-                        //System.out.println(c.toString());
-                    }
+        String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Customer.dat";
+        Customer c = new Customer();
+        boolean check = false;
+        try {
+            File file = new File(path);
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            while (true) {
+                c = (Customer)in.readObject();
+                if (c.id.equals(ID)) {
+                    check = true;
+                    break;
                 }
             }
-            catch (EOFException e) {
-                System.out.println("\nFile read!\n");
-            }
-            catch (Exception e) {
-                System.out.println("\nException caught");
-                System.out.print(e.toString());
-            }
-            if (check) return c;
-            else return null;
-            //showBillRecord();
-        //}
-        //else System.out.println("\nInvalid ID or password!\n");
+        }
+        catch (EOFException e) {
+            System.out.println("\nFile read!\n");
+        }
+        catch (Exception e) {
+            System.out.println("\nException caught");
+            System.out.print(e.toString());
+        }
+        if (check) return c;
+        else return null;
     }
 
     public ArrayList<Record> showBillRecord() {
-        //ArrayList<Record> list = filing.readBillRecord();
-        // for (int i = 0; i < list.size(); i++) {
-        //     String listID = list.get(i).id;
-        //     if (listID.equals(ID)) {
-        //         //System.out.println(list.get(i).toString());
-        //     }
-        // }
         return filing.readBillRecord();
     }
 
     public ArrayList<Record> payBill() {
         return filing.readBillRecord();
     }
-
-    // public void payBill() {
-    //     //if (validation()) {
-    //         Scanner input = new Scanner(System.in);
-    //         Payment p = new Payment();
-    //         ArrayList<Record> list = filing.readBillRecord();
-    //         showBillRecord();
-    //         System.out.print("Enter bill month to pay bill: ");
-    //         String billMonth = input.nextLine();
-    //         for (int i = 0; i < list.size(); i++) {
-    //             String rID = list.get(i).id;
-    //             String rMonth = list.get(i).month;
-    //             boolean rPaid = list.get(i).paid;
-    //             if (rID.equals(ID) && rMonth.equals(billMonth) && (!rPaid)) {
-    //                 p.PayMethod();
-    //                 list.get(i).paid = true;
-    //             }
-    //             if (rID.equals(ID) && rMonth.equals(billMonth) && (rPaid)) {
-    //                 JOptionPane.showMessageDialog(null, "Bill already paid");
-    //             }
-    //         }
-    //         filing.writeBillRecord(list, false); 
-    //     //}
-    //     //else System.out.println("\nInvalid ID or password!\n");
-    // }
 
     public String toString() {
         return (super.toString() + "\nElectricity load: " + load + "\nMeter Num: " + meterNo +

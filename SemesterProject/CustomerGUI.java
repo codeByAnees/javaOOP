@@ -13,6 +13,7 @@ public class CustomerGUI {
 	private JButton viewBtn;
 	private JButton payBtn;
 	private JButton cancelBtn;
+	
 	public CustomerGUI() {
 // FRAME
 		JFrame frame = new JFrame();

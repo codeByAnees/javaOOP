@@ -170,12 +170,10 @@ public class AdminGUI {
 
         addUnitsBtn.addActionListener(e -> {
             SetUnitsGUI units = new SetUnitsGUI();
-            frame.dispose();
         });
 
         calBillBtn.addActionListener(e -> {
             CalBillGUI calBill = new CalBillGUI(); 
-            frame.dispose();
         });
 
         addEmp.addActionListener(e -> {

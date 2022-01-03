@@ -2,28 +2,6 @@ package JavaOOP.SemesterProject;
 
 import java.util.Scanner;
 public class Payment {
-
-    // public void PayMethod() {
-    //     Scanner input = new Scanner(System.in);
-    //     System.out.println("How do you want to pay the bill?\n1) Online Payment\n2) Cash ");
-    //     int choice = input.nextInt();
-    //     if (choice == 1) {
-    //         System.out.print("Enter your Credit Card Number: ");
-    //         String CreditCard = input.next();
-    //         System.out.print(CreditCard);
-	// 	    System.out.print(isCCValid(CreditCard)? " is valid." : " is invalid. Try Again!");
-    //         System.out.println();
-    //         if (!isCCValid(CreditCard)) {
-    //             PayMethod();
-    //         }
-    //         else {
-    //             System.out.print("Payment Successful. Thank you!");
-    //         }     
-    //     }
-    //     else if (choice == 2) {
-    //         System.out.print("Thank you for visiting!");
-    //     }
-    // }
 	public boolean isCCValid(String number) {
 		boolean valid = false;
 		int sum = sumOfDoubleEvenPlace(number) + sumOfOddPlace(number);

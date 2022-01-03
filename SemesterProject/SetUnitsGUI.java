@@ -9,9 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import JavaOOP.Practice.Emp;
-
 public class SetUnitsGUI {
 
 	Admin admin = new Admin();
