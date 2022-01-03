@@ -8,13 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
-public class Customer extends LogIn implements Serializable {
-    String id;
-    String password;
-    private String name;
-    private String address;
-    private String cnic;
-    private String age;
+public class Customer extends User {
     protected int load;
     private String meterNo;
     protected String connectionType;
@@ -22,10 +16,7 @@ public class Customer extends LogIn implements Serializable {
 
     Filing filing = new Filing();
     public Customer() {
-        name = null;
-        address = null;
-        cnic = null;
-        age = null;
+        super();
         load = 0;
         meterNo = null;
         connectionType = null;
@@ -34,34 +25,13 @@ public class Customer extends LogIn implements Serializable {
 
     public Customer(String name, String add, String cnic, 
     String age, int load, String meterNo, String connection, int noOfUnits) {
-        this.name = name;
-        this.address = add;
-        this.cnic = cnic;
-        this.age = age;
+        super(name, add, cnic, age);
         this.load = load;
         this.meterNo = meterNo;
         this.connectionType = connection;
         this.noOfUnits = noOfUnits;
     }
 
-    public void setID(String id) {
-        this.id = id;
-    }
-    public void setPassword(String p) {
-        this.password = p;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    public void setCNIC(String cnic) {
-        this.cnic = cnic;
-    }
-    public void setAge(String age) {
-        this.age = age;
-    }
     public void setMeterNo() {
         this.meterNo = meterNo();
     }
@@ -75,22 +45,6 @@ public class Customer extends LogIn implements Serializable {
         this.noOfUnits = units;
     }
 
-
-    public String getID() {
-        return id;
-    }
-    public String getName() {
-        return name;
-    }
-    public String getAddress() {
-        return address;
-    }
-    public String getCNIC() {
-        return cnic;
-    }
-    public String getAge() {
-        return age;
-    }
     public String getMeterNO() {
         return meterNo;
     }
@@ -131,23 +85,23 @@ public class Customer extends LogIn implements Serializable {
     //     load = input.nextInt();
     // }
 
-    public boolean validation(String ID, String Password) {
-        boolean valid = false;
-        // Scanner input = new Scanner(System.in);
-        // System.out.print("\nEnter ID: ");
-        // ID = input.nextLine();
-        // System.out.print("Enter password: ");
-        // Password = input.nextLine();
-        ArrayList<Customer> list = filing.readCustomerFile();
-        for (int i = 0; i < list.size(); i++) {
-            String tempID = list.get(i).id;
-            String tempPass = list.get(i).password;
-            if (ID.equals(tempID) && Password.equals(tempPass)) {
-                valid = true;
-            }
-        }
-        return valid;
-    }
+    // public boolean validation(String ID, String Password) {
+    //     boolean valid = false;
+    //     // Scanner input = new Scanner(System.in);
+    //     // System.out.print("\nEnter ID: ");
+    //     // ID = input.nextLine();
+    //     // System.out.print("Enter password: ");
+    //     // Password = input.nextLine();
+    //     ArrayList<Customer> list = filing.readCustomerFile();
+    //     for (int i = 0; i < list.size(); i++) {
+    //         String tempID = list.get(i).id;
+    //         String tempPass = list.get(i).password;
+    //         if (ID.equals(tempID) && Password.equals(tempPass)) {
+    //             valid = true;
+    //         }
+    //     }
+    //     return valid;
+    // }
 
     public Customer customerProfile(String ID) {
         //if (validation()) {
@@ -222,8 +176,7 @@ public class Customer extends LogIn implements Serializable {
     // }
 
     public String toString() {
-        return ("\nUser ID: " + id + "\nUser name: " + name + "\nUser age: " + age + "\nUser address: " + address + "\nUser CNIC: " + cnic
-        + "\nElectricity load: " + load + "\nMeter Num: " + meterNo +
+        return (super.toString() + "\nElectricity load: " + load + "\nMeter Num: " + meterNo +
         "\nConnection type: " + connectionType + "\nConsumed units: " + noOfUnits);
     }
 

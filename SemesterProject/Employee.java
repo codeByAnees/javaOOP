@@ -1,95 +1,87 @@
 package JavaOOP.SemesterProject;
-import java.io.Serializable;
+
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-public class Admin extends LogIn implements Serializable {
+public class Employee extends User {
+    private String jobTitle;
+    private String salary;
+
     Filing filing = new Filing();
 
+    public Employee() {
+        super();
+        jobTitle = null;
+        salary = null;
+    }
+
+    public Employee(String name, String add, String cnic, 
+    String age, String jobTitle, String salary) {
+        super(name, add, cnic, age);
+        this.jobTitle = jobTitle;
+        this.salary = salary;
+    }
+
     // public void readData() {
+    //     super.readData();
     //     Scanner input = new Scanner(System.in);
-    //     System.out.print("\nEnter ID: ");
-    //     id = input.nextLine();
-    //     System.out.print("Enter password: ");
-    //     password = input.nextLine();
+    //     System.out.print("Enter job title: ");
+    //     jobTitle = input.nextLine();
     // }
 
-    public boolean validation(String id, String password, String type) {
-        String adminID = "admin";
-        String adminPass = "12345";
-        if (adminID.equals(id) && adminPass.equals(password)) {
-            return true;
-        }
-        else return false;
-    }
+    // public boolean validation() {
+    //     boolean valid = false;
+    //     Scanner input = new Scanner(System.in);
+    //     System.out.print("\nEnter ID: ");
+    //     String ID = input.nextLine();
+    //     System.out.print("Enter password: ");
+    //     String Password = input.nextLine();
+    //     ArrayList<Employee> list = filing.readEmpFile();
+    //     for (int i = 0; i < list.size(); i++) {
+    //         String tempID = list.get(i).id;
+    //         String tempPass = list.get(i).password;
+    //         if (ID.equals(tempID) && Password.equals(tempPass)) {
+    //             valid = true;
+    //         }
+    //     }
+    //     return valid;
+    //}
 
-    public Customer searchCustomer(String uID) {
-        ArrayList<Customer> list = filing.readCustomerFile();
-        int index = -1;
-        for (int i = 0; i < list.size(); i++) {
-            String temp = list.get(i).id;
-            if (temp.equals(uID)) {
-                index = i;
+    public Employee EmpProfile(String ID) {
+        //if (validation()) {
+            String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Employee.dat";
+            Employee c = new Employee();
+            boolean check = false;
+            try {
+                File file = new File(path);
+                ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+                while (true) {
+                    c = (Employee)in.readObject();
+                    if (c.id.equals(ID)) {
+                        check = true;
+                        break;
+                        //JOptionPane.showMessageDialog(null, c.toString());
+                        //System.out.println(c.toString());
+                    }
+                }
             }
-        }
-        if (index == -1) return null;
-        else return list.get(index);
-    }
-
-    public void editCustomerRec(Customer c, String uID) {
-        //Scanner input = new Scanner(System.in);
-        ArrayList<Customer> list = filing.readCustomerFile();
-        // System.out.print("Enter customer-ID to edit: ");
-        // String uID = input.next();
-        int index = -1;
-        for (int i = 0; i < list.size(); i++) {
-            String temp = list.get(i).id;
-            if (temp.equals(uID)) {
-                index = i;
+            catch (EOFException e) {
+                System.out.println("\nFile read!\n");
             }
-        }
-        //if (index != -1) {
-            // Customer c = new Customer();
-            // c.readData();
-            list.set(index, c);
-            filing.writeFileCustomer(list);
-        // }
-        // else System.out.println("Person record not found");
-    }
-    
-
-
-    public void addNewUser(Customer c1) {
-        // Customer c1 = new Customer();
-        // c1.readData();
-        filing.writeToFile(c1);
-    }
-
-    public void displayCustomers() {
-        ArrayList<Customer> list = filing.readCustomerFile();
-        for (int i = 0; i < list.size(); i++) {
-            Customer c = list.get(i);
-            System.out.println(c.toString());
-        }
-    }
-
-    public Employee searchEmployee(String uID) {
-        ArrayList<Employee> list = filing.readEmployeeFile();
-        int index = -1;
-        for (int i = 0; i < list.size(); i++) {
-            String temp = list.get(i).id;
-            if (temp.equals(uID)) {
-                index = i;
+            catch (Exception e) {
+                System.out.println("\nException caught");
+                System.out.print(e.toString());
             }
-        }
-        if (index == -1) return null;
-        else return list.get(index);
-    }
-
-    public void addNewUser(Employee c1) {
-        // Customer c1 = new Customer();
-        // c1.readData();
-        filing.writeToFile(c1);
+            if (check) return c;
+            else return null;
+            //showBillRecord();
+        //}
+        //else System.out.println("\nInvalid ID or password!\n");
+        //}
+        //else System.out.println("\nInvalid ID or password!\n");
     }
 
     public void setNoOfUnits(int units, String cID) {
@@ -169,7 +161,6 @@ public class Admin extends LogIn implements Serializable {
         // } while (opt != 0);
     }
 
-    // 1) Residential
     public double Residential(int units, int load) {
         double bill = 0; 
         if ((load < 5) && (units != 0)) {
@@ -209,5 +200,25 @@ public class Admin extends LogIn implements Serializable {
             bill = units * 24.63;
         }
         return bill;
+    }
+
+    public String toString() {
+        return (super.toString() + "\nJob title: " + jobTitle + "\nSalary: " + salary);
+    }
+
+    public void setJobTitle(String title) {
+        this.jobTitle = title;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public String getSalary() {
+        return salary;
     }
 }

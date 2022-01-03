@@ -20,6 +20,7 @@ public class CalBillGUI {
 		// FRAME
 	public CalBillGUI() {
 		Admin admin = new Admin();
+		Employee emp = new Employee();
 		JFrame frame=new JFrame();
 		frame.setSize(300, 300);
 		frame.setLocation(530, 150);
@@ -114,7 +115,6 @@ public class CalBillGUI {
 		backbutton.setBorderPainted(false);
 		backbutton.addActionListener(e -> {
 			frame.dispose();
-			AdminGUI ad = new AdminGUI();
 		});
 		
 		
@@ -144,7 +144,7 @@ public class CalBillGUI {
 		selectMonth.addItemListener(e -> {
 			String month = (String)selectMonth.getSelectedItem();
 			String id = idText.getText();
-			admin.calBill(id, month);
+			emp.calBill(id, month);
 		});
 
 		calbutton.addActionListener(e -> {

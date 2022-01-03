@@ -9,40 +9,43 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class AdminGUI {
-	//public static void main(String[] args) {
-        private JButton addBtn;
-        private JButton delBtn;
-        private JButton editBtn;
-        private JButton searchBtn;
-        private JButton viewBtn;
-        private JButton calBillBtn;
-        private JButton addUnitsBtn;
-        
-		public AdminGUI() {
+    private JButton addBtn;
+    private JButton delBtn;
+    private JButton editBtn;
+    private JButton searchBtn;
+    private JButton viewBtn;
+    private JButton calBillBtn;
+    private JButton addUnitsBtn;
+
+    private JButton addEmp;
+    private JButton delEmp;
+    private JButton viewEmp;
+
+    public AdminGUI() {
         Admin admin = new Admin();
         Filing filing = new Filing();
 
-// FRAME	
+    // FRAME	
         JFrame frame = new JFrame();
-        frame.setSize(300, 500);
-        frame.setLocation(530, 150);
+        frame.setSize(450, 450);
+        frame.setLocation(430, 150);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
-// PANEL
+    // PANEL
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(Color.white);
         frame.add(panel);
         
-// LABEL
+    // LABEL
         JLabel adminLabel = new JLabel("ADMIN");
-        adminLabel.setBounds(97,20,100,25);
+        adminLabel.setBounds(160,20,100,25);
         adminLabel.setForeground(Color.orange);
-        adminLabel.setFont(new Font("Serif",Font.BOLD,25));
+        adminLabel.setFont(new Font("Serif",Font.BOLD,26));
         panel.add(adminLabel);
         
-// BUTTONS      
+    // BUTTONS      
         //1-Add Customer
         addBtn = new JButton("Add Customer");
         addBtn.setBounds(65, 80, 152, 30);
@@ -90,23 +93,51 @@ public class AdminGUI {
 
         //6- Calculate Bill
         calBillBtn = new JButton("CALCULATE BILL");
-        calBillBtn.setBounds(27, 340, 230, 80);
+        calBillBtn.setBounds(105, 300, 230, 80);
         calBillBtn.setFont(new Font("Arial Black", Font.BOLD, 17));
         calBillBtn.setForeground(Color.white);
         calBillBtn.setBackground(Color.ORANGE);
         calBillBtn.setBorderPainted(false);
         panel.add(calBillBtn);
 
-	    //7-Enter Customer Units	
+        //7-Enter Customer Units	
         addUnitsBtn = new JButton("Enter Units");
-        addUnitsBtn.setBounds(65, 280, 152, 30);
+        addUnitsBtn.setBounds(230, 220, 152, 30);
         addUnitsBtn.setFont(new Font("Arial Black", Font.BOLD, 12));
         addUnitsBtn.setForeground(Color.WHITE);
         addUnitsBtn.setBackground(Color.black);
         addUnitsBtn.setBorderPainted(false);
         panel.add(addUnitsBtn);
+
+        //8- Add employee
+        addEmp = new JButton("Add Employee");
+        addEmp.setBounds(230, 100, 152, 30);
+        addEmp.setFont(new Font("Arial Black", Font.BOLD, 12));
+        addEmp.setForeground(Color.white);
+        addEmp.setBackground(Color.black);
+        addEmp.setBorderPainted(false);
+        panel.add(addEmp);
+
+        //9- Del employee
+        delEmp = new JButton("Delete Employee");
+        delEmp.setBounds(230, 140, 152, 30);
+        delEmp.setFont(new Font("Arial Black", Font.BOLD, 12));
+        delEmp.setForeground(Color.white);
+        delEmp.setBackground(Color.black);
+        delEmp.setBorderPainted(false);
+        panel.add(delEmp);
+
+        //10- view emp
+        viewEmp = new JButton("View Employees");
+        viewEmp.setBounds(230, 180, 152, 30);
+        viewEmp.setFont(new Font("Arial Black", Font.BOLD, 12));
+        viewEmp.setForeground(Color.white);
+        viewEmp.setBackground(Color.black);
+        viewEmp.setBorderPainted(false);
+        panel.add(viewEmp);
+
         
-// Event handling
+    // Event handling
         addBtn.addActionListener(e -> {
             AddCustomerGUI add = new AddCustomerGUI();
             frame.dispose();
@@ -135,7 +166,6 @@ public class AdminGUI {
                 view.textArea.append("\n***************************\n");
                 view.textArea.append(custt.toString());
             }
-            
         });
 
         addUnitsBtn.addActionListener(e -> {
@@ -147,5 +177,25 @@ public class AdminGUI {
             CalBillGUI calBill = new CalBillGUI(); 
             frame.dispose();
         });
-	}
+
+        addEmp.addActionListener(e -> {
+            AddEmployeeGUI ae = new AddEmployeeGUI();
+            frame.dispose();
+        });
+
+        delEmp.addActionListener(e -> {
+            DeleteGUI del = new DeleteGUI();
+            frame.dispose();
+        });
+
+        viewEmp.addActionListener(e -> {
+            ViewRecordGUI view = new ViewRecordGUI();
+            ArrayList<Employee> list = filing.readEmployeeFile();
+            for (int i = 0; i < list.size(); i++) {
+                Employee empp = list.get(i);
+                view.textArea.append("\n***************************\n");
+                view.textArea.append(empp.toString());
+            }
+        });
+    }
 }

@@ -74,10 +74,19 @@ public class MainGUI {
 		customerBtn.setBackground(Color.black);
 		customerBtn.setBorderPainted(false);
 		background.add(customerBtn);
+
+		//Employee
+		JButton empBtn = new JButton("EMPLOYEE");
+		empBtn.setBounds(50, 260, 250, 40);
+		empBtn.setFont(new Font("Serif", Font.BOLD, 25));
+		empBtn.setForeground(Color.white);
+		empBtn.setBackground(Color.black);
+		empBtn.setBorderPainted(false);
+		background.add(empBtn);
 		
 		//exit
 		JButton exitBtn = new JButton("EXIT");
-		exitBtn.setBounds(50, 260, 250, 40);
+		exitBtn.setBounds(50, 340, 250, 40);
 		exitBtn.setFont(new Font("Serif", Font.BOLD, 25));
 		exitBtn.setForeground(Color.white);
 		exitBtn.setBackground(Color.black);
@@ -94,5 +103,9 @@ public class MainGUI {
 		customerBtn.addActionListener(e -> {
 			CustomerLogInGUI custLogin = new CustomerLogInGUI();
 		}); 
+
+		empBtn.addActionListener(e -> {
+			EmployeeLogInGUI emp = new EmployeeLogInGUI();
+		});
 	}
 }

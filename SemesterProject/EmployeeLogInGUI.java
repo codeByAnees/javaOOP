@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class CustomerLogInGUI {
-	private JFrame frame;
+public class EmployeeLogInGUI {
+    private JFrame frame;
 	private JPanel panel;
 	private JLabel userlabel;
 	private JTextField idField;
@@ -19,8 +19,8 @@ public class CustomerLogInGUI {
 	private JPasswordField passField;
 	private JButton logInBtn;
 
-	public static String logID = "";
-	public CustomerLogInGUI() {
+	public static String emplogID = "";
+	public EmployeeLogInGUI() {
 // Creating window:
 		frame = new JFrame();
 		frame.setSize(300, 200);
@@ -67,12 +67,12 @@ public class CustomerLogInGUI {
 		panel.add(logInBtn);
 
 		logInBtn.addActionListener(e -> {
-			User user = new User();
+			User user = new Employee();
 			String ID = idField.getText();
 			String pass = new String(passField.getPassword());
-			if (user.validation(ID, pass, "c")) {
-				logID = idField.getText();
-				CustomerGUI c = new CustomerGUI();
+			if (user.validation(ID, pass, "e")) {
+				emplogID = idField.getText();
+				EmployeeGUI c = new EmployeeGUI();
 				frame.dispose();
 			}
 			else JOptionPane.showMessageDialog(null, "Invalid password or id");

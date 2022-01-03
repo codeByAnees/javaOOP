@@ -2,23 +2,29 @@ package JavaOOP.SemesterProject;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class DeleteGUI {
-    protected JTextField idText;
+    private JTextField idText;
     private JButton delBtn;
     private JButton backBtn;
-    Admin admin = new Admin();
-    
+    private JRadioButton custBtn;
+    private JRadioButton empBtn;
+
+    Filing filing = new Filing();
     public DeleteGUI() {
 // FRAME
         JFrame frame = new JFrame();
-        frame.setSize(300, 280);
+        frame.setSize(300, 320);
         frame.setLocation(530, 150);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -37,31 +43,85 @@ public class DeleteGUI {
         delLabel.setFont(new Font("Serif", Font.BOLD, 25));
         panel.add(delLabel);
 
+        //Label 
+        JLabel type = new JLabel("Type");
+        panel.add(type);
+        type.setBounds(15, 65, 60, 25);
+        type.setForeground(Color.black);
+        type.setFont(new Font("Serif",Font.BOLD,15));
+
         //Enter ID
         JLabel idLabel = new JLabel("Enter ID");
-        idLabel.setBounds(103,60,60,25);
+        idLabel.setBounds(103,90,60,25);
         idLabel.setFont(new Font("Serif",Font.BOLD,15));
         idLabel.setForeground(Color.BLACK);
         panel.add(idLabel);
+
+        //radio buttons
+        ButtonGroup bg = new ButtonGroup();
+        custBtn = new JRadioButton("Customer");
+        custBtn.setBounds(70, 65, 60, 25);
+	custBtn.setForeground(Color.white);
+	custBtn.setBackground(Color.black);
+        panel.add(custBtn);
+	bg.add(custBtn);
+        empBtn = new JRadioButton("Employee");
+        empBtn.setBounds(140, 65, 60, 25);
+        empBtn.setForeground(Color.white);
+	empBtn.setBackground(Color.black);
+        panel.add(empBtn);
+        bg.add(empBtn);
+
         
 // TEXT FIELD
         idText = new JTextField();
         panel.add(idText);
-        idText.setBounds(103,90,60,25);
+        idText.setBounds(103,120,60,25);
         idText.setVisible(true);
             
 // Delete Button
         delBtn = new JButton("Delete");
         panel.add(delBtn);
-        delBtn.setBounds(90, 140, 90, 25);
+        delBtn.setBounds(90, 150, 90, 25);
         delBtn.setForeground(Color.WHITE);
         delBtn.setBackground(Color.red);
         delBtn.setFont(new Font("Tahoma",Font.BOLD,15));
         delBtn.setBorderPainted(false);
-        delBtn.addActionListener(e-> {
-            String id = idText.getText();
-            admin.delCustomer(id);
-            JOptionPane.showMessageDialog(null, "Done");
+        delBtn.addActionListener(e -> {
+            if (custBtn.isSelected()) {
+                String id = idText.getText();
+                ArrayList<Customer> list = filing.readCustomerFile();
+                int index = -1;
+                for (int i = 0; i < list.size(); i++) {
+                String temp = list.get(i).id;
+                if (temp.equals(id)) {
+                        index = i;
+                        }
+                }
+                if (index != -1) {
+                        list.remove(index);
+                        filing.writeFileCustomer(list);
+                        JOptionPane.showMessageDialog(null, "Done");
+                }
+                else JOptionPane.showMessageDialog(null, "Record not found");
+            }
+            else if (empBtn.isSelected()) {
+                String id = idText.getText();
+                ArrayList<Employee> list = filing.readEmployeeFile();
+                int index = -1;
+                for (int i = 0; i < list.size(); i++) {
+                String temp = list.get(i).id;
+                if (temp.equals(id)) {
+                        index = i;
+                        }
+                }
+                if (index != -1) {
+                        list.remove(index);
+                        filing.writeFileEmployee(list);
+                        JOptionPane.showMessageDialog(null, "Done");
+                }
+                else JOptionPane.showMessageDialog(null, "Record not found");   
+            }
         });
 
 // BACK Button

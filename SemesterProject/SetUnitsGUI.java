@@ -10,9 +10,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import JavaOOP.Practice.Emp;
+
 public class SetUnitsGUI {
 
 	Admin admin = new Admin();
+	Employee emp = new Employee();
 	private JTextField idField;
 	private JTextField unitsField;
 	private JButton searchB;
@@ -113,7 +116,7 @@ public class SetUnitsGUI {
 			try {
 				String temp = unitsField.getText();
 				int units = Integer.parseInt(temp);
-				admin.setNoOfUnits(units, idField.getText());
+				emp.setNoOfUnits(units, idField.getText());
 				JOptionPane.showMessageDialog(null, "Added successfully");
 			}
 			catch (Exception e3) {
@@ -123,7 +126,6 @@ public class SetUnitsGUI {
 
 		backBtn.addActionListener(e->{
 			frame.dispose();
-			AdminGUI ad = new AdminGUI();
 		});
 	}
 }
