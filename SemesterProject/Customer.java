@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 public class Customer extends LogIn implements Serializable {
+    String id;
+    String password;
     private String name;
     private String address;
     private String cnic;
@@ -19,7 +21,6 @@ public class Customer extends LogIn implements Serializable {
     protected int noOfUnits;
 
     Filing filing = new Filing();
-
     public Customer() {
         name = null;
         address = null;

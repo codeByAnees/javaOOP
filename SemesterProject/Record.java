@@ -22,6 +22,6 @@ public class Record implements Serializable {
     }
 
     public String toString() {
-        return ("\nBill month: " + month + "\nUnits consumed: " + units + "\nBill amount: " + bill);
+        return ("\n\tBill Record" + "\nBill month: " + month + "\nUnits consumed: " + units + "\nBill amount: " + bill);
     }
 }
