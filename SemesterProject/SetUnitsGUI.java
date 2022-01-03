@@ -106,7 +106,8 @@ public class SetUnitsGUI {
                 unitsField.setEditable(true);
 				addUnits.setEnabled(true);
 				JOptionPane.showMessageDialog(null, "User found");
-            } 
+            }
+			else JOptionPane.showMessageDialog(null, "User not found");
         });
 
 		addUnits.addActionListener(e -> {
