@@ -90,6 +90,7 @@ public class CustomerGUI {
 		});
 
 		payBtn.addActionListener(e -> {
+			frame.dispose();
 			BillPaymentGUI billpay = new BillPaymentGUI();
 		});
 	}

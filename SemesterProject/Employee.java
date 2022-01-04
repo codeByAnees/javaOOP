@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class Employee extends User {
     private String jobTitle;
     private String salary;
-
     Filing filing = new Filing();
 
     public Employee() {

@@ -14,7 +14,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class EditGUI {
-    Admin admin = new Admin();
     private JButton searchBtn;
     private JButton cancelBtn;
     private JButton addBtn;
@@ -29,6 +28,7 @@ public class EditGUI {
     private JRadioButton load2;
 
     public EditGUI() {
+        Admin admin = new Admin();
 // Frame
         JFrame frame = new JFrame();
         frame.setSize(500, 600);

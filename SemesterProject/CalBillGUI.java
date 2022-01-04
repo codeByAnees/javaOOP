@@ -91,6 +91,7 @@ public class CalBillGUI {
 		backbutton.setBorderPainted(false);
 		backbutton.addActionListener(e -> {
 			frame.dispose();
+			EmployeeGUI em = new EmployeeGUI();
 		});
 		
 		// Calculate Button

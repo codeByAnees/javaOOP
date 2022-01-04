@@ -62,7 +62,6 @@ public class EmployeeGUI {
 		calBtn.setBorderPainted(false);
 		panel.add(calBtn);
 
-		
 		//4- Cancel
 		cancelBtn = new JButton("CANCEL");
 		cancelBtn.setBounds(42, 310, 200, 40);
@@ -74,7 +73,6 @@ public class EmployeeGUI {
 		cancelBtn.addActionListener(e -> {
 			frame.dispose();
 		});
-
 
         viewBtn.addActionListener(e -> {
 			Employee emp = new Employee();
@@ -90,10 +88,12 @@ public class EmployeeGUI {
 
         setUnits.addActionListener(e -> {
             SetUnitsGUI units = new SetUnitsGUI();
+			frame.dispose();
         });
 
         calBtn.addActionListener(e -> {
-            CalBillGUI calBill = new CalBillGUI(); 
+            CalBillGUI calBill = new CalBillGUI();
+			frame.dispose();
         });
     }
 }

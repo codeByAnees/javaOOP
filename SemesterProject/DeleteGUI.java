@@ -20,8 +20,8 @@ public class DeleteGUI {
     private JRadioButton custBtn;
     private JRadioButton empBtn;
 
-    Filing filing = new Filing();
     public DeleteGUI() {
+        Filing filing = new Filing();
 // FRAME
         JFrame frame = new JFrame();
         frame.setSize(300, 320);
@@ -60,19 +60,18 @@ public class DeleteGUI {
         //radio buttons
         ButtonGroup bg = new ButtonGroup();
         custBtn = new JRadioButton("Customer");
-        custBtn.setBounds(70, 65, 60, 25);
-	custBtn.setForeground(Color.white);
-	custBtn.setBackground(Color.black);
+        custBtn.setBounds(70, 65, 85, 25);
+	custBtn.setForeground(Color.black);
+	custBtn.setBackground(Color.white);
         panel.add(custBtn);
 	bg.add(custBtn);
         empBtn = new JRadioButton("Employee");
-        empBtn.setBounds(140, 65, 60, 25);
-        empBtn.setForeground(Color.white);
-	empBtn.setBackground(Color.black);
+        empBtn.setBounds(170, 65, 85, 25);
+        empBtn.setForeground(Color.black);
+	empBtn.setBackground(Color.white);
         panel.add(empBtn);
         bg.add(empBtn);
 
-        
 // TEXT FIELD
         idText = new JTextField();
         panel.add(idText);
@@ -82,7 +81,7 @@ public class DeleteGUI {
 // Delete Button
         delBtn = new JButton("Delete");
         panel.add(delBtn);
-        delBtn.setBounds(90, 150, 90, 25);
+        delBtn.setBounds(90, 170, 90, 25);
         delBtn.setForeground(Color.WHITE);
         delBtn.setBackground(Color.red);
         delBtn.setFont(new Font("Tahoma",Font.BOLD,15));
@@ -127,7 +126,7 @@ public class DeleteGUI {
 // BACK Button
         backBtn = new JButton("Back");
         panel.add(backBtn);
-        backBtn.setBounds(90, 180, 90, 25);
+        backBtn.setBounds(90, 210, 90, 25);
         backBtn.setForeground(Color.WHITE);
         backBtn.setBackground(Color.black);
         backBtn.setFont(new Font("Tahoma",Font.BOLD,15));
@@ -135,7 +134,7 @@ public class DeleteGUI {
 
         backBtn.addActionListener(e->{
                 frame.dispose();
-                AdminGUI a =new AdminGUI();
+                AdminGUI a = new AdminGUI();
         });
 
     }

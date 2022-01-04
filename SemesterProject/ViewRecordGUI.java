@@ -52,9 +52,9 @@ public class ViewRecordGUI {
         textArea.setEditable(false);
 	
 	// LABEL
-		JLabel viewlabel = new JLabel("CUSTOMER  RECORD");
+		JLabel viewlabel = new JLabel("USER  RECORD");
 		panel2.add(viewlabel);
-		viewlabel.setBounds(350, 17, 280, 50);
+		viewlabel.setBounds(410, 17, 280, 50);
 		viewlabel.setFont(new Font("Serif",Font.CENTER_BASELINE,23));
 		viewlabel.setForeground(Color.white);
 		

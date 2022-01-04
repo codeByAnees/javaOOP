@@ -10,9 +10,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 public class SetUnitsGUI {
-
-	Admin admin = new Admin();
-	Employee emp = new Employee();
 	private JTextField idField;
 	private JTextField unitsField;
 	private JButton searchB;
@@ -21,6 +18,8 @@ public class SetUnitsGUI {
 
 	public SetUnitsGUI() {
 		
+		Admin admin = new Admin();
+		Employee emp = new Employee();
 	// FRAME
 		JFrame frame = new JFrame();
 		frame.setSize(300, 300);
@@ -80,7 +79,6 @@ public class SetUnitsGUI {
 		searchB.setBorderPainted(false);
 	
 	// ADD Button
-
 		addUnits = new JButton("ADD");
 		panel.add(addUnits);
 		addUnits.setBounds(175, 130, 80, 23);	
@@ -121,8 +119,9 @@ public class SetUnitsGUI {
 			}
 		});
 
-		backBtn.addActionListener(e->{
+		backBtn.addActionListener(e -> {
 			frame.dispose();
+			EmployeeGUI ep = new EmployeeGUI();
 		});
 	}
 }

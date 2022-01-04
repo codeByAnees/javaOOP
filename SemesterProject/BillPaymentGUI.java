@@ -69,6 +69,7 @@ public class BillPaymentGUI {
 		backbutton.setBorderPainted(false);
 		backbutton.addActionListener(e -> {
 			frame.dispose();
+			CustomerGUI cc = new CustomerGUI();
 		});
 		
 		// Pay BUtton
@@ -109,7 +110,6 @@ public class BillPaymentGUI {
 			ArrayList<Record> list = c.payBill();
 			String ID = CustomerLogInGUI.logID;
 			int index = -1;
-			String temp = "";
 			for (int i = 0; i < list.size(); i++) {
 				String rID = list.get(i).id;
 				String rMonth = list.get(i).month;
@@ -117,7 +117,6 @@ public class BillPaymentGUI {
 					cash.setEnabled(true);
 					creditC.setEnabled(true);
 					paybutton.setEnabled(true);
-					temp = list.get(i).toString();
 					index = 0;
 					break;
 				}

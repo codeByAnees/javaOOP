@@ -1,6 +1,4 @@
 package JavaOOP.SemesterProject;
-
-import java.util.Scanner;
 public class Payment {
 	public boolean isCCValid(String number) {
 		boolean valid = false;

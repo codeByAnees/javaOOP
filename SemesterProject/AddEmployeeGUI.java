@@ -9,16 +9,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class AddEmployeeGUI {
-        private JTextField idField;
-        private JTextField passField;
-        private JTextField nameField;
-        private JTextField adrField;
-        private JTextField cnicField;
-        private JTextField ageField;
-        private JTextField jobTitleField;
-        private JTextField salaryField;
-        private JButton addBtn;
-        private JButton cancelBtn;
+	private JTextField idField;
+	private JTextField passField;
+	private JTextField nameField;
+	private JTextField adrField;
+	private JTextField cnicField;
+	private JTextField ageField;
+	private JTextField jobTitleField;
+	private JTextField salaryField;
+	private JButton addBtn;
+	private JButton cancelBtn;
 
     public AddEmployeeGUI() {
         Admin admin = new Admin();
