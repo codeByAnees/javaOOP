@@ -163,9 +163,7 @@ public class Filing implements Serializable {
             System.out.println("Done");
         }
         catch (Exception e) {
-            //JOptionPane.showMessageDialog(null, "No record found");
             System.out.println("File not found");
-            //System.out.print(e.toString());
         }
         return list;
     }

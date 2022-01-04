@@ -67,7 +67,7 @@ public class EmployeeLogInGUI {
 		panel.add(logInBtn);
 
 		logInBtn.addActionListener(e -> {
-			User user = new Employee();
+			User user = new User();
 			String ID = idField.getText();
 			String pass = new String(passField.getPassword());
 			if (user.validation(ID, pass, "e")) {
