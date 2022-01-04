@@ -19,7 +19,7 @@ public class CustomerLogInGUI {
 	private JPasswordField passField;
 	private JButton logInBtn;
 
-	public static String logID = "";
+	protected static String logID = "";
 	public CustomerLogInGUI() {
 // Creating window:
 		frame = new JFrame();
@@ -67,10 +67,10 @@ public class CustomerLogInGUI {
 		panel.add(logInBtn);
 
 		logInBtn.addActionListener(e -> {
-			User user = new User();
+			Customer user = new Customer();
 			String ID = idField.getText();
 			String pass = new String(passField.getPassword());
-			if (user.validation(ID, pass, "c")) {
+			if (user.validation(ID, pass)) {
 				logID = idField.getText();
 				CustomerGUI c = new CustomerGUI();
 				frame.dispose();

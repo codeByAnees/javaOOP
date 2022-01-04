@@ -56,7 +56,6 @@ public class SetUnitsGUI {
 		addUnitsLabel.setForeground(Color.BLACK);
 		panel.add(addUnitsLabel);
 		
-		
 	// TEXT FIELD
 		// ID
 		idField = new JTextField();

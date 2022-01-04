@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Admin extends LogIn implements Serializable {
     Filing filing = new Filing();
 
-    public boolean validation(String id, String password, String type) {
+    public boolean validation(String id, String password) {
         String adminID = "admin";
         String adminPass = "12345";
         if (adminID.equals(id) && adminPass.equals(password)) {

@@ -65,7 +65,7 @@ public class AdminLogInGUI {
 		logInBtn.addActionListener(e -> {
 			String ID = idField.getText();
 			String pass = new String(passField.getPassword());
-			if (adm.validation(ID, pass, "a")) {
+			if (adm.validation(ID, pass)) {
 				AdminGUI admin = new AdminGUI();
 				frame.dispose();
 			}

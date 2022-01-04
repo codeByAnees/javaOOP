@@ -25,6 +25,19 @@ public class Employee extends User {
         this.salary = salary;
     }
 
+    public boolean validation(String ID, String Password) {
+        boolean valid = false;
+        ArrayList<Employee> list = filing.readEmployeeFile();
+        for (int i = 0; i < list.size(); i++) {
+            String tempID = list.get(i).id;
+            String tempPass = list.get(i).password;
+            if (ID.equals(tempID) && Password.equals(tempPass)) {
+                valid = true;
+            }
+        }
+        return valid;
+    }
+
     public Employee EmpProfile(String ID) {
         String path = "D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\Employee.dat";
         Employee c = new Employee();

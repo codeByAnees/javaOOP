@@ -1,8 +1,7 @@
 package JavaOOP.SemesterProject;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-public class User extends LogIn implements Serializable {
+public abstract class User extends LogIn implements Serializable {
     String id;
     String password;
     private String name;
@@ -25,30 +24,7 @@ public class User extends LogIn implements Serializable {
         this.age = age;
     }
 
-    public boolean validation(String ID, String Password, String type) {
-        boolean valid = false;
-        if (type.equals("c")) {
-            ArrayList<Customer> list = filing.readCustomerFile();
-            for (int i = 0; i < list.size(); i++) {
-                String tempID = list.get(i).id;
-                String tempPass = list.get(i).password;
-                if (ID.equals(tempID) && Password.equals(tempPass)) {
-                    valid = true;
-                }
-            }
-        }
-        else if (type.equals("e")) {
-            ArrayList<Employee> list = filing.readEmployeeFile();
-            for (int i = 0; i < list.size(); i++) {
-                String tempID = list.get(i).id;
-                String tempPass = list.get(i).password;
-                if (ID.equals(tempID) && Password.equals(tempPass)) {
-                    valid = true;
-                }
-            }
-        }
-        return valid;
-    }
+    public abstract boolean validation(String ID, String Password);
 
     public void setID(String id) {
         this.id = id;

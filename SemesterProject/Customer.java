@@ -30,6 +30,19 @@ public class Customer extends User {
         this.noOfUnits = noOfUnits;
     }
 
+    public boolean validation(String ID, String Password) {
+        boolean valid = false;
+        ArrayList<Customer> list = filing.readCustomerFile();
+        for (int i = 0; i < list.size(); i++) {
+            String tempID = list.get(i).id;
+            String tempPass = list.get(i).password;
+            if (ID.equals(tempID) && Password.equals(tempPass)) {
+                valid = true;
+            }
+        }
+        return valid;
+    }
+
     public void setMeterNo() {
         this.meterNo = meterNo();
     }

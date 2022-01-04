@@ -73,9 +73,9 @@ public class SearchGUI {
 		backBtn.setBackground(Color.RED);
 		backBtn.setFont(new Font("Tahoma",Font.BOLD,15));
 		backBtn.setBorderPainted(false);
-		backBtn.addActionListener(e->{
+		backBtn.addActionListener(e -> {
 			frame.dispose();
-			AdminGUI ad=new AdminGUI();
+			AdminGUI ad = new AdminGUI();
 	});
 	
 	}

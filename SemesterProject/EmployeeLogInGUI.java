@@ -19,7 +19,7 @@ public class EmployeeLogInGUI {
 	private JPasswordField passField;
 	private JButton logInBtn;
 
-	public static String emplogID = "";
+	protected static String emplogID = "";
 	public EmployeeLogInGUI() {
 // Creating window:
 		frame = new JFrame();
@@ -67,10 +67,10 @@ public class EmployeeLogInGUI {
 		panel.add(logInBtn);
 
 		logInBtn.addActionListener(e -> {
-			User user = new User();
+			Employee user = new Employee();
 			String ID = idField.getText();
 			String pass = new String(passField.getPassword());
-			if (user.validation(ID, pass, "e")) {
+			if (user.validation(ID, pass)) {
 				emplogID = idField.getText();
 				EmployeeGUI c = new EmployeeGUI();
 				frame.dispose();
