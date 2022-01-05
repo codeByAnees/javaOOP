@@ -92,7 +92,7 @@ public class DeleteGUI {
                 ArrayList<Customer> list = filing.readCustomerFile();
                 int index = -1;
                 for (int i = 0; i < list.size(); i++) {
-                String temp = list.get(i).id;
+                String temp = list.get(i).getID();
                 if (temp.equals(id)) {
                         index = i;
                         }
@@ -109,9 +109,9 @@ public class DeleteGUI {
                 ArrayList<Employee> list = filing.readEmployeeFile();
                 int index = -1;
                 for (int i = 0; i < list.size(); i++) {
-                String temp = list.get(i).id;
-                if (temp.equals(id)) {
-                        index = i;
+                        String temp = list.get(i).getID();
+                        if (temp.equals(id)) {
+                                index = i;
                         }
                 }
                 if (index != -1) {

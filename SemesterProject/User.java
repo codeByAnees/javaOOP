@@ -2,8 +2,8 @@ package JavaOOP.SemesterProject;
 
 import java.io.Serializable;
 public abstract class User extends LogIn implements Serializable {
-    String id;
-    String password;
+    private String id;
+    private String password;
     private String name;
     private String address;
     private String cnic;
@@ -47,6 +47,9 @@ public abstract class User extends LogIn implements Serializable {
 
     public String getID() {
         return id;
+    }
+    public String getPass() {
+        return password;
     }
     public String getName() {
         return name;

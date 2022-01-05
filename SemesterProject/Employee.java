@@ -28,8 +28,8 @@ public class Employee extends User {
         boolean valid = false;
         ArrayList<Employee> list = filing.readEmployeeFile();
         for (int i = 0; i < list.size(); i++) {
-            String tempID = list.get(i).id;
-            String tempPass = list.get(i).password;
+            String tempID = list.get(i).getID();
+            String tempPass = list.get(i).getPass();
             if (ID.equals(tempID) && Password.equals(tempPass)) {
                 valid = true;
             }
@@ -46,7 +46,7 @@ public class Employee extends User {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
             while (true) {
                 c = (Employee)in.readObject();
-                if (c.id.equals(ID)) {
+                if (c.getID().equals(ID)) {
                     check = true;
                     break;
                 }
@@ -66,7 +66,7 @@ public class Employee extends User {
     public void setNoOfUnits(int units, String cID) {
         ArrayList<Customer> list = filing.readCustomerFile();
         for (int i = 0; i < list.size(); i++) {
-            String tempID = list.get(i).id;
+            String tempID = list.get(i).getID();
             if (cID.equals(tempID)) {
                 list.get(i).setUnits(units);
             }
@@ -77,7 +77,7 @@ public class Employee extends User {
     public void calBill(String cID, String month) {
         ArrayList<Customer> list = filing.readCustomerFile();
         for (int i = 0; i < list.size(); i++) {
-            String tempID = list.get(i).id;
+            String tempID = list.get(i).getID();
             if (cID.equals(tempID)) {
                 double Bill = 0;
                 int tempUnit = 0;

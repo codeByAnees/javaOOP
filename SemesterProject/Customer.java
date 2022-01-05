@@ -34,8 +34,8 @@ public class Customer extends User {
         boolean valid = false;
         ArrayList<Customer> list = filing.readCustomerFile();
         for (int i = 0; i < list.size(); i++) {
-            String tempID = list.get(i).id;
-            String tempPass = list.get(i).password;
+            String tempID = list.get(i).getID();
+            String tempPass = list.get(i).getPass();
             if (ID.equals(tempID) && Password.equals(tempPass)) {
                 valid = true;
             }
@@ -78,7 +78,7 @@ public class Customer extends User {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
             while (true) {
                 c = (Customer)in.readObject();
-                if (c.id.equals(ID)) {
+                if (c.getID().equals(ID)) {
                     check = true;
                     break;
                 }
