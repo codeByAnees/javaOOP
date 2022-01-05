@@ -99,10 +99,6 @@ public class Customer extends User {
         return filing.readBillRecord();
     }
 
-    public ArrayList<Record> payBill() {
-        return filing.readBillRecord();
-    }
-
     public String toString() {
         return (super.toString() + "\nElectricity load: " + load + "\nMeter Num: " + meterNo +
         "\nConnection type: " + connectionType + "\nConsumed units: " + noOfUnits);

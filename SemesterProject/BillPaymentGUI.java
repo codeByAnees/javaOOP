@@ -2,7 +2,6 @@ package JavaOOP.SemesterProject;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -106,24 +105,15 @@ public class BillPaymentGUI {
 		
 		selectMonth.addItemListener(e -> {
 			String billMonth = (String)selectMonth.getSelectedItem();
-			Customer c = new Customer();
-			ArrayList<Record> list = c.payBill();
 			String ID = CustomerLogInGUI.logID;
-			int index = -1;
-			for (int i = 0; i < list.size(); i++) {
-				String rID = list.get(i).getID();
-				String rMonth = list.get(i).getMonth();
-				if (rID.equals(ID) && rMonth.equals(billMonth)) {
-					cash.setEnabled(true);
-					creditC.setEnabled(true);
-					paybutton.setEnabled(true);
-					index = 0;
-					break;
-				}
+			Record record = new Record();
+			Record r = record.getRecord(ID, billMonth);
+			if (r != null) {
+				cash.setEnabled(true);
+				creditC.setEnabled(true);
+				paybutton.setEnabled(true);
 			}
-			if (index == -1) {
-				JOptionPane.showMessageDialog(null, "Bill not found");
-			}
+			else JOptionPane.showMessageDialog(null, "Bill not found");
 		});
 	
 		cash.addActionListener(e -> {
@@ -137,7 +127,11 @@ public class BillPaymentGUI {
 		paybutton.addActionListener(e -> {
 			if (cash.isSelected()) {
 				creditC.setEnabled(false);
-				JOptionPane.showMessageDialog(null, "Thank you!");
+				String billMonth = (String)selectMonth.getSelectedItem();
+				String ID = CustomerLogInGUI.logID;
+				Record record = new Record();
+				Record r = record.getRecord(ID, billMonth);
+				JOptionPane.showMessageDialog(null, r.toString() + "\nThank you!");
 			}
 			if (creditC.isSelected()) {
 				cash.setEnabled(false);

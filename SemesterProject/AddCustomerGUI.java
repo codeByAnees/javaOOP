@@ -173,7 +173,6 @@ public class AddCustomerGUI {
 			else c.setLaod(4);
 		});
 		
-		
 // Creating Buttons
 		addBtn = new JButton("Add");
 		panel.add(addBtn);

@@ -117,12 +117,13 @@ public class CalBillGUI {
         });
 
 		selectMonth.addItemListener(e -> {
-			String month = (String)selectMonth.getSelectedItem();
-			String id = idText.getText();
-			emp.calBill(id, month);
+			selectMonth.getSelectedItem();
 		});
 
 		calbutton.addActionListener(e -> {
+			String month = (String)selectMonth.getSelectedItem();
+			String id = idText.getText();
+			emp.calBill(id, month);
 			JOptionPane.showMessageDialog(null, "Done");
 		});
 	}

@@ -1,12 +1,14 @@
 package JavaOOP.SemesterProject;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 public class Record implements Serializable {
     private String id;
     private String month;
     private int units;
     private double bill;
 
+    Filing filing = new Filing();
     public Record() {
         id = null;
         month = null;
@@ -53,6 +55,22 @@ public class Record implements Serializable {
         return bill;
     }
 
+    public Record getRecord(String id, String month) {
+		Record r = new Record();
+		ArrayList<Record> list = filing.readBillRecord();
+		int index = -1;
+		for (int i = 0; i < list.size(); i++) {
+			String rID = list.get(i).getID();
+			String rMonth = list.get(i).getMonth();
+			if (rID.equals(id) && rMonth.equals(month)) {
+				r = list.get(i);
+				index = 0;
+				break;
+			}
+		}
+		if (index == -1) return null;
+		else return r;
+	}
 
     public String toString() {
         return ("\n\tBill Record" + "\nBill month: " + month + "\nUnits consumed: " + units + "\nBill amount: " + bill);
