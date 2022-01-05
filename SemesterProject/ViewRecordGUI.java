@@ -9,7 +9,7 @@ import javax.swing.JTextArea;
 
 public class ViewRecordGUI {
 
-    protected JTextArea textArea;
+    private JTextArea textArea;
     public ViewRecordGUI() {
 	// Frame
 		JFrame frame = new JFrame();
@@ -72,4 +72,8 @@ public class ViewRecordGUI {
 		design2.setFont(new Font("Serif",Font.CENTER_BASELINE,25));
 		design2.setForeground(Color.yellow);
     }
+
+	public JTextArea getArea() {
+		return textArea;
+	}
 }

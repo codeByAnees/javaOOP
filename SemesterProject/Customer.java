@@ -7,10 +7,10 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Random;
 public class Customer extends User {
-    protected int load;
+    private int load;
     private String meterNo;
-    protected String connectionType;
-    protected int noOfUnits;
+    private String connectionType;
+    private int noOfUnits;
 
     Filing filing = new Filing();
     public Customer() {
@@ -64,6 +64,9 @@ public class Customer extends User {
     }
     public int getUnits() {
         return noOfUnits;
+    }
+    public int getLoad() {
+        return load;
     }
 
     public Customer customerProfile(String ID) {

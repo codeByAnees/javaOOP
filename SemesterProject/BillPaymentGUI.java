@@ -111,8 +111,8 @@ public class BillPaymentGUI {
 			String ID = CustomerLogInGUI.logID;
 			int index = -1;
 			for (int i = 0; i < list.size(); i++) {
-				String rID = list.get(i).id;
-				String rMonth = list.get(i).month;
+				String rID = list.get(i).getID();
+				String rMonth = list.get(i).getMonth();
 				if (rID.equals(ID) && rMonth.equals(billMonth)) {
 					cash.setEnabled(true);
 					creditC.setEnabled(true);

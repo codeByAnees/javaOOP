@@ -1,5 +1,5 @@
 package JavaOOP.TerminalPractice;
 
-abstract class A {
-    abstract int unfinished();
+interface A {
+    void m1();
     }

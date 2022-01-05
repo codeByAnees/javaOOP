@@ -77,14 +77,14 @@ public class CustomerGUI {
 				JOptionPane.showMessageDialog(null, "User not found");
 			}
 			else {
-				view.textArea.append(temp.toString());
+				view.getArea().append(temp.toString());
 			}
-			view.textArea.append("\n*********************\n");
+			view.getArea().append("\n*********************\n");
 			ArrayList<Record> list = c.showBillRecord(); 
 			for (int i = 0; i < list.size(); i++) {
-				String listID = list.get(i).id;
+				String listID = list.get(i).getID();
 				if (listID.equals(id) && i % 2 == 0) {
-					view.textArea.append(list.get(i).toString());
+					view.getArea().append(list.get(i).toString());
 				}
 			}
 		});

@@ -132,8 +132,8 @@ public class AdminGUI {
             ArrayList<Customer> list = filing.readCustomerFile();
             for (int i = 0; i < list.size(); i++) {
                 Customer custt = list.get(i);
-                view.textArea.append("\n***************************\n");
-                view.textArea.append(custt.toString());
+                view.getArea().append("\n***************************\n");
+                view.getArea().append(custt.toString());
             }
         });
 
@@ -147,8 +147,8 @@ public class AdminGUI {
             ArrayList<Employee> list = filing.readEmployeeFile();
             for (int i = 0; i < list.size(); i++) {
                 Employee empp = list.get(i);
-                view.textArea.append("\n***************************\n");
-                view.textArea.append(empp.toString());
+                view.getArea().append("\n***************************\n");
+                view.getArea().append(empp.toString());
             }
         }); 
 

@@ -68,7 +68,7 @@ public class Employee extends User {
         for (int i = 0; i < list.size(); i++) {
             String tempID = list.get(i).id;
             if (cID.equals(tempID)) {
-                list.get(i).noOfUnits = units;
+                list.get(i).setUnits(units);
             }
         }
         filing.writeFileCustomer(list);
@@ -82,15 +82,15 @@ public class Employee extends User {
                 double Bill = 0;
                 int tempUnit = 0;
                 int tempLoad = 0;
-                String tempCon = list.get(i).connectionType;
+                String tempCon = list.get(i).getConnection();
                 if (tempCon.equals("Residential")) {
-                    tempUnit = list.get(i).noOfUnits;
-                    tempLoad = list.get(i).load;
+                    tempUnit = list.get(i).getUnits();
+                    tempLoad = list.get(i).getLoad();
                     Bill = Residential(tempUnit, tempLoad);
                 }
                 else {
-                    tempUnit = list.get(i).noOfUnits;
-                    tempLoad = list.get(i).load;
+                    tempUnit = list.get(i).getUnits();
+                    tempLoad = list.get(i).getLoad();
                     Bill = Commercial(tempUnit, tempLoad);
                 }
                 Record r = new Record(cID, month, tempUnit, Bill);
