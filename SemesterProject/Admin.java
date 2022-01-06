@@ -1,8 +1,7 @@
 package JavaOOP.SemesterProject;
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Admin extends LogIn implements Serializable {
+public class Admin implements LogIn {
     Filing filing = new Filing();
     public boolean validation(String id, String password) {
         String adminID = "admin";

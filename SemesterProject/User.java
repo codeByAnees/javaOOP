@@ -1,7 +1,7 @@
 package JavaOOP.SemesterProject;
 
 import java.io.Serializable;
-public abstract class User extends LogIn implements Serializable {
+public abstract class User implements LogIn, Serializable {
     private String id;
     private String password;
     private String name;
@@ -9,7 +9,6 @@ public abstract class User extends LogIn implements Serializable {
     private String cnic;
     private String age;
 
-    Filing filing = new Filing();
     public User() {
         name = null;
         address = null;
@@ -65,6 +64,6 @@ public abstract class User extends LogIn implements Serializable {
     }
 
     public String toString() {
-        return ("\nUser name: " + name + "\nUser address: " + address + "\nCNIC: " + cnic + "\nAge: " + age);
+        return ("\nUser ID: " + id + "\nUser name: " + name + "\nUser address: " + address + "\nCNIC: " + cnic + "\nAge: " + age);
     }
 }

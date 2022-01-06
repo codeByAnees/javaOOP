@@ -58,7 +58,7 @@ public class EmployeeGUI {
 		calBtn.setBounds(42, 240, 200, 40);
 		calBtn.setFont(new Font("Arial Black", Font.BOLD, 15));
 		calBtn.setForeground(Color.white);
-		calBtn.setBackground(Color.orange);
+		calBtn.setBackground(Color.MAGENTA);
 		calBtn.setBorderPainted(false);
 		panel.add(calBtn);
 

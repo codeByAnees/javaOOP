@@ -5,21 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.io.Serializable;
 import java.io.ObjectInputStream;
 import java.io.FileInputStream;
 import java.util.ArrayList;
-
-class MyObjectOutputStream extends ObjectOutputStream {
-    public MyObjectOutputStream(OutputStream out) throws IOException {
-        super(out);
-    }
-    public void writeStreamHeader() throws IOException {
-        return;
-    }
-}
-public class Filing implements Serializable {
-    
+public class Filing {
     public void writeToFile(Object o) {
         String path = "";
         if (o instanceof Customer) {
@@ -166,5 +155,14 @@ public class Filing implements Serializable {
             System.out.println("File not found");
         }
         return list;
+    }
+}
+
+class MyObjectOutputStream extends ObjectOutputStream {
+    public MyObjectOutputStream(OutputStream out) throws IOException {
+        super(out);
+    }
+    public void writeStreamHeader() throws IOException {
+        return;
     }
 }

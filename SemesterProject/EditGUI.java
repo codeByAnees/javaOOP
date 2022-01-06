@@ -198,15 +198,11 @@ public class EditGUI {
 		});
 
         load1.addActionListener(e -> {
-			if (load1.isSelected())
-				c.setLaod(4);
-			else c.setLaod(6);
+			c.setLaod(4);
 		});
 
 		load2.addActionListener(e -> {
-			if (load2.isSelected())
-				c.setLaod(6);
-			else c.setLaod(4);
+			c.setLaod(6);
 		});
 
         addBtn = new JButton("Add");
