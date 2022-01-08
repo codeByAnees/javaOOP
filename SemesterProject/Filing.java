@@ -20,7 +20,7 @@ public class Filing {
         File file = new File(path);
         try {
             if (file.length() < 1) {
-                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file, true));
+                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
                 out.writeObject(o);
                 out.close();
             }
@@ -109,16 +109,11 @@ public class Filing {
         return list;
     }
 
-    public void writeBillRecord(ArrayList<Record> r, boolean Append) {
+    public void writeBillRecord(ArrayList<Record> r) {
         try {
             File file = new File("D:\\Visual Studio\\Java\\JavaOOP\\SemesterProject\\BillRecord.dat");
             FileOutputStream fileOutput;
-            if (Append) {
-                fileOutput = new FileOutputStream(file, true);
-            }
-            else {
-                fileOutput = new FileOutputStream(file);
-            }
+            fileOutput = new FileOutputStream(file, true);
             if (file.length() < 1) {
                 ObjectOutputStream out = new ObjectOutputStream(fileOutput);
                 for (int i = 0; i < r.size(); i++) {

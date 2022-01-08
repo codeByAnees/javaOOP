@@ -96,7 +96,7 @@ public class Employee extends User {
                 Record r = new Record(cID, month, tempUnit, Bill);
                 ArrayList<Record> rlist = new ArrayList<>();
                 rlist.add(r);
-                filing.writeBillRecord(rlist, true);
+                filing.writeBillRecord(rlist);
             }
         }
     }
